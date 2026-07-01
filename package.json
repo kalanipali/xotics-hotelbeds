@@ -1,0 +1,12 @@
+{
+  "name": "xotics-hotelbeds",
+  "version": "1.0.0",
+  "description": "Xotics — Motor de búsqueda y reserva de hoteles (Hotelbeds API)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
