@@ -287,6 +287,14 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .book-btn.done:hover{background:#9a3b34;border-color:#9a3b34}
 .unlocked-price .price .old{display:block}
 .unlocked-price .price .now{color:var(--teal-dark)}
+/* catálogo Xcaret */
+.pk-variant{border:1px solid var(--line-2);border-radius:10px;padding:9px 12px;font-size:12.5px;font-weight:500;background:var(--surface);color:var(--ink);margin-bottom:10px;cursor:pointer}
+.pk-pax{display:flex;gap:10px;margin-bottom:12px;flex-wrap:wrap}
+.pk-pax-group{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--ink-2)}
+.pk-step{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line-2);font-size:15px;font-weight:600;color:var(--ink-2);flex:none;transition:all .2s}
+.pk-step:hover{border-color:var(--teal);color:var(--teal-dark)}
+.pk-count{min-width:16px;text-align:center;font-weight:600;color:var(--ink)}
+.pk-badge{font-size:10.5px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:3px 9px;border-radius:100px;background:var(--amber-tint);color:var(--amber)}
 
 /* ---------- hotel results (real API) ---------- */
 .loading{display:none;text-align:center;padding:48px 0}
@@ -716,72 +724,11 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
     </span>
   </div>
   <div class="searchbar">
-    <div class="sfield"><label for="parkSelect" data-i18n="f_park">Parque</label>
-      <select id="parkSelect" onchange="highlightPark(this.value)"><option>Xcaret</option><option>Xel-Há</option><option>Xplor</option><option>Xenses</option><option>Xenotes</option></select>
-    </div>
-    <div class="sfield"><label for="parkDate" data-i18n="f_visit1">Fecha de visita</label><input type="date" id="parkDate"></div>
-    <div class="sfield"><label for="parkPersons" data-i18n="f_ppl">Personas</label>
-      <select id="parkPersons"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
-    </div>
-    <button type="button" class="sbtn" onclick="highlightPark(document.getElementById('parkSelect').value);document.getElementById('park-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_seedates">Ver parques</button>
+    <div class="sfield"><label for="parkDate" data-i18n="f_visit1">Fecha de visita</label><input type="date" id="parkDate" onchange="onParkDateChange()"></div>
+    <div class="sfield"><label data-i18n="pk_season">Temporada</label><input type="text" id="parkSeason" value="—" readonly tabindex="-1" style="cursor:default"></div>
+    <button type="button" class="sbtn" onclick="document.getElementById('park-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_seedates">Ver tours</button>
   </div>
-  <div class="cards" id="park-cards">
-    <div class="card" data-park-card="Xcaret" data-tier="30">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt="Tour Xcaret" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
-      <div class="card-body">
-        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xcaret</h4>
-        <p class="meta" data-i18n="m_p1">Día completo · Río subterráneo · Espectáculo nocturno</p>
-        <div class="price-row">
-          <div class="price"><span class="old">$185</span><span class="now" data-base="185">$185 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xcaret" data-i18n="btn_add">Agregar</button>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-park-card="Xel-Há" data-tier="40">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Tour Xel-Há" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
-      <div class="card-body">
-        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xel-Há</h4>
-        <p class="meta" data-i18n="m_p2">Snorkel ilimitado · Caleta natural · Todo incluido</p>
-        <div class="price-row">
-          <div class="price"><span class="old">$165</span><span class="now" data-base="165">$165 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xel-Há" data-i18n="btn_add">Agregar</button>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-park-card="Xplor" data-tier="40">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Tour Xplor" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
-      <div class="card-body">
-        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xplor</h4>
-        <p class="meta" data-i18n="m_p3">Tirolesas · Vehículos anfibios · Cavernas</p>
-        <div class="price-row">
-          <div class="price"><span class="old">$195</span><span class="now" data-base="195">$195 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xplor" data-i18n="btn_add">Agregar</button>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-park-card="Xenses" data-tier="40">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80" alt="Tour Xenses" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
-      <div class="card-body">
-        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xenses</h4>
-        <p class="meta" data-i18n="m_p4">Medio día · Ilusiones sensoriales · Ideal familias</p>
-        <div class="price-row">
-          <div class="price"><span class="old">$125</span><span class="now" data-base="125">$125 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xenses" data-i18n="btn_add">Agregar</button>
-        </div>
-      </div>
-    </div>
-    <div class="card" data-park-card="Xenotes" data-tier="40">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80" alt="Tour Xenotes" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
-      <div class="card-body">
-        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xenotes</h4>
-        <p class="meta" data-i18n="m_p5">4 cenotes · Kayak y rappel · Grupos pequeños</p>
-        <div class="price-row">
-          <div class="price"><span class="old">$159</span><span class="now" data-base="159">$159 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xenotes" data-i18n="btn_add">Agregar</button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="cards" id="park-cards"></div>
 
   <div class="savings-demo">
     <h4 data-i18n="sd_title">Ejemplo de ahorro — 2 adultos, Tour Xel-Há + Tour Xenotes</h4>
@@ -1007,7 +954,11 @@ es:{
   pk_sub:"Agrega uno o varios tours con transporte incluido. Puedes reservarlos solos — pero si tu viaje incluye hotel, ahorras hasta −25%.",
   pk_note_locked:"Agrega tu hotel y ahorra hasta −25%",pk_note_unlocked:"Descuento de paquete activo",
   f_park:"Parque",f_visit1:"Fecha de visita",f_ppl:"Personas",f_seedates:"Ver tours",
-  tour_incl:"Tour · transporte incluido",save_badge:"Ahorras",market_price:"Mercado",
+  tour_incl:"Tour · transporte incluido",entry_only:"Solo entrada",save_badge:"Ahorras",market_price:"Mercado",
+  pk_season:"Temporada",season_high:"Temporada alta",season_low:"Temporada baja",
+  t_adult1:"adulto",t_adults2:"adultos",t_child1:"menor",t_children2:"menores",x_tour:"Tour",
+  m_pf:"Adrenalina nocturna · Antorchas · Tirolesas",m_px:"Trajineras · Cena y fiesta mexicana",
+  m_xi:"Chichén Itzá · Cenote · Valladolid",m_cat:"Catamarán · Snorkel · Barra libre",m_atv:"Vehículos todo terreno · Selva y cenote",
   m_p1:"Día completo · Río subterráneo · Espectáculo nocturno",m_p2:"Snorkel ilimitado · Caleta natural · Todo incluido",
   m_p3:"Tirolesas · Vehículos anfibios · Cavernas",m_p4:"Medio día · Ilusiones sensoriales · Ideal familias",m_p5:"4 cenotes · Kayak y rappel · Grupos pequeños",
   sd_title:"Ejemplo de ahorro — 2 adultos, Tour Xel-Há + Tour Xenotes",sd_park:"Tour",sd_public:"Precio público",sd_bundle:"Con paquete",sd_save:"Ahorro",
@@ -1079,7 +1030,11 @@ en:{
   pk_sub:"Add one or more tours with transport included. You can book them solo — but if your trip includes a hotel, you save up to −25%.",
   pk_note_locked:"Add your hotel and save up to −25%",pk_note_unlocked:"Bundle discount active",
   f_park:"Park",f_visit1:"Visit date",f_ppl:"People",f_seedates:"See tours",
-  tour_incl:"Tour · transport included",save_badge:"You save",market_price:"Market",
+  tour_incl:"Tour · transport included",entry_only:"Admission only",save_badge:"You save",market_price:"Market",
+  pk_season:"Season",season_high:"High season",season_low:"Low season",
+  t_adult1:"adult",t_adults2:"adults",t_child1:"child",t_children2:"children",x_tour:"Tour",
+  m_pf:"Night adrenaline · Torches · Ziplines",m_px:"Trajineras · Mexican dinner & fiesta",
+  m_xi:"Chichén Itzá · Cenote · Valladolid",m_cat:"Catamaran · Snorkel · Open bar",m_atv:"All-terrain vehicles · Jungle & cenote",
   m_p1:"Full day · Underground river · Night show",m_p2:"Unlimited snorkeling · Natural inlet · All-inclusive",
   m_p3:"Ziplines · Amphibious vehicles · Caverns",m_p4:"Half day · Sensory illusions · Great for families",m_p5:"4 cenotes · Kayak & rappel · Small groups",
   sd_title:"Savings example — 2 adults, Xel-Há Tour + Xenotes Tour",sd_park:"Tour",sd_public:"Public price",sd_bundle:"With bundle",sd_save:"Savings",
@@ -1154,12 +1109,84 @@ const XCONFIG = {
   FX_EUR_USD: 1.09,           // sandbox Hotelbeds cotiza EUR; colchón 2% incluido
 
   /* --- descuentos máximos por tier de comisión Grupo Xcaret ---
-     d_max = 1 − (1 − comisión) ÷ FACTOR  → garantiza 15% neto por producto */
-  TIERS: { 50: 0.35, 40: 0.25, 30: 0.12, 25: 0.06, 15: 0 },
+     d_max = 1 − (1 − comisión) ÷ FACTOR  → garantiza 15% neto por producto.
+     Tiers 10/15/20 no alcanzan 15% ni a precio lleno → 0% de descuento. */
+  TIERS: { 50: 0.35, 40: 0.25, 30: 0.12, 25: 0.06, 20: 0, 15: 0, 10: 0 },
 
   /* --- coches (renta local, margen estimado hasta cerrar convenio) --- */
   COMISION_COCHE: 0.40,       // tier aplicado a la renta demo
+
+  MINOR_FACTOR: 0.75,         // precio menor = 75% del adulto (tarifario Xcaret)
+
+  /* --- temporada alta Grupo Xcaret (rangos MM-DD, ajustables) --- */
+  HIGH_SEASON: [ ['12-20','01-05'], ['04-11','04-20'], ['07-01','08-15'] ],
 };
+function isHighSeason(dateStr){
+  if(!dateStr) return false;
+  const md = dateStr.slice(5); // MM-DD
+  return XCONFIG.HIGH_SEASON.some(([a,b]) => a<=b ? (md>=a&&md<=b) : (md>=a||md<=b));
+}
+
+/* ======================================================
+   CATÁLOGO GRUPO XCARET (tarifario público 2026)
+   precio adulto [temp. baja, temp. alta]; menor = adulto × MINOR_FACTOR.
+   tier = comisión Xotics según condiciones comerciales.
+   ====================================================== */
+const XCARET_CATALOG = [
+  {id:'xcaret', name:'Xcaret', img:'https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80', meta:'m_p1', minor:true, variants:[
+    {label:'Tour Full Day (Cancún/RM)', tour:true, tier:30, p:[185,195]},
+    {label:'Tour Full Day (Playa del Carmen)', tour:true, tier:30, p:[175,185]},
+    {label:'Tour Plus (Cancún/RM)', tour:true, tier:30, p:[215,225]},
+    {label:'Entrada Full Day', tour:false, tier:15, p:[149,159]},
+    {label:'Entrada Plus', tour:false, tier:15, p:[179,189]},
+  ]},
+  {id:'xelha', name:'Xel-Há', img:'https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80', meta:'m_p2', minor:true, variants:[
+    {label:'Tour All Inclusive', tour:true, tier:40, p:[165,175]},
+    {label:'Tour Tulum + Xel-Há', tour:true, tier:40, p:[189,199]},
+    {label:'Entrada All Inclusive', tour:false, tier:25, p:[129,139]},
+  ]},
+  {id:'xplor', name:'Xplor', img:'https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80', meta:'m_p3', minor:true, variants:[
+    {label:'Tour (Cancún/RM)', tour:true, tier:40, p:[195,205]},
+    {label:'Tour (Playa del Carmen)', tour:true, tier:40, p:[185,195]},
+    {label:'Entrada', tour:false, tier:25, p:[159,169]},
+  ]},
+  {id:'xplorfuego', name:'Xplor Fuego', img:'https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80', meta:'m_pf', minor:true, variants:[
+    {label:'Tour (Cancún/RM)', tour:true, tier:40, p:[175,175]},
+    {label:'Tour (Playa del Carmen)', tour:true, tier:40, p:[165,165]},
+    {label:'Entrada', tour:false, tier:25, p:[139,139]},
+  ]},
+  {id:'xoximilco', name:'Xoximilco', img:'https://images.unsplash.com/photo-1514282401047-d79a71a590e8?auto=format&fit=crop&w=800&q=80', meta:'m_px', minor:true, variants:[
+    {label:'Tour (Cancún/CM)', tour:true, tier:40, p:[145,145]},
+    {label:'Tour (RM/Playa)', tour:true, tier:40, p:[155,155]},
+    {label:'Entrada', tour:false, tier:25, p:[119,119]},
+  ]},
+  {id:'xenses', name:'Xenses', img:'https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80', meta:'m_p4', minor:true, variants:[
+    {label:'Tour (Cancún/RM)', tour:true, tier:40, p:[125,125]},
+    {label:'Tour (Playa del Carmen)', tour:true, tier:40, p:[115,115]},
+    {label:'Entrada', tour:false, tier:25, p:[89,89]},
+  ]},
+  {id:'xenotes', name:'Xenotes', img:'https://images.unsplash.com/photo-1500375592092-40eb2168fd21?auto=format&fit=crop&w=800&q=80', meta:'m_p5', minor:true, variants:[
+    {label:'Tour Oasis Maya', tour:true, tier:40, p:[159,159]},
+  ]},
+  {id:'xichen', name:'Xichén', img:'https://images.unsplash.com/photo-1518638150340-f706e86654de?auto=format&fit=crop&w=800&q=80', meta:'m_xi', minor:true, variants:[
+    {label:'Tour Deluxe (Chichén Itzá)', tour:true, tier:40, p:[185,185]},
+    {label:'Tour Clásico (Chichén Itzá)', tour:true, tier:50, p:[165,165]},
+  ]},
+  {id:'catamaran', name:'Catamarán', img:'https://images.unsplash.com/photo-1544551763-77ef2d0cfc6c?auto=format&fit=crop&w=800&q=80', meta:'m_cat', minor:true, variants:[
+    {label:'Tour Light (Cancún/PM)', tour:true, tier:50, p:[119,119]},
+    {label:'Tour Prime (Cancún/PM)', tour:true, tier:50, p:[159,159]},
+    {label:'Tour Light (RM/Playa)', tour:true, tier:50, p:[129,129]},
+    {label:'Tour Prime (RM/Playa)', tour:true, tier:50, p:[169,169]},
+    {label:'Entrada Light', tour:false, tier:30, p:[99,99]},
+    {label:'Entrada Prime', tour:false, tier:30, p:[139,139]},
+  ]},
+  {id:'atv', name:'ATV’s Xperience', img:'https://images.unsplash.com/photo-1533603208986-24fd819e718c?auto=format&fit=crop&w=800&q=80', meta:'m_atv', minor:false, variants:[
+    {label:'Doble (por persona)', tour:false, tier:30, p:[69,69]},
+    {label:'Sencilla', tour:false, tier:30, p:[89,89]},
+    {label:'Doble + JetBoat', tour:false, tier:30, p:[89,89]},
+    {label:'Sencilla + JetBoat', tour:false, tier:30, p:[109,109]},
+  ]},
+];
 
 /* ================= trip state (carrito) ================= */
 let trip = { hotel:null, parks:[], car:null };
@@ -1191,7 +1218,7 @@ const moneyEur = eur => money(eurToUsd(eur)); // hoteles cotizados en EUR
 let tripDays=2;
 
 function saveTrip(){try{sessionStorage.setItem('xotics_trip',JSON.stringify(trip))}catch(e){}}
-function loadTrip(){try{const s=sessionStorage.getItem('xotics_trip');if(s){const p=JSON.parse(s);if(p&&typeof p==='object'){trip={hotel:p.hotel||null,parks:Array.isArray(p.parks)?p.parks:[],car:p.car||null}}}}catch(e){}}
+function loadTrip(){try{const s=sessionStorage.getItem('xotics_trip');if(s){const p=JSON.parse(s);if(p&&typeof p==='object'){const parks=(Array.isArray(p.parks)?p.parks:[]).filter(x=>x&&x.adultBase!=null&&x.id);trip={hotel:p.hotel||null,parks,car:p.car||null};parks.forEach(x=>{pkState[x.id]={vi:0,adults:x.adults,minors:x.minors}})}}}catch(e){}}
 
 function applyI18n(){
   $$('[data-i18n]').forEach(el=>{ const v=t(el.dataset.i18n); if(v!==undefined) el.innerHTML=v; });
@@ -1200,16 +1227,7 @@ function applyI18n(){
 }
 
 function renderBundlePrices(){
-  $$('#park-cards .card').forEach(card=>{
-    const el=card.querySelector('.price .now');if(!el)return;
-    const base=+el.dataset.base, tier=+card.dataset.tier||40, d=parkOffFor(tier);
-    const p=d?Math.round(base*(1-d)):base;
-    const old=card.querySelector('.price .old');
-    if(old){old.style.display=d?'block':'none';old.textContent=money(base)}
-    el.innerHTML=`${money(p)} <span class="per">/ ${t('per_person')}</span>`;
-    const badge=card.querySelector('.park-deal');
-    if(badge){badge.style.display=d?'':'none';badge.textContent=`${t('save_badge')} ${money(base-p)}`}
-  });
+  renderParkCatalog();
   const off=carOff();
   $$('#car-cards .card').forEach(card=>{
     const el=card.querySelector('.price .now');if(!el)return;
@@ -1219,6 +1237,45 @@ function renderBundlePrices(){
     el.innerHTML=`${money(p)} <span class="per">/ ${t('per_day')}</span>`;
   });
   $$('.car-deal').forEach(b=>{b.style.display=off?'':'none';b.textContent=off?`${t('save_badge')} −${Math.round(off*100)}%`:''});
+}
+
+/* ---- catálogo Xcaret: estado y render ---- */
+const pkState={};
+function pkGet(pid){ if(!pkState[pid]) pkState[pid]={vi:0,adults:2,minors:0}; return pkState[pid]; }
+function seasonHigh(){ return isHighSeason($('#parkDate')?.value); }
+function pkUnit(prod,vi){ const v=prod.variants[vi]; const adult=v.p[seasonHigh()?1:0]; const minor=prod.minor?Math.round(adult*XCONFIG.MINOR_FACTOR):0; return {adult,minor,tier:v.tier,tour:v.tour,label:v.label}; }
+function partyPublic(adult,minor,adults,minors){ return adult*adults + minor*minors }
+function partyXotics(adult,minor,adults,minors,tier){ const d=parkOffFor(tier); return (d?Math.round(adult*(1-d)):adult)*adults + (d?Math.round(minor*(1-d)):minor)*minors }
+
+function renderParkCatalog(){
+  const grid=$('#park-cards'); if(!grid) return;
+  const high=seasonHigh();
+  const seasonEl=$('#parkSeason'); if(seasonEl) seasonEl.value=high?t('season_high'):t('season_low');
+  grid.innerHTML=XCARET_CATALOG.map(prod=>{
+    const st=pkGet(prod.id), u=pkUnit(prod,st.vi);
+    const inTrip=trip.parks.some(p=>p.id===prod.id);
+    const pub=partyPublic(u.adult,u.minor,st.adults,st.minors), xot=partyXotics(u.adult,u.minor,st.adults,st.minors,u.tier);
+    const d=parkOffFor(u.tier);
+    const opts=prod.variants.map((v,i)=>`<option value="${i}" ${i===st.vi?'selected':''}>${esc(v.label)} — $${v.p[high?1:0]}</option>`).join('');
+    const paxMinor=prod.minor?`<div class="pk-pax-group"><span data-i18n="t_children">Niños</span><button class="pk-step" aria-label="menos" onclick="pkStep('${prod.id}','minors',-1)">-</button><span class="pk-count">${st.minors}</span><button class="pk-step" aria-label="más" onclick="pkStep('${prod.id}','minors',1)">+</button></div>`:'';
+    return `<div class="card" data-pid="${prod.id}"><div class="card-img"><img src="${prod.img}" alt="${esc(prod.name)}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">${d?`<span class="badge deal">${t('save_badge')} ${money(pub-xot)}</span>`:''}</div><div class="card-body"><div class="loc">${u.tour?t('tour_incl'):t('entry_only')}</div><h4>${esc(prod.name)} ${high?`<span class="pk-badge">${t('season_high')}</span>`:''}</h4><p class="meta">${t(prod.meta)}</p><select class="pk-variant" onchange="pkVariant('${prod.id}',this.value)">${opts}</select><div class="pk-pax"><div class="pk-pax-group"><span data-i18n="t_adults">Adultos</span><button class="pk-step" aria-label="menos" onclick="pkStep('${prod.id}','adults',-1)">-</button><span class="pk-count">${st.adults}</span><button class="pk-step" aria-label="más" onclick="pkStep('${prod.id}','adults',1)">+</button></div>${paxMinor}</div><div class="price-row"><div class="price">${d?`<span class="old" style="display:block">${money(pub)}</span>`:''}<span class="now">${money(xot)}</span><div class="total-note">${st.adults} ${st.adults===1?t('t_adult1'):t('t_adults2')}${prod.minor&&st.minors?` · ${st.minors} ${st.minors===1?t('t_child1'):t('t_children2')}`:''}</div></div><button class="book-btn ${inTrip?'done':''}" onclick="pkAdd('${prod.id}')">${inTrip?t('btn_added'):t('btn_add')}</button></div></div></div>`;
+  }).join('');
+}
+function onParkDateChange(){ $('#parkDate').dataset.touched='1'; trip.parks.forEach(p=>syncParkItem(p.id)); syncUI(); }
+function pkVariant(pid,vi){ pkGet(pid).vi=+vi; syncParkItem(pid); syncUI(); }
+function pkStep(pid,kind,delta){ const st=pkGet(pid); const lim=kind==='adults'?[1,10]:[0,10]; st[kind]=Math.max(lim[0],Math.min(lim[1],st[kind]+delta)); syncParkItem(pid); syncUI(); }
+function syncParkItem(pid){ /* si ya está en el viaje, actualiza su configuración */
+  const idx=trip.parks.findIndex(p=>p.id===pid); if(idx<0) return;
+  const prod=XCARET_CATALOG.find(p=>p.id===pid), st=pkGet(pid), u=pkUnit(prod,st.vi);
+  trip.parks[idx]={id:pid,name:prod.name,variant:u.label,tour:u.tour,tier:u.tier,adultBase:u.adult,minorBase:u.minor,adults:st.adults,minors:st.minors,date:$('#parkDate').value};
+  saveTrip();
+}
+function pkAdd(pid){
+  const idx=trip.parks.findIndex(p=>p.id===pid);
+  if(idx>=0){ trip.parks.splice(idx,1); syncUI(); toast(t('toast_removed')); return; }
+  const prod=XCARET_CATALOG.find(p=>p.id===pid), st=pkGet(pid), u=pkUnit(prod,st.vi);
+  trip.parks.push({id:pid,name:prod.name,variant:u.label,tour:u.tour,tier:u.tier,adultBase:u.adult,minorBase:u.minor,adults:st.adults,minors:st.minors,date:$('#parkDate').value||fmt(addDays(new Date(),31))});
+  syncUI(); toast(t('toast_park'));
 }
 
 function renderItinerary(){
@@ -1237,7 +1294,7 @@ function tripSavings(){
     if(trip.hotel.currency==='EUR')hs=Math.round(hs*FX_EUR_USD);
     s+=hs;
   }
-  trip.parks.forEach(p=>{const d=parkOffFor(p.tier??40);if(d)s+=(p.base-Math.round(p.base*(1-d)))*p.persons});
+  trip.parks.forEach(p=>{s+=partyPublic(p.adultBase,p.minorBase,p.adults,p.minors)-partyXotics(p.adultBase,p.minorBase,p.adults,p.minors,p.tier)});
   if(trip.car&&carOff()) s+=(trip.car.base-Math.round(trip.car.base*(1-carOff())))*trip.car.days;
   return s;
 }
@@ -1257,12 +1314,7 @@ function syncUI(){
   nc.querySelector('span').innerHTML=t(off===CAR_OFF_FULL?'c_note_full':off===CAR_OFF_MID?'c_note_mid':'c_note_none');
   $('#park-cards').classList.toggle('unlocked-price',parkDiscountActive());
   $('#car-cards').classList.toggle('unlocked-price',off>0);
-  /* botones de parques y coches según membresía */
-  $$('.park-book').forEach(b=>{
-    const inTrip=trip.parks.some(p=>p.name===b.dataset.park);
-    b.classList.toggle('done',inTrip);
-    b.innerHTML=inTrip?t('btn_added'):t('btn_add');
-  });
+  /* botones de coches según membresía (parques los pinta el catálogo) */
   $$('.car-book').forEach(b=>{
     const inTrip=trip.car&&trip.car.name===b.dataset.car;
     b.classList.toggle('done',inTrip);
@@ -1296,21 +1348,7 @@ function toast(html){
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),3800);
 }
 
-/* ---- parques: agregar / quitar (múltiples) ---- */
-$$('.park-book').forEach(b=>b.addEventListener('click',()=>{
-  const name=b.dataset.park;
-  const idx=trip.parks.findIndex(p=>p.name===name);
-  if(idx>=0){
-    trip.parks.splice(idx,1);
-    syncUI();toast(t('toast_removed'));
-    return;
-  }
-  const date=$('#parkDate').value||fmt(addDays(new Date(),31));
-  const persons=+$('#parkPersons').value||2;
-  const card=b.closest('.card');
-  trip.parks.push({name,base:+card.querySelector('.price .now').dataset.base,tier:+card.dataset.tier||40,date,persons});
-  syncUI();toast(t('toast_park'));
-}));
+/* ---- parques/tours: los pinta y gestiona renderParkCatalog + pkAdd ---- */
 /* ---- coche: agregar / quitar ---- */
 $$('.car-book').forEach(b=>b.addEventListener('click',()=>{
   if(trip.car&&trip.car.name===b.dataset.car){
@@ -1394,11 +1432,6 @@ function confetti(){
   }
 }
 
-/* ---- resaltar parque desde el selector ---- */
-function highlightPark(name){
-  $$('#park-cards .card').forEach(c=>c.classList.toggle('hl-park',c.dataset.parkCard===name));
-}
-
 /* ---- fechas coherentes ---- */
 function syncCarDates(){
   const from=$('#carFrom'),to=$('#carTo');
@@ -1417,7 +1450,7 @@ function syncStayDates(){
   $('#parkDate').min=fmt(new Date());
   if(!$('#parkDate').dataset.touched)$('#parkDate').value=fmt(addDays(new Date(ci+'T12:00'),1));
   if(!$('#carFrom').dataset.touched){$('#carFrom').value=ci;$('#carTo').value=$('#checkOut').value}
-  syncCarDates();
+  syncCarDates();renderParkCatalog();
 }
 
 /* ======================================================
@@ -1686,9 +1719,10 @@ function openCheckout(){
     h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(th.hotel.name)}</b><span class="tagx">${t('x_hotel')}</span></div><div class="bk-line"><span>${th.checkIn} → ${th.checkOut} · ${nights} ${nightsWord(nights)}</span><span><span class="strike">${money(anclaU)}</span>${money(ventaU)}</span></div><div class="bk-line"><span>${esc(th.rate.roomName||'')} · ${esc(th.rate.boardName||th.rate.boardCode||'')}</span><span>${th.rate.rateClass==='NRF'?t('tag_nrf'):t('tag_free')}</span></div></div>`;
   }
   trip.parks.forEach(p=>{
-    const d=parkOffFor(p.tier??40),unit=d?Math.round(p.base*(1-d)):p.base,sub=unit*p.persons,pubSub=p.base*p.persons;
+    const d=parkOffFor(p.tier),pubSub=partyPublic(p.adultBase,p.minorBase,p.adults,p.minors),sub=partyXotics(p.adultBase,p.minorBase,p.adults,p.minors,p.tier);
     totalUsd+=sub;publicUsd+=pubSub;
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(p.name)}</b><span class="tagx">${t('x_park')}${d?` · −${Math.round(d*100)}%`:''}</span></div><div class="bk-line"><span>${p.date} · ${p.persons} ${p.persons>1?t('ppl'):t('ppl1')}</span><span>${d?`<span class="strike">${money(pubSub)}</span>`:''}${money(sub)}</span></div></div>`;
+    const paxTxt=`${p.adults} ${p.adults===1?t('t_adult1'):t('t_adults2')}${p.minors?` · ${p.minors} ${p.minors===1?t('t_child1'):t('t_children2')}`:''}`;
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(p.name)}</b><span class="tagx">${p.tour?t('x_tour'):t('x_park')}${d?` · −${Math.round(d*100)}%`:''}</span></div><div class="bk-line"><span>${esc(p.variant)} · ${p.date} · ${paxTxt}</span><span>${d?`<span class="strike">${money(pubSub)}</span>`:''}${money(sub)}</span></div></div>`;
   });
   if(trip.car){
     const c=trip.car,off=carOff(),unit=off?Math.round(c.base*(1-off)):c.base,sub=unit*c.days,pubSub=c.base*c.days;
@@ -1741,10 +1775,11 @@ async function confirmCheckout(e){
       const bk=d.booking;
       recs.push({type:'hotel',id:bk?.reference||'TEST-'+Date.now(),clientRef:cr,hotelName:trip.hotel.hotel.name,hotelCode:trip.hotel.hotel.code,destination:trip.hotel.hotel.destination,address:trip.hotel.hotel.address,checkIn:trip.hotel.checkIn,checkOut:trip.hotel.checkOut,holder:`${nm} ${sn}`,email:em,phone:ph,nationality:mk,room:rate.roomName||'',board:rate.boardName||rate.boardCode||'',price:trip.hotel.price.toFixed(2),net:(trip.hotel.net||0).toFixed(2),currency:trip.hotel.currency,status:'CONFIRMED',createdAt:new Date().toISOString(),supplier:bk?.hotel?.supplier?.name||'Hotelbeds S.L.U.',supplierVat:bk?.hotel?.supplier?.vatNumber||'',remark:rm});
     }
-    /* 2. PARQUES — confirmación Xotics */
+    /* 2. PARQUES/TOURS — confirmación Xotics */
     trip.parks.forEach((p,i)=>{
-      const d=parkOffFor(p.tier??40),unit=d?Math.round(p.base*(1-d)):p.base;
-      recs.push({type:'park',id:'XOT-P-'+(Date.now()+i),clientRef:cr,hotelName:p.name+' ('+p.persons+' pers.)',checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:(unit*p.persons).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:d?`-${Math.round(d*100)}%`:''});
+      const d=parkOffFor(p.tier),sub=partyXotics(p.adultBase,p.minorBase,p.adults,p.minors,p.tier),pub=partyPublic(p.adultBase,p.minorBase,p.adults,p.minors);
+      const paxTxt=`${p.adults} ad.${p.minors?` ${p.minors} men.`:''}`;
+      recs.push({type:'park',id:'XOT-P-'+(Date.now()+i),clientRef:cr,hotelName:`${p.name} — ${p.variant} (${paxTxt})`,checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:sub.toFixed(2),cost:pub.toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:d?`-${Math.round(d*100)}%`:''});
     });
     /* 3. COCHE — confirmación Xotics */
     if(trip.car){
