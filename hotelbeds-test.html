@@ -1101,10 +1101,44 @@ const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
 const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
+/* ======================================================
+   XCONFIG — Fase 0: parámetros financieros de Xotics
+   ÚNICO lugar donde se tocan números de dinero.
+   Regla maestra: toda venta debe dejar 15% de utilidad
+   neta después del costo de cobro (Stripe + IVA).
+   ====================================================== */
+const XCONFIG = {
+  /* --- margen --- */
+  MARGEN_NETO: 0.15,          // utilidad neta objetivo por operación
+  COSTO_COBRO: 0.045,         // Stripe + IVA sobre comisión (promedio nal/intl)
+  get FACTOR(){ return 1 - this.MARGEN_NETO - this.COSTO_COBRO }, // 0.805
+
+  /* --- hoteles (Hotelbeds) --- */
+  get MARKUP_HOTEL(){ return 1 / this.FACTOR },  // neto ÷ 0.805 = ×1.2422
+  ANCLA_MERCADO: 1.32,        // precio de referencia OTA (tachado) = neto × 1.32
+
+  /* --- tipo de cambio (editar TC_INTERBANCARIO con el fix de Banxico) --- */
+  TC_INTERBANCARIO: 17.47,    // fix Banxico 02-jul-2026
+  TC_COLCHON: 1.03,           // protección cambiaria 3%
+  get TC_PROTEGIDO(){ return Math.round(this.TC_INTERBANCARIO * this.TC_COLCHON * 100) / 100 }, // 18.00
+  TC_ANCLA: 17.47,            // ancla de la alerta: actualizar si el fix sale de ±1.5%
+  TC_UMBRAL: 0.015,
+  get TC_LIMITES(){ return { bajo: Math.round(this.TC_ANCLA * (1 - this.TC_UMBRAL) * 100) / 100,
+                             alto: Math.round(this.TC_ANCLA * (1 + this.TC_UMBRAL) * 100) / 100 } }, // 17.21 / 17.73
+  FX_EUR_USD: 1.09,           // sandbox Hotelbeds cotiza EUR; colchón 2% incluido
+
+  /* --- descuentos máximos por tier de comisión Grupo Xcaret ---
+     d_max = 1 − (1 − comisión) ÷ FACTOR  → garantiza 15% neto por producto */
+  TIERS: { 50: 0.35, 40: 0.25, 30: 0.12, 25: 0.06, 15: 0 },
+
+  /* --- coches (renta local, margen estimado hasta cerrar convenio) --- */
+  COMISION_COCHE: 0.40,       // tier aplicado a la renta demo
+};
+
 /* ================= trip state (carrito) ================= */
 let trip = { hotel:null, parks:[], car:null };
-const PARK_OFF = .15, CAR_OFF_FULL = .25, CAR_OFF_MID = .10;
-const FX_EUR_USD = 1.09;
+const PARK_OFF = .15, CAR_OFF_FULL = .25, CAR_OFF_MID = .10; // pendiente Fase 3: sustituir por XCONFIG.TIERS
+const FX_EUR_USD = XCONFIG.FX_EUR_USD;
 const parkDiscountActive = () => !!trip.hotel;
 const carOff = () => trip.parks.length ? CAR_OFF_FULL : (trip.hotel ? CAR_OFF_MID : 0);
 let tripDays=2;
