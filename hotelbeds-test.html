@@ -1118,10 +1118,10 @@ const XCONFIG = {
   ANCLA_MERCADO: 1.32,        // precio de referencia OTA (tachado) = neto × 1.32
 
   /* --- tipo de cambio (editar TC_INTERBANCARIO con el fix de Banxico) --- */
-  TC_INTERBANCARIO: 17.47,    // fix Banxico 02-jul-2026
+  TC_INTERBANCARIO: 18.50,    // definido por Kalani (06-jul-2026)
   TC_COLCHON: 1.03,           // protección cambiaria 3%
-  get TC_PROTEGIDO(){ return Math.round(this.TC_INTERBANCARIO * this.TC_COLCHON * 100) / 100 }, // 18.00
-  TC_ANCLA: 17.47,            // ancla de la alerta: actualizar si el fix sale de ±1.5%
+  get TC_PROTEGIDO(){ return Math.round(this.TC_INTERBANCARIO * this.TC_COLCHON * 100) / 100 }, // 19.06
+  TC_ANCLA: 18.50,            // ancla de la alerta: actualizar si el fix sale de ±1.5%
   TC_UMBRAL: 0.015,
   get TC_LIMITES(){ return { bajo: Math.round(this.TC_ANCLA * (1 - this.TC_UMBRAL) * 100) / 100,
                              alto: Math.round(this.TC_ANCLA * (1 + this.TC_UMBRAL) * 100) / 100 } }, // 17.21 / 17.73
