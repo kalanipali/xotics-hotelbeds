@@ -42,6 +42,40 @@ function generateSignature() {
   return crypto.createHash('sha256').update(API_KEY + API_SECRET + ts).digest('hex');
 }
 
+// Endpoints Hotelbeds permitidos a traves del proxy
+const ALLOWED_API = [
+  { method: 'POST',   pattern: /^\/hotel-api\/1\.0\/hotels$/ },
+  { method: 'POST',   pattern: /^\/hotel-api\/1\.0\/checkrates$/ },
+  { method: 'POST',   pattern: /^\/hotel-api\/1\.0\/bookings$/ },
+  { method: 'DELETE', pattern: /^\/hotel-api\/1\.0\/bookings\/[^/]+(\?.*)?$/ },
+  { method: 'GET',    pattern: /^\/hotel-content-api\/1\.0\/hotels\?.*$/ },
+  { method: 'GET',    pattern: /^\/hotel-content-api\/1\.0\/locations\/destinations.*$/ },
+];
+
+// Origenes permitidos para usar el proxy (vacio en Origin/Referer = misma pagina)
+const ALLOWED_HOSTS = ['xotics.mx', 'www.xotics.mx', 'localhost', '127.0.0.1'];
+function originAllowed(req) {
+  const ref = req.headers.origin || req.headers.referer || '';
+  if (!ref) return true;
+  try {
+    const host = new URL(ref).hostname;
+    return ALLOWED_HOSTS.some(h => host === h || host.endsWith('.' + h));
+  } catch { return false; }
+}
+
+// Rate limit simple por IP: 40 peticiones al proxy por minuto
+const rateMap = new Map();
+function rateLimited(req) {
+  const ip = (req.headers['x-forwarded-for'] || '').split(',')[0].trim() || req.socket.remoteAddress || '?';
+  const now = Date.now();
+  const entry = rateMap.get(ip) || { count: 0, start: now };
+  if (now - entry.start > 60000) { entry.count = 0; entry.start = now; }
+  entry.count++;
+  rateMap.set(ip, entry);
+  if (rateMap.size > 5000) rateMap.clear();
+  return entry.count > 40;
+}
+
 const server = http.createServer((req, res) => {
   // Endpoint: destinos desde cache del servidor (evita llamadas API del cliente)
   if (req.url === '/destinations') {
@@ -58,6 +92,24 @@ const server = http.createServer((req, res) => {
 
   if (req.url.startsWith('/api/')) {
     const apiPath = req.url.replace('/api', '');
+
+    // Proteccion del proxy: origen, rate limit y lista blanca de endpoints
+    if (!originAllowed(req)) {
+      res.writeHead(403, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: { message: 'Origen no permitido' } }));
+      return;
+    }
+    if (rateLimited(req)) {
+      res.writeHead(429, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: { message: 'Demasiadas peticiones, intenta en un minuto' } }));
+      return;
+    }
+    if (!ALLOWED_API.some(a => a.method === req.method && a.pattern.test(apiPath))) {
+      res.writeHead(404, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: { message: 'Endpoint no disponible' } }));
+      return;
+    }
+
     let body = '';
     req.on('data', chunk => body += chunk);
     req.on('end', () => {

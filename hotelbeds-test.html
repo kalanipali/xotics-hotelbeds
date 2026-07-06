@@ -3,15 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>XOTICS — Hotel · Parque · Coche</title>
+<title>XOTICS — Hotel · Parque · Coche en la Riviera Maya</title>
+<meta name="description" content="Reserva hotel, parques Xcaret y renta de coche en Cancún, Playa del Carmen y Tulum. Entre más agregas a tu viaje, más ahorras. Confirmación inmediata.">
+<meta property="og:title" content="XOTICS — Un viaje. Tres llaves.">
+<meta property="og:description" content="Hotel, parques y coche en la Riviera Maya con descuentos al combinar. Confirmación inmediata.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://xotics.mx">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230E8783'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='18' font-weight='bold' fill='white' text-anchor='middle'%3EX%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://photos.hotelbeds.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --ink:#14171A;
   --ink-2:#5B6168;
-  --ink-3:#9AA0A6;
+  --ink-3:#6E747A;
   --bg:#FAFAF7;
   --surface:#FFFFFF;
   --line:#E9E7E1;
@@ -20,8 +27,10 @@
   --teal-dark:#0A6360;
   --teal-tint:#EAF4F3;
   --sand:#F4EFE6;
-  --amber:#C7862B;
+  --amber:#B0741F;
   --amber-tint:#FBF3E4;
+  --bar-bg:#14171A;
+  --bar-accent:#67D1C8;
   --radius:20px;
   --radius-s:12px;
   --header-bg:rgba(250,250,247,.85);
@@ -32,7 +41,7 @@
 html[data-theme="dark"]{
   --ink:#EDECE7;
   --ink-2:#A6ACB2;
-  --ink-3:#70767C;
+  --ink-3:#8A9096;
   --bg:#0F1213;
   --surface:#171B1D;
   --line:#252B2E;
@@ -43,6 +52,8 @@ html[data-theme="dark"]{
   --sand:#1B1F1C;
   --amber:#E0A54E;
   --amber-tint:#2E2413;
+  --bar-bg:#14171A;
+  --bar-accent:#67D1C8;
   --header-bg:rgba(15,18,19,.85);
   --shadow:0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.35);
   --shadow-lg:0 2px 4px rgba(0,0,0,.4), 0 20px 48px rgba(0,0,0,.55);
@@ -57,10 +68,12 @@ body{
   line-height:1.55;
   -webkit-font-smoothing:antialiased;
   transition:background .35s, color .35s;
+  padding-bottom:110px;
 }
 h1,h2,h3,.display{font-family:'Space Grotesk',sans-serif;letter-spacing:-.02em}
 img{display:block;width:100%;height:100%;object-fit:cover}
 button{font-family:inherit;cursor:pointer;border:none;background:none}
+button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--teal);outline-offset:2px}
 input,select{font-family:inherit;font-size:15px;color:var(--ink);border:none;background:transparent;outline:none;width:100%}
 ::placeholder{color:var(--ink-3)}
 .wrap{max-width:1240px;margin:0 auto;padding:0 32px}
@@ -79,22 +92,23 @@ header{
 .nav-links a{font-size:14px;font-weight:500;color:var(--ink-2);text-decoration:none;transition:color .2s;background:none;border:none;cursor:pointer;font-family:inherit}
 .nav-links a:hover{color:var(--ink)}
 .nav-right{display:flex;align-items:center;gap:16px}
-.quota-tag{font-size:11.5px;font-weight:600;color:var(--ink-3);border:1px solid var(--line-2);border-radius:100px;padding:5px 12px;white-space:nowrap;cursor:pointer}
+.quota-tag{display:none;font-size:11.5px;font-weight:600;color:var(--ink-3);border:1px solid var(--line-2);border-radius:100px;padding:5px 12px;white-space:nowrap;cursor:pointer}
+.quota-tag.debug{display:inline-block}
 .quota-tag strong{color:var(--teal-dark)}
 .lang-toggle{
   display:flex;border:1px solid var(--line-2);border-radius:100px;overflow:hidden;background:var(--surface)
 }
 .lang-toggle button{
-  padding:6px 14px;font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:.04em;transition:all .2s
+  padding:9px 15px;font-size:12.5px;font-weight:600;color:var(--ink-3);letter-spacing:.04em;transition:all .2s
 }
 .lang-toggle button.on{background:var(--ink);color:var(--bg)}
 .nav-cta{
-  padding:9px 20px;border-radius:100px;background:var(--ink);color:var(--bg);
+  padding:10px 20px;border-radius:100px;background:var(--ink);color:var(--bg);
   font-size:13.5px;font-weight:600;transition:opacity .2s;text-decoration:none
 }
 .nav-cta:hover{opacity:.85}
 .theme-btn{
-  width:36px;height:36px;border-radius:50%;border:1px solid var(--line-2);background:var(--surface);
+  width:40px;height:40px;border-radius:50%;border:1px solid var(--line-2);background:var(--surface);
   display:flex;align-items:center;justify-content:center;color:var(--ink-2);transition:all .25s;flex:none
 }
 .theme-btn:hover{color:var(--ink);transform:rotate(20deg)}
@@ -200,7 +214,7 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .sfield input,.sfield select{font-weight:500}
 .sfield input[type="date"]{color:var(--ink);font-weight:500}
 .sbtn{
-  flex:none;margin:10px;padding:0 34px;border-radius:14px;background:var(--teal);color:#fff;
+  flex:none;margin:10px;padding:12px 34px;border-radius:14px;background:var(--teal);color:#fff;
   font-size:15px;font-weight:600;display:flex;align-items:center;gap:10px;transition:background .2s
 }
 .sbtn:hover{background:var(--teal-dark)}
@@ -221,7 +235,6 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .dest-item-text{flex:1;min-width:0}
 .dest-item-name{font-size:14px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dest-item-country{font-size:12px;color:var(--ink-2)}
-.dest-item-code{font-size:11px;font-weight:700;color:var(--ink-3);letter-spacing:.05em}
 
 /* ---------- travelers dropdown ---------- */
 .travelers-dropdown{
@@ -233,23 +246,24 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .trav-label{font-size:14px;font-weight:600}
 .trav-sublabel{font-size:12px;color:var(--ink-3)}
 .trav-controls{display:flex;align-items:center;gap:12px}
-.trav-btn{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line-2);font-size:16px;font-weight:600;color:var(--ink-2);transition:all .2s}
+.trav-btn{width:44px;height:44px;border-radius:50%;border:1.5px solid var(--line-2);font-size:18px;font-weight:600;color:var(--ink-2);transition:all .2s}
 .trav-btn:hover{border-color:var(--teal);color:var(--teal-dark)}
 .trav-count{font-size:15px;font-weight:600;min-width:18px;text-align:center}
 .children-ages-section{margin-top:10px;padding-top:12px;border-top:1px solid var(--line)}
 .children-ages-section label{font-size:12px;color:var(--ink-2);display:block;margin-bottom:8px}
 .child-ages-grid{display:flex;gap:8px;flex-wrap:wrap}
-.child-age{border:1px solid var(--line-2);border-radius:10px;padding:7px 10px;font-size:13px;width:auto;background:var(--surface)}
-.btn-trav-done{margin-top:14px;width:100%;padding:10px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:600}
+.child-age{border:1px solid var(--line-2);border-radius:10px;padding:10px 12px;font-size:13px;width:auto;background:var(--surface)}
+.btn-trav-done{margin-top:14px;width:100%;padding:12px;border-radius:12px;background:var(--ink);color:var(--bg);font-size:13.5px;font-weight:600}
 
 /* ---------- cards grid ---------- */
 .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
 .cards.three{grid-template-columns:repeat(3,1fr)}
 .card{
   background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
-  overflow:hidden;transition:box-shadow .3s var(--ease), transform .3s var(--ease)
+  overflow:hidden;transition:box-shadow .3s var(--ease), transform .3s var(--ease), border-color .3s
 }
 .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.card.hl-park{border-color:var(--teal);box-shadow:var(--shadow-lg)}
 .card-img{height:190px;position:relative;background:linear-gradient(140deg,#d8e4e2,#b9cfcc)}
 .card-img .badge{
   position:absolute;top:14px;left:14px;font-size:11px;font-weight:700;letter-spacing:.05em;
@@ -260,16 +274,17 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .card-body .loc{font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
 .card-body h4{font-family:'Space Grotesk';font-size:17.5px;font-weight:600;line-height:1.25;margin-bottom:4px}
 .card-body .meta{font-size:13px;color:var(--ink-2);margin-bottom:14px}
-.price-row{display:flex;align-items:flex-end;justify-content:space-between}
+.price-row{display:flex;align-items:flex-end;justify-content:space-between;gap:10px}
 .price .old{font-size:13px;color:var(--ink-3);text-decoration:line-through;display:none}
 .price .now{font-family:'Space Grotesk';font-size:21px;font-weight:600}
 .price .per{font-size:12px;color:var(--ink-2)}
 .book-btn{
-  padding:9px 18px;border-radius:100px;border:1.5px solid var(--ink);
-  font-size:13px;font-weight:600;color:var(--ink);transition:all .2s
+  padding:11px 18px;border-radius:100px;border:1.5px solid var(--ink);
+  font-size:13px;font-weight:600;color:var(--ink);transition:all .2s;white-space:nowrap
 }
 .book-btn:hover{background:var(--ink);color:var(--bg)}
-.book-btn.done{background:var(--teal);border-color:var(--teal);color:#fff;pointer-events:none}
+.book-btn.done{background:var(--teal);border-color:var(--teal);color:#fff}
+.book-btn.done:hover{background:#9a3b34;border-color:#9a3b34}
 .unlocked-price .price .old{display:block}
 .unlocked-price .price .now{color:var(--teal-dark)}
 
@@ -279,9 +294,9 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .spinner{width:38px;height:38px;border:3px solid var(--line-2);border-top-color:var(--teal);border-radius:50%;margin:0 auto 14px;animation:spin .8s linear infinite}
 @keyframes spin{to{transform:rotate(360deg)}}
 .loading p{font-size:14px;color:var(--ink-2)}
-.results-bar{display:flex;justify-content:space-between;align-items:center;margin:8px 0 20px}
+.results-bar{display:flex;justify-content:space-between;align-items:center;margin:8px 0 20px;gap:12px;flex-wrap:wrap}
 .results-bar h3{font-family:'Space Grotesk';font-size:20px;font-weight:600}
-.sort-select{width:auto;border:1px solid var(--line-2);border-radius:100px;padding:8px 16px;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);cursor:pointer}
+.sort-select{width:auto;border:1px solid var(--line-2);border-radius:100px;padding:10px 16px;font-size:13px;font-weight:600;background:var(--surface);color:var(--ink);cursor:pointer}
 .hotel-stars{display:inline-flex;gap:1px}
 .star{width:13px;height:13px}
 .star.filled{fill:var(--amber)}
@@ -291,17 +306,16 @@ html[data-theme="dark"] .theme-btn .sun{display:block}
 .htag-red{background:#fdecec;color:#b3423a}
 html[data-theme="dark"] .htag-red{background:#3a1f1d;color:#e08a83}
 .htag-blue{background:var(--amber-tint);color:var(--amber)}
-.htag-gray{background:var(--sand);color:var(--ink-2)}
 .card .total-note{font-size:11.5px;color:var(--ink-3);margin-top:2px}
 .hotel-img-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center}
 .hotel-img-placeholder svg{width:44px;height:44px;fill:var(--ink-3);opacity:.5}
 .page-tabs{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:30px}
-.page-tab{padding:8px 15px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink-2);transition:all .2s}
+.page-tab{padding:11px 17px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink-2);transition:all .2s}
 .page-tab:hover{border-color:var(--teal);color:var(--teal-dark)}
 .page-tab.active{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .no-results{text-align:center;padding:44px 0;color:var(--ink-2);font-size:14.5px}
 .zone-tabs{display:flex;gap:8px;margin-bottom:22px;flex-wrap:wrap}
-.zone-tab{padding:8px 18px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink-2);transition:all .2s}
+.zone-tab{padding:11px 18px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);font-size:13px;font-weight:600;color:var(--ink-2);transition:all .2s}
 .zone-tab.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 
 /* ---------- modals ---------- */
@@ -309,22 +323,23 @@ html[data-theme="dark"] .htag-red{background:#3a1f1d;color:#e08a83}
 .overlay.open{display:flex}
 .modal{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow-lg);width:min(680px,100%);padding:32px 36px;position:relative}
 .modal h3{font-size:22px;font-weight:600;margin-bottom:18px}
-.modal-close{position:absolute;top:18px;right:20px;font-size:22px;color:var(--ink-3);line-height:1}
-.modal-close:hover{color:var(--ink)}
+.modal-close{position:absolute;top:14px;right:14px;width:40px;height:40px;font-size:22px;color:var(--ink-3);line-height:1;border-radius:50%}
+.modal-close:hover{color:var(--ink);background:var(--sand)}
 .bk-summary{background:var(--sand);border-radius:14px;padding:18px 22px;margin-bottom:22px}
-.bk-line{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0;color:var(--ink-2)}
-.bk-line span:last-child{color:var(--ink);font-weight:500}
+.bk-line{display:flex;justify-content:space-between;font-size:13.5px;padding:3px 0;color:var(--ink-2);gap:14px}
+.bk-line span:last-child{color:var(--ink);font-weight:500;text-align:right}
 .bk-line .strike{text-decoration:line-through;color:var(--ink-3);margin-right:8px;font-weight:400}
 .bk-total{display:flex;justify-content:space-between;font-size:16px;font-weight:700;border-top:1px solid var(--line-2);margin-top:10px;padding-top:10px}
+.bk-fx{font-size:11.5px;color:var(--ink-3);text-align:right;margin-top:4px}
 .bk-save{display:flex;justify-content:space-between;font-size:13.5px;font-weight:700;color:var(--teal-dark);padding:4px 0}
 .bk-item{border-bottom:1px dashed var(--line-2);padding:10px 0}
 .bk-item:last-of-type{border-bottom:none}
-.bk-item-head{display:flex;justify-content:space-between;align-items:center}
+.bk-item-head{display:flex;justify-content:space-between;align-items:center;gap:10px}
 .bk-item-head b{font-family:'Space Grotesk';font-size:14.5px}
-.bk-item-head .tagx{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-tint);padding:3px 9px;border-radius:100px}
+.bk-item-head .tagx{font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--teal-dark);background:var(--teal-tint);padding:3px 9px;border-radius:100px;white-space:nowrap}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 18px;margin-bottom:14px}
 .field label{display:block;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:4px}
-.field input,.field select{border:1px solid var(--line-2);border-radius:12px;padding:10px 14px;font-size:14px;background:var(--surface)}
+.field input,.field select{border:1px solid var(--line-2);border-radius:12px;padding:11px 14px;font-size:14px;background:var(--surface)}
 .field input:focus,.field select:focus{border-color:var(--teal)}
 .cancel-info{background:var(--amber-tint);color:var(--amber);border-radius:12px;padding:12px 16px;font-size:12.5px;margin:12px 0}
 .rate-comments-info{background:var(--sand);border-radius:12px;padding:12px 16px;font-size:12.5px;color:var(--ink-2);margin:12px 0}
@@ -332,7 +347,7 @@ html[data-theme="dark"] .htag-red{background:#3a1f1d;color:#e08a83}
 .btn-confirm:hover{background:var(--teal-dark)}
 .btn-confirm:disabled{opacity:.55;cursor:wait}
 .same-data{display:flex;align-items:center;gap:10px;background:var(--teal-tint);border-radius:12px;padding:12px 16px;margin:6px 0 16px;cursor:pointer}
-.same-data input{width:17px;height:17px;accent-color:var(--teal);flex:none}
+.same-data input{width:18px;height:18px;accent-color:var(--teal);flex:none}
 .same-data span{font-size:13.5px;font-weight:500;color:var(--teal-dark)}
 .extra-holder{display:none;border:1px dashed var(--line-2);border-radius:12px;padding:14px 16px;margin-bottom:14px}
 .extra-holder.show{display:block}
@@ -350,7 +365,7 @@ html[data-theme="dark"] .htag-red{background:#3a1f1d;color:#e08a83}
 .v-row span:first-child{color:var(--ink-2)}
 .v-row span:last-child{text-align:right;font-weight:500}
 .v-payment{font-size:11px;color:var(--ink-3);border-top:1px dashed var(--line-2);margin-top:18px;padding-top:12px;line-height:1.5}
-.btn-back{margin-top:24px;padding:11px 26px;border-radius:100px;border:1.5px solid var(--ink);font-size:13.5px;font-weight:600;color:var(--ink);transition:all .2s}
+.btn-back{margin-top:24px;padding:12px 26px;border-radius:100px;border:1.5px solid var(--ink);font-size:13.5px;font-weight:600;color:var(--ink);transition:all .2s}
 .btn-back:hover{background:var(--ink);color:var(--bg)}
 
 /* ---------- bookings overlay ---------- */
@@ -362,7 +377,7 @@ html[data-theme="dark"] .htag-red{background:#3a1f1d;color:#e08a83}
 .bbadge-green{background:var(--teal-tint);color:var(--teal-dark)}
 .bbadge-red{background:#fdecec;color:#b3423a}
 html[data-theme="dark"] .bbadge-red{background:#3a1f1d;color:#e08a83}
-.btn-cancel-bk{font-size:12px;font-weight:600;color:#b3423a;border:1px solid currentColor;border-radius:100px;padding:5px 13px}
+.btn-cancel-bk{font-size:12px;font-weight:600;color:#b3423a;border:1px solid currentColor;border-radius:100px;padding:9px 15px}
 
 /* ---------- savings demo strip ---------- */
 .savings-demo{
@@ -387,7 +402,7 @@ html[data-theme="dark"] .bbadge-red{background:#3a1f1d;color:#e08a83}
 .itinerary h4{font-family:'Space Grotesk';font-size:16px;font-weight:600;white-space:nowrap}
 .day-picker{display:flex;gap:8px}
 .day-picker button{
-  padding:8px 16px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);
+  padding:10px 18px;border-radius:100px;border:1px solid var(--line-2);background:var(--surface);
   font-size:13px;font-weight:600;color:var(--ink-2);transition:all .2s
 }
 .day-picker button.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
@@ -401,8 +416,9 @@ html[data-theme="dark"] .bbadge-red{background:#3a1f1d;color:#e08a83}
 /* ---------- trip bar ---------- */
 .bundle-bar{
   position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:60;
-  display:flex;align-items:center;gap:0;background:#14171A;color:#fff;
-  border-radius:100px;padding:10px 12px;box-shadow:0 12px 40px rgba(20,23,26,.35)
+  display:flex;align-items:center;gap:0;background:var(--bar-bg);color:#fff;
+  border-radius:100px;padding:10px 12px;box-shadow:0 12px 40px rgba(20,23,26,.35);
+  max-width:calc(100vw - 24px)
 }
 .bstep{display:flex;align-items:center;gap:10px;padding:6px 18px;border-radius:100px;transition:all .3s}
 .bstep .dot{
@@ -414,13 +430,13 @@ html[data-theme="dark"] .bbadge-red{background:#3a1f1d;color:#e08a83}
 .bstep.active .dot{border-color:#fff;background:#fff;color:#14171A}
 .bsave{padding:6px 18px;text-align:left}
 .bsave .lbl{font-size:12.5px;font-weight:600;white-space:nowrap}
-.bsave .dsc{font-size:11px;color:#67d1c8;font-weight:600;white-space:nowrap}
+.bsave .dsc{font-size:11px;color:var(--bar-accent);font-weight:600;white-space:nowrap}
 .bstep.done .dot{background:var(--teal);border-color:var(--teal);color:#fff}
-.bstep.done .dsc{color:#67d1c8}
+.bstep.done .dsc{color:var(--bar-accent)}
 .bsep{width:26px;height:1.5px;background:rgba(255,255,255,.22);flex:none}
 .bsep.done{background:var(--teal)}
 .bbar-cta{
-  margin-left:10px;padding:11px 24px;border-radius:100px;background:var(--teal);color:#fff;
+  margin-left:10px;padding:12px 24px;border-radius:100px;background:var(--teal);color:#fff;
   font-size:13.5px;font-weight:700;white-space:nowrap;transition:background .2s;
   opacity:.45;pointer-events:none
 }
@@ -430,11 +446,12 @@ html[data-theme="dark"] .bbadge-red{background:#3a1f1d;color:#e08a83}
 /* ---------- toast ---------- */
 .toast{
   position:fixed;top:88px;left:50%;transform:translateX(-50%) translateY(-12px);z-index:70;
-  background:#14171A;color:#fff;font-size:14px;font-weight:500;padding:13px 24px;border-radius:100px;
-  box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:all .35s var(--ease)
+  background:var(--bar-bg);color:#fff;font-size:14px;font-weight:500;padding:13px 24px;border-radius:100px;
+  box-shadow:var(--shadow-lg);opacity:0;pointer-events:none;transition:all .35s var(--ease);
+  max-width:calc(100vw - 32px)
 }
 .toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
-.toast b{color:#67d1c8}
+.toast b{color:var(--bar-accent)}
 
 /* ---------- log panel ---------- */
 .log-panel{
@@ -474,7 +491,14 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
   .savings-rows .col-public{display:none}
   .form-grid{grid-template-columns:1fr}
 }
-@media (max-width:600px){.cards,.cards.three{grid-template-columns:1fr}}
+@media (max-width:600px){
+  .cards,.cards.three{grid-template-columns:1fr}
+  .bundle-bar{left:12px;right:12px;transform:none;border-radius:22px;flex-wrap:wrap;justify-content:center;gap:4px;padding:10px 14px}
+  .bsep{display:none}
+  .bstep{padding:4px 10px}
+  .bbar-cta{margin-left:0;width:100%;text-align:center;margin-top:6px}
+  body{padding-bottom:170px}
+}
 
 /* ---------- scroll reveal ---------- */
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -500,12 +524,12 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       <a href="#" onclick="openBookings(event)" data-i18n="nav_bookings">Mis reservas</a>
     </nav>
     <div class="nav-right">
-      <span class="quota-tag" onclick="toggleLog()" title="Llamadas API hoy">API <strong id="apiCallCount">0</strong>/50</span>
+      <span class="quota-tag" id="quotaTag" onclick="toggleLog()" title="Llamadas API hoy">API <strong id="apiCallCount">0</strong>/50</span>
       <button class="theme-btn" id="theme-btn" aria-label="Cambiar tema">
-        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M21 12.8A8.5 8.5 0 1111.2 3a6.8 6.8 0 009.8 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.7 5.3l-1.7 1.7M7 17l-1.7 1.7M18.7 18.7L17 17M7 7L5.3 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <svg class="moon" width="17" height="17" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1111.2 3a6.8 6.8 0 009.8 9.8z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+        <svg class="sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="1.8"/><path d="M12 2.5v2.4M12 19.1v2.4M21.5 12h-2.4M4.9 12H2.5M18.7 5.3l-1.7 1.7M7 17l-1.7 1.7M18.7 18.7L17 17M7 7L5.3 5.3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
       </button>
-      <div class="lang-toggle">
+      <div class="lang-toggle" role="group" aria-label="Idioma">
         <button id="lang-es" class="on">ES</button>
         <button id="lang-en">EN</button>
       </div>
@@ -523,7 +547,7 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
 <section class="portals wrap">
   <div class="portal-grid">
     <div class="portal" onclick="location.href='#hoteles'">
-      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1100&q=80" alt="Hotel">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1100&q=80" alt="Hotel frente al mar" loading="lazy">
       <div class="portal-body">
         <div class="portal-top">
           <span class="portal-num">01</span>
@@ -533,13 +557,13 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
           <h3 data-i18n="p1_title">Hoteles</h3>
           <p data-i18n="p1_desc">Los mejores hoteles de Cancún, Playa del Carmen y Tulum con confirmación inmediata.</p>
           <span class="portal-arrow"><span data-i18n="p_explore">Explorar</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
       </div>
     </div>
     <div class="portal" onclick="location.href='#parques'">
-      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1100&q=80" alt="Parque">
+      <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1100&q=80" alt="Playa del Caribe" loading="lazy">
       <div class="portal-body">
         <div class="portal-top">
           <span class="portal-num">02</span>
@@ -549,23 +573,23 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
           <h3 data-i18n="p2_title">Parques</h3>
           <p data-i18n="p2_desc">Xcaret, Xel-Há, Xplor y más. Agrégalos con tu hotel y obtén −15% en tus entradas.</p>
           <span class="portal-arrow"><span data-i18n="p_explore">Explorar</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
       </div>
     </div>
     <div class="portal" onclick="location.href='#coches'">
-      <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1100&q=80" alt="Coche">
+      <img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=1100&q=80" alt="Coche en carretera costera" loading="lazy">
       <div class="portal-body">
         <div class="portal-top">
           <span class="portal-num">03</span>
-          <span class="chip locked" id="chip-cars" data-i18n="chip_p3_locked">−25% con parque</span>
+          <span class="chip locked" id="chip-cars" data-i18n="chip_p3_locked">Hasta −25%</span>
         </div>
         <div class="portal-bottom">
           <h3 data-i18n="p3_title">Coches</h3>
-          <p data-i18n="p3_desc">Renta por días con recogida en el aeropuerto o tu hotel. Completa tu viaje con el mayor descuento.</p>
+          <p data-i18n="p3_desc">Renta por días con recogida en el aeropuerto o tu hotel. −10% con hotel, −25% con parque.</p>
           <span class="portal-arrow"><span data-i18n="p_explore">Explorar</span>
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M2 8h11m0 0L9 4m4 4l-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
           </span>
         </div>
       </div>
@@ -584,13 +608,13 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       <span class="tag">−15%</span>
       <span class="n" data-i18n="how2_n">PASO 02</span>
       <h4 data-i18n="how2_t">Agrega tus parques</h4>
-      <p data-i18n="how2_p">Elige parque y fecha de visita. Si tu viaje incluye hotel, tus entradas bajan −15% automáticamente.</p>
+      <p data-i18n="how2_p">Elige uno o varios parques con su fecha de visita. Si tu viaje incluye hotel, tus entradas bajan −15%.</p>
     </div>
     <div class="how-step">
       <span class="tag">−25%</span>
       <span class="n" data-i18n="how3_n">PASO 03</span>
       <h4 data-i18n="how3_t">Agrega tu coche</h4>
-      <p data-i18n="how3_p">Categoría, fechas de recogida y entrega. Con parque en tu viaje, la renta baja −25%. Un solo pago al final.</p>
+      <p data-i18n="how3_p">Categoría, fechas de recogida y entrega. Con hotel −10%; con hotel y parque −25%. Un solo pago al final.</p>
     </div>
   </div>
 </section>
@@ -604,27 +628,27 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       <p class="sub" data-i18n="h_sub">Solo hoteles de Cancún, Playa del Carmen y Tulum. Elige fechas, busca por nombre o zona, y agrega tu favorito al viaje.</p>
     </div>
     <span class="lock-note unlocked" id="note-hotel">
-      <svg width="15" height="15" viewBox="0 0 15 15" fill="none"><circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.4"/><path d="M4.8 7.6l1.8 1.8 3.6-3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg width="15" height="15" viewBox="0 0 15 15" fill="none" aria-hidden="true"><circle cx="7.5" cy="7.5" r="6.5" stroke="currentColor" stroke-width="1.4"/><path d="M4.8 7.6l1.8 1.8 3.6-3.8" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
       <span data-i18n="h_note">Reserva individual o en paquete</span>
     </span>
   </div>
 
   <form class="searchbar" id="searchForm" onsubmit="searchHotels(event)">
     <div class="sfield" id="destWrapper" style="flex:1.4">
-      <label data-i18n="f_dest">Hotel o zona</label>
-      <input type="text" id="destInput" data-i18n-ph="f_dest_ph" placeholder="Toda la Riviera Maya" autocomplete="off">
+      <label for="destInput" data-i18n="f_dest">Hotel o zona</label>
+      <input type="text" id="destInput" data-i18n-ph="f_dest_ph" placeholder="Toda la Riviera Maya" autocomplete="off" role="combobox" aria-expanded="false" aria-controls="destDropdown">
       <input type="hidden" id="destSel">
-      <div class="dest-dropdown" id="destDropdown"></div>
+      <div class="dest-dropdown" id="destDropdown" role="listbox"></div>
     </div>
-    <div class="sfield"><label data-i18n="f_in">Check-in</label><input type="date" id="checkIn" required></div>
-    <div class="sfield"><label data-i18n="f_out">Check-out</label><input type="date" id="checkOut" required></div>
-    <div class="sfield" id="travField" onclick="toggleTravelers(event)">
+    <div class="sfield"><label for="checkIn" data-i18n="f_in">Check-in</label><input type="date" id="checkIn" required></div>
+    <div class="sfield"><label for="checkOut" data-i18n="f_out">Check-out</label><input type="date" id="checkOut" required></div>
+    <div class="sfield" id="travField" tabindex="0" role="button" aria-haspopup="dialog" onclick="toggleTravelers(event)" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTravelers(event)}">
       <label data-i18n="f_guests">Viajeros</label>
-      <input type="text" id="travSummary" value="2 adultos, 1 hab." readonly style="cursor:pointer">
+      <input type="text" id="travSummary" value="2 adultos, 1 hab." readonly style="cursor:pointer" tabindex="-1">
       <div class="travelers-dropdown" id="travDropdown" onclick="event.stopPropagation()">
-        <div class="trav-row"><div><div class="trav-label" data-i18n="t_rooms">Habitaciones</div></div><div class="trav-controls"><button type="button" class="trav-btn" onclick="adjTrav('rooms',-1)">-</button><span class="trav-count" id="tv-rooms">1</span><button type="button" class="trav-btn" onclick="adjTrav('rooms',1)">+</button></div></div>
-        <div class="trav-row"><div><div class="trav-label" data-i18n="t_adults">Adultos</div></div><div class="trav-controls"><button type="button" class="trav-btn" onclick="adjTrav('adults',-1)">-</button><span class="trav-count" id="tv-adults">2</span><button type="button" class="trav-btn" onclick="adjTrav('adults',1)">+</button></div></div>
-        <div class="trav-row"><div><div class="trav-label" data-i18n="t_children">Niños</div><div class="trav-sublabel" data-i18n="t_ages">0 a 17 años</div></div><div class="trav-controls"><button type="button" class="trav-btn" onclick="adjTrav('children',-1)">-</button><span class="trav-count" id="tv-children">0</span><button type="button" class="trav-btn" onclick="adjTrav('children',1)">+</button></div></div>
+        <div class="trav-row"><div><div class="trav-label" data-i18n="t_rooms">Habitaciones</div></div><div class="trav-controls"><button type="button" class="trav-btn" aria-label="Menos habitaciones" onclick="adjTrav('rooms',-1)">-</button><span class="trav-count" id="tv-rooms">1</span><button type="button" class="trav-btn" aria-label="Más habitaciones" onclick="adjTrav('rooms',1)">+</button></div></div>
+        <div class="trav-row"><div><div class="trav-label" data-i18n="t_adults">Adultos</div></div><div class="trav-controls"><button type="button" class="trav-btn" aria-label="Menos adultos" onclick="adjTrav('adults',-1)">-</button><span class="trav-count" id="tv-adults">2</span><button type="button" class="trav-btn" aria-label="Más adultos" onclick="adjTrav('adults',1)">+</button></div></div>
+        <div class="trav-row"><div><div class="trav-label" data-i18n="t_children">Niños</div><div class="trav-sublabel" data-i18n="t_ages">0 a 17 años</div></div><div class="trav-controls"><button type="button" class="trav-btn" aria-label="Menos niños" onclick="adjTrav('children',-1)">-</button><span class="trav-count" id="tv-children">0</span><button type="button" class="trav-btn" aria-label="Más niños" onclick="adjTrav('children',1)">+</button></div></div>
         <div class="children-ages-section" id="childAgesSection" style="display:none"><label data-i18n="t_agelabel">Edad de cada niño al hacer check-in</label><div class="child-ages-grid" id="childAgesGrid"></div></div>
         <button type="button" class="btn-trav-done" onclick="closeTravelers()" data-i18n="t_done">Listo</button>
       </div>
@@ -632,20 +656,20 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
     <button type="submit" class="sbtn" id="btnSearch" data-i18n="f_search">Buscar</button>
   </form>
 
-  <div class="zone-tabs" id="zoneTabs">
+  <div class="zone-tabs" id="zoneTabs" role="group" aria-label="Filtrar por zona">
     <button class="zone-tab on" data-zone="ALL" data-i18n="z_all">Toda la Riviera Maya</button>
     <button class="zone-tab" data-zone="CUN">Cancún</button>
     <button class="zone-tab" data-zone="PDC">Playa del Carmen</button>
     <button class="zone-tab" data-zone="TUL">Tulum</button>
   </div>
 
-  <div class="loading" id="loading"><div class="spinner"></div><p data-i18n="loading_txt">Buscando hoteles disponibles…</p></div>
+  <div class="loading" id="loading" role="status"><div class="spinner" aria-hidden="true"></div><p data-i18n="loading_txt">Buscando hoteles disponibles…</p></div>
 
   <div id="featuredSection" style="display:none">
     <div class="cards" id="hotel-cards"></div>
   </div>
 
-  <div id="resultsArea"></div>
+  <div id="resultsArea" aria-live="polite"></div>
   <div class="page-tabs" id="pageTabs"></div>
 
   <div class="confirmation" id="confirmationView">
@@ -662,26 +686,26 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
     <div>
       <span class="kicker" data-i18n="pk_kicker">Paso 02 · Parques</span>
       <h2 data-i18n="pk_title">Días de aventura</h2>
-      <p class="sub" data-i18n="pk_sub">Elige tu parque y la fecha de visita. Puedes reservarlo solo — pero si tu viaje incluye hotel, pagas −15%.</p>
+      <p class="sub" data-i18n="pk_sub">Agrega uno o varios parques con su fecha de visita. Puedes reservarlos solos — pero si tu viaje incluye hotel, pagas −15%.</p>
     </div>
     <span class="lock-note" id="note-parks">
-      <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M7 1.5l1.7 3.6 3.8.5-2.8 2.7.7 3.9L7 10.3l-3.4 1.9.7-3.9L1.5 5.6l3.8-.5L7 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      <svg width="14" height="15" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M7 1.5l1.7 3.6 3.8.5-2.8 2.7.7 3.9L7 10.3l-3.4 1.9.7-3.9L1.5 5.6l3.8-.5L7 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
       <span data-i18n="pk_note_locked">Agrega tu hotel y paga −15%</span>
     </span>
   </div>
   <div class="searchbar">
-    <div class="sfield"><label data-i18n="f_park">Parque</label>
-      <select id="parkSelect"><option>Xcaret</option><option>Xel-Há</option><option>Xplor</option><option>Xenses</option><option>Xavage</option></select>
+    <div class="sfield"><label for="parkSelect" data-i18n="f_park">Parque</label>
+      <select id="parkSelect" onchange="highlightPark(this.value)"><option>Xcaret</option><option>Xel-Há</option><option>Xplor</option><option>Xenses</option><option>Xavage</option></select>
     </div>
-    <div class="sfield"><label data-i18n="f_visit1">Fecha de visita</label><input type="date" id="parkDate"></div>
-    <div class="sfield"><label data-i18n="f_ppl">Personas</label>
+    <div class="sfield"><label for="parkDate" data-i18n="f_visit1">Fecha de visita</label><input type="date" id="parkDate"></div>
+    <div class="sfield"><label for="parkPersons" data-i18n="f_ppl">Personas</label>
       <select id="parkPersons"><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option><option value="4">4</option><option value="5">5</option><option value="6">6</option></select>
     </div>
-    <button type="button" class="sbtn" onclick="document.getElementById('park-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_seedates">Ver parques</button>
+    <button type="button" class="sbtn" onclick="highlightPark(document.getElementById('parkSelect').value);document.getElementById('park-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_seedates">Ver parques</button>
   </div>
   <div class="cards" id="park-cards">
-    <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xcaret">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt="Xcaret" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
       <div class="card-body">
         <div class="loc">Riviera Maya</div><h4>Xcaret</h4>
         <p class="meta" data-i18n="m_p1">Parque insignia · Río subterráneo · Espectáculo nocturno</p>
@@ -691,8 +715,8 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xel-Há">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Xel-Há" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
       <div class="card-body">
         <div class="loc">Riviera Maya</div><h4>Xel-Há</h4>
         <p class="meta" data-i18n="m_p2">Snorkel ilimitado · Caleta natural · Todo incluido</p>
@@ -702,8 +726,8 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xplor">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Xplor" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
       <div class="card-body">
         <div class="loc">Riviera Maya</div><h4>Xplor</h4>
         <p class="meta" data-i18n="m_p3">Tirolesas · Vehículos anfibios · Cavernas</p>
@@ -713,14 +737,25 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
         </div>
       </div>
     </div>
-    <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xenses">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80" alt="Xenses" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
       <div class="card-body">
         <div class="loc">Riviera Maya</div><h4>Xenses</h4>
         <p class="meta" data-i18n="m_p4">Medio día · Ilusiones sensoriales · Ideal familias</p>
         <div class="price-row">
           <div class="price"><span class="old">$80</span><span class="now" data-base="80">$80 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
           <button class="book-btn park-book" data-park="Xenses" data-i18n="btn_add">Agregar</button>
+        </div>
+      </div>
+    </div>
+    <div class="card" data-park-card="Xavage">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80" alt="Xavage" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+      <div class="card-body">
+        <div class="loc">Riviera Maya</div><h4>Xavage</h4>
+        <p class="meta" data-i18n="m_p5">Rápidos · Kayak · Adrenalina pura</p>
+        <div class="price-row">
+          <div class="price"><span class="old">$85</span><span class="now" data-base="85">$85 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <button class="book-btn park-book" data-park="Xavage" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
@@ -754,24 +789,24 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
     <div>
       <span class="kicker" data-i18n="c_kicker">Paso 03 · Coches</span>
       <h2 data-i18n="c_title">Muévete a tu ritmo</h2>
-      <p class="sub" data-i18n="c_sub">Elige categoría, punto de recogida y fechas. Puedes rentarlo solo — con parque en tu viaje ahorras −25%.</p>
+      <p class="sub" data-i18n="c_sub">Elige categoría, punto de recogida y fechas. Puedes rentarlo solo — con hotel ahorras −10% y con parque −25%.</p>
     </div>
     <span class="lock-note" id="note-cars">
-      <svg width="14" height="15" viewBox="0 0 14 15" fill="none"><path d="M7 1.5l1.7 3.6 3.8.5-2.8 2.7.7 3.9L7 10.3l-3.4 1.9.7-3.9L1.5 5.6l3.8-.5L7 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
-      <span data-i18n="c_note_locked">Agrega un parque y paga −25%</span>
+      <svg width="14" height="15" viewBox="0 0 14 15" fill="none" aria-hidden="true"><path d="M7 1.5l1.7 3.6 3.8.5-2.8 2.7.7 3.9L7 10.3l-3.4 1.9.7-3.9L1.5 5.6l3.8-.5L7 1.5z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      <span data-i18n="c_note_locked">Con hotel −10% · con parque −25%</span>
     </span>
   </div>
   <div class="searchbar">
-    <div class="sfield"><label data-i18n="f_pickup">Recogida</label>
+    <div class="sfield"><label for="carPickup" data-i18n="f_pickup">Recogida</label>
       <select id="carPickup"><option data-i18n="f_pk1">Aeropuerto de Cancún (CUN)</option><option data-i18n="f_pk2">En tu hotel</option><option>Playa del Carmen</option><option>Tulum</option></select>
     </div>
-    <div class="sfield"><label data-i18n="f_from">Pickup</label><input type="date" id="carFrom"></div>
-    <div class="sfield"><label data-i18n="f_to">Dropoff</label><input type="date" id="carTo"></div>
+    <div class="sfield"><label for="carFrom" data-i18n="f_from">Pickup</label><input type="date" id="carFrom" onchange="syncCarDates()"></div>
+    <div class="sfield"><label for="carTo" data-i18n="f_to">Dropoff</label><input type="date" id="carTo"></div>
     <button type="button" class="sbtn dark" onclick="document.getElementById('car-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_best">Ver opciones</button>
   </div>
   <div class="cards three" id="car-cards">
     <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge" data-i18n="b_value">Mejor precio</span><span class="badge deal car-deal" style="display:none;left:auto;right:14px" data-i18n="b_bundle25">Bundle −25%</span></div>
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1549317661-bd32c8ce0db2?auto=format&fit=crop&w=800&q=80" alt="Coche compacto" loading="lazy"><span class="badge" data-i18n="b_value">Mejor precio</span><span class="badge deal car-deal" style="display:none;left:auto;right:14px"></span></div>
       <div class="card-body">
         <div class="loc" data-i18n="cat_compact">Compacto</div><h4>Kia Rio <span style="color:var(--ink-3);font-weight:400" data-i18n="or_sim">o similar</span></h4>
         <p class="meta" data-i18n="m_c1">A/C · Automático · Cancelación gratis</p>
@@ -782,7 +817,7 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge" data-i18n="b_avail">Mayor disponibilidad</span><span class="badge deal car-deal" style="display:none;left:auto;right:14px" data-i18n="b_bundle25">Bundle −25%</span></div>
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?auto=format&fit=crop&w=800&q=80" alt="SUV" loading="lazy"><span class="badge" data-i18n="b_avail">Mayor disponibilidad</span><span class="badge deal car-deal" style="display:none;left:auto;right:14px"></span></div>
       <div class="card-body">
         <div class="loc">SUV</div><h4>Nissan Kicks <span style="color:var(--ink-3);font-weight:400" data-i18n="or_sim">o similar</span></h4>
         <p class="meta" data-i18n="m_c2">5 pasajeros · Maletero amplio · Seguro incl.</p>
@@ -793,7 +828,7 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       </div>
     </div>
     <div class="card">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt=""><span class="badge deal car-deal" style="display:none;left:auto;right:14px" data-i18n="b_bundle25">Bundle −25%</span></div>
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=800&q=80" alt="Jeep convertible" loading="lazy"><span class="badge deal car-deal" style="display:none;left:auto;right:14px"></span></div>
       <div class="card-body">
         <div class="loc" data-i18n="cat_conv">Convertible</div><h4>Jeep Wrangler <span style="color:var(--ink-3);font-weight:400" data-i18n="or_sim">o similar</span></h4>
         <p class="meta" data-i18n="m_c3">4x4 · Ideal para cenotes y playas</p>
@@ -849,12 +884,12 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
   <span class="bsep" id="sep1"></span>
   <div class="bstep" id="bs2">
     <span class="dot">2</span>
-    <span><span class="lbl" data-i18n="bs2_l">Parque</span><br><span class="dsc" id="bs2-d" data-i18n="bs2_d">−15% con hotel</span></span>
+    <span><span class="lbl" data-i18n="bs2_l">Parques</span><br><span class="dsc" id="bs2-d" data-i18n="bs2_d">−15% con hotel</span></span>
   </div>
   <span class="bsep" id="sep2"></span>
   <div class="bstep" id="bs3">
     <span class="dot">3</span>
-    <span><span class="lbl" data-i18n="bs3_l">Coche</span><br><span class="dsc" id="bs3-d" data-i18n="bs3_d">−25% con parque</span></span>
+    <span><span class="lbl" data-i18n="bs3_l">Coche</span><br><span class="dsc" id="bs3-d" data-i18n="bs3_d">Hasta −25%</span></span>
   </div>
   <span class="bsep" id="sep3" style="display:none"></span>
   <div class="bsave" id="bsave" style="display:none">
@@ -863,22 +898,22 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
   <button class="bbar-cta" id="bbarCta" onclick="openCheckout()" data-i18n="bb_cta">Finalizar reserva</button>
 </div>
 
-<div class="toast" id="toast"></div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <!-- checkout modal -->
 <div class="overlay" id="checkoutModal">
-  <div class="modal">
-    <button class="modal-close" onclick="closeCheckout()">×</button>
-    <h3 data-i18n="ck_title">Finalizar reserva</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="ckTitle">
+    <button class="modal-close" onclick="closeCheckout()" aria-label="Cerrar">×</button>
+    <h3 id="ckTitle" data-i18n="ck_title">Finalizar reserva</h3>
     <div class="bk-summary" id="checkoutSummary"></div>
     <form id="checkoutForm" onsubmit="confirmCheckout(event)">
       <div class="form-grid">
-        <div class="field"><label data-i18n="bm_name">Nombre</label><input type="text" id="paxName" required placeholder="Nombre"></div>
-        <div class="field"><label data-i18n="bm_surname">Apellido</label><input type="text" id="paxSurname" required placeholder="Apellido"></div>
-        <div class="field"><label>Email</label><input type="email" id="paxEmail" required placeholder="correo@ejemplo.com"></div>
-        <div class="field"><label data-i18n="bm_phone">Teléfono</label><input type="tel" id="paxPhone" required placeholder="+52 55 1234 5678"></div>
-        <div class="field"><label data-i18n="bm_nat">Nacionalidad</label><select id="market"><option value="MX">Mexico</option><option value="US">Estados Unidos</option><option value="ES">Espana</option><option value="GB">Reino Unido</option><option value="CO">Colombia</option><option value="AR">Argentina</option><option value="BR">Brasil</option><option value="FR">Francia</option><option value="DE">Alemania</option><option value="IT">Italia</option><option value="CL">Chile</option><option value="PE">Peru</option><option value="CA">Canada</option><option value="JP">Japon</option><option value="CN">China</option></select></div>
-        <div class="field"><label data-i18n="bm_ref">Referencia</label><input type="text" id="clientRef" placeholder="XOTICS-001"></div>
+        <div class="field"><label for="paxName" data-i18n="bm_name">Nombre</label><input type="text" id="paxName" required placeholder="Nombre"></div>
+        <div class="field"><label for="paxSurname" data-i18n="bm_surname">Apellido</label><input type="text" id="paxSurname" required placeholder="Apellido"></div>
+        <div class="field"><label for="paxEmail">Email</label><input type="email" id="paxEmail" required placeholder="correo@ejemplo.com"></div>
+        <div class="field"><label for="paxPhone" data-i18n="bm_phone">Teléfono</label><input type="tel" id="paxPhone" required placeholder="+52 55 1234 5678"></div>
+        <div class="field"><label for="market" data-i18n="bm_nat">Nacionalidad</label><select id="market"><option value="MX">Mexico</option><option value="US">Estados Unidos</option><option value="ES">Espana</option><option value="GB">Reino Unido</option><option value="CO">Colombia</option><option value="AR">Argentina</option><option value="BR">Brasil</option><option value="FR">Francia</option><option value="DE">Alemania</option><option value="IT">Italia</option><option value="CL">Chile</option><option value="PE">Peru</option><option value="CA">Canada</option><option value="JP">Japon</option><option value="CN">China</option></select></div>
+        <div class="field"><label for="clientRef" data-i18n="bm_ref">Referencia</label><input type="text" id="clientRef" placeholder="XOTICS-001"></div>
       </div>
       <label class="same-data" id="sameDataWrap" style="display:none">
         <input type="checkbox" id="sameData" checked onchange="toggleSameData()">
@@ -887,18 +922,18 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
       <div class="extra-holder" id="extraPark">
         <div class="eh-title" data-i18n="ck_park_holder">Titular de las entradas al parque</div>
         <div class="form-grid" style="margin-bottom:0">
-          <div class="field"><label data-i18n="bm_name">Nombre</label><input type="text" id="parkName" placeholder="Nombre"></div>
-          <div class="field"><label data-i18n="bm_surname">Apellido</label><input type="text" id="parkSurname" placeholder="Apellido"></div>
+          <div class="field"><label for="parkName" data-i18n="bm_name">Nombre</label><input type="text" id="parkName" placeholder="Nombre"></div>
+          <div class="field"><label for="parkSurname" data-i18n="bm_surname">Apellido</label><input type="text" id="parkSurname" placeholder="Apellido"></div>
         </div>
       </div>
       <div class="extra-holder" id="extraCar">
         <div class="eh-title" data-i18n="ck_car_holder">Conductor del coche (con licencia vigente)</div>
         <div class="form-grid" style="margin-bottom:0">
-          <div class="field"><label data-i18n="bm_name">Nombre</label><input type="text" id="carName" placeholder="Nombre"></div>
-          <div class="field"><label data-i18n="bm_surname">Apellido</label><input type="text" id="carSurname" placeholder="Apellido"></div>
+          <div class="field"><label for="carName" data-i18n="bm_name">Nombre</label><input type="text" id="carName" placeholder="Nombre"></div>
+          <div class="field"><label for="carSurname" data-i18n="bm_surname">Apellido</label><input type="text" id="carSurname" placeholder="Apellido"></div>
         </div>
       </div>
-      <div class="field" style="margin-bottom:12px"><label data-i18n="bm_notes">Observaciones</label><input type="text" id="paxRemark" placeholder="Notas"></div>
+      <div class="field" style="margin-bottom:12px"><label for="paxRemark" data-i18n="bm_notes">Observaciones</label><input type="text" id="paxRemark" placeholder="Notas"></div>
       <div id="cancelPolicies"></div>
       <button type="submit" class="btn-confirm" id="btnConfirm" data-i18n="ck_confirm">Confirmar todo</button>
     </form>
@@ -907,9 +942,9 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
 
 <!-- bookings overlay -->
 <div class="overlay" id="bookingsOverlay">
-  <div class="modal">
-    <button class="modal-close" onclick="closeBookings()">×</button>
-    <h3 data-i18n="bk_title">Mis reservas</h3>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="bkTitle">
+    <button class="modal-close" onclick="closeBookings()" aria-label="Cerrar">×</button>
+    <h3 id="bkTitle" data-i18n="bk_title">Mis reservas</h3>
     <div id="bookingsList"><div class="no-results"><p data-i18n="bk_empty">No hay reservas registradas</p></div></div>
   </div>
 </div>
@@ -927,26 +962,31 @@ es:{
   p1_title:"Hoteles",p1_desc:"Los mejores hoteles de Cancún, Playa del Carmen y Tulum con confirmación inmediata.",
   chip_p2_locked:"−15% con hotel",chip_p2_unlocked:"−15% activo",
   p2_title:"Parques",p2_desc:"Xcaret, Xel-Há, Xplor y más. Agrégalos con tu hotel y obtén −15% en tus entradas.",
-  chip_p3_locked:"−25% con parque",chip_p3_unlocked:"−25% activo",
-  p3_title:"Coches",p3_desc:"Renta por días con recogida en el aeropuerto o tu hotel. Completa tu viaje con el mayor descuento.",
+  chip_p3_none:"Hasta −25%",chip_p3_mid:"−10% activo",chip_p3_full:"−25% activo",
+  p3_title:"Coches",p3_desc:"Renta por días con recogida en el aeropuerto o tu hotel. −10% con hotel, −25% con parque.",
   how1_n:"PASO 01",how1_t:"Elige tu hotel y fechas",how1_p:"Busca entre los hoteles de la Riviera Maya y agrégalo a tu viaje. También puedes reservarlo solo.",
-  how2_n:"PASO 02",how2_t:"Agrega tus parques",how2_p:"Elige parque y fecha de visita. Si tu viaje incluye hotel, tus entradas bajan −15% automáticamente.",
-  how3_n:"PASO 03",how3_t:"Agrega tu coche",how3_p:"Categoría, fechas de recogida y entrega. Con parque en tu viaje, la renta baja −25%. Un solo pago al final.",
+  how2_n:"PASO 02",how2_t:"Agrega tus parques",how2_p:"Elige uno o varios parques con su fecha de visita. Si tu viaje incluye hotel, tus entradas bajan −15%.",
+  how3_n:"PASO 03",how3_t:"Agrega tu coche",how3_p:"Categoría, fechas de recogida y entrega. Con hotel −10%; con hotel y parque −25%. Un solo pago al final.",
   h_kicker:"Paso 01 · Hoteles",h_title:"Tu base en la Riviera Maya",
   h_sub:"Solo hoteles de Cancún, Playa del Carmen y Tulum. Elige fechas, busca por nombre o zona, y agrega tu favorito al viaje.",
   h_note:"Reserva individual o en paquete",
   f_dest:"Hotel o zona",f_dest_ph:"Toda la Riviera Maya",f_in:"Check-in",f_out:"Check-out",f_guests:"Viajeros",
   f_search:"Buscar",loading_txt:"Buscando hoteles disponibles…",z_all:"Toda la Riviera Maya",
   t_rooms:"Habitaciones",t_adults:"Adultos",t_children:"Niños",t_ages:"0 a 17 años",t_agelabel:"Edad de cada niño al hacer check-in",t_done:"Listo",
-  b_top:"Más reservado",per_night:"noche",per_person:"persona",per_day:"día",btn_book:"Reservar",btn_add:"Agregar",
+  per_night:"noche",per_person:"persona",per_day:"día",btn_add:"Agregar",
   btn_booked:"En tu viaje",btn_added:"Agregado",btn_addtrip:"Agregar al viaje",
+  r_hotels_in:"hoteles en",z_rm:"la Riviera Maya",
+  sort_feat:"Destacados",sort_pa:"Precio: menor a mayor",sort_pd:"Precio: mayor a menor",sort_st:"Estrellas",sort_az:"Nombre A-Z",
+  tag_free:"Cancelación gratuita",tag_nrf:"No reembolsable",tag_instant:"Reserva inmediata",
+  night1:"noche",nightN:"noches",total_word:"total",from_word:"desde",no_hotels:"No se encontraron hoteles para estas fechas",
+  zones_title:"Zonas",hotels_title:"Hoteles",no_dest:"Sin resultados en la Riviera Maya",popular_note:"Riviera Maya · México",
   pk_kicker:"Paso 02 · Parques",pk_title:"Días de aventura",
-  pk_sub:"Elige tu parque y la fecha de visita. Puedes reservarlo solo — pero si tu viaje incluye hotel, pagas −15%.",
+  pk_sub:"Agrega uno o varios parques con su fecha de visita. Puedes reservarlos solos — pero si tu viaje incluye hotel, pagas −15%.",
   pk_note_locked:"Agrega tu hotel y paga −15%",pk_note_unlocked:"Tarifa −15% activa",
   f_park:"Parque",f_visit1:"Fecha de visita",f_ppl:"Personas",f_seedates:"Ver parques",
-  b_bundle:"Bundle −15%",b_bundle25:"Bundle −25%",
+  b_bundle:"Bundle −15%",
   m_p1:"Parque insignia · Río subterráneo · Espectáculo nocturno",m_p2:"Snorkel ilimitado · Caleta natural · Todo incluido",
-  m_p3:"Tirolesas · Vehículos anfibios · Cavernas",m_p4:"Medio día · Ilusiones sensoriales · Ideal familias",
+  m_p3:"Tirolesas · Vehículos anfibios · Cavernas",m_p4:"Medio día · Ilusiones sensoriales · Ideal familias",m_p5:"Rápidos · Kayak · Adrenalina pura",
   sd_title:"Ejemplo de ahorro — 2 adultos, Xcaret + Xel-Há",sd_park:"Parque",sd_public:"Precio público",sd_bundle:"Con bundle",sd_save:"Ahorro",
   sd_total:"Ahorro total del bundle",
   sd_note:"Precios de referencia según tarifas públicas en línea de Grupo Xcaret (julio 2026). El descuento bundle aplica al reservar hotel + parque en Xotics.",
@@ -954,8 +994,8 @@ es:{
   it_day:"Día",
   it_plans:{1:[["Xcaret","día completo + espectáculo"]],2:[["Xcaret","día completo"],["Xel-Há","snorkel y descanso"]],3:[["Xcaret","día completo"],["Xplor","aventura"],["Xel-Há","snorkel y descanso"]]},
   c_kicker:"Paso 03 · Coches",c_title:"Muévete a tu ritmo",
-  c_sub:"Elige categoría, punto de recogida y fechas. Puedes rentarlo solo — con parque en tu viaje ahorras −25%.",
-  c_note_locked:"Agrega un parque y paga −25%",c_note_unlocked:"Tarifa −25% activa",
+  c_sub:"Elige categoría, punto de recogida y fechas. Puedes rentarlo solo — con hotel ahorras −10% y con parque −25%.",
+  c_note_none:"Con hotel −10% · con parque −25%",c_note_mid:"Tarifa −10% activa · con parque −25%",c_note_full:"Tarifa −25% activa",
   f_pickup:"Recogida",f_pk1:"Aeropuerto de Cancún (CUN)",f_pk2:"En tu hotel",f_from:"Pickup",f_to:"Dropoff",f_best:"Ver opciones",
   b_value:"Mejor precio",b_avail:"Mayor disponibilidad",cat_compact:"Compacto",cat_conv:"Convertible",or_sim:"o similar",
   m_c1:"A/C · Automático · Cancelación gratis",m_c2:"5 pasajeros · Maletero amplio · Seguro incl.",m_c3:"4x4 · Ideal para cenotes y playas",
@@ -963,20 +1003,26 @@ es:{
   foot_explore:"Explora",foot_help:"Ayuda",foot_contact:"Contacto",foot_faq:"Preguntas frecuentes",foot_dest:"Destinos",
   foot_made:"Hecho en Quintana Roo, México",
   bs1_l:"Hotel",bs1_d:"Elige tu base",
-  bs2_l:"Parque",bs2_d:"−15% con hotel",bs2_open:"−15% activo",
-  bs3_l:"Coche",bs3_d:"−25% con parque",bs3_open:"−25% activo",
-  toast_hotel:"Hotel agregado. <b>Tus parques ahora tienen −15%</b>",
+  bs2_l:"Parques",bs2_d:"−15% con hotel",bs2_open:"−15% activo",
+  bs3_l:"Coche",bs3_d:"Hasta −25%",
+  toast_hotel:"Hotel agregado. <b>Tus parques ahora tienen −15% y tu coche −10%</b>",
   toast_park:"Parque agregado. <b>Tu coche ahora tiene −25%</b>",
-  toast_park_solo:"Parque agregado a tu viaje",
   toast_car:"Coche agregado a tu viaje",
+  toast_removed:"Se quitó de tu viaje",
   save_lbl:"Ahorro",bb_cta:"Finalizar reserva",
   ck_title:"Finalizar reserva",ck_confirm:"Confirmar todo",
   ck_same:"Usar los mismos datos del titular para todas las reservaciones",
   ck_park_holder:"Titular de las entradas al parque",ck_car_holder:"Conductor del coche (con licencia vigente)",
-  ck_total:"Total",ck_savings:"Ahorro del bundle",
+  ck_total:"Total",ck_savings:"Ahorro del bundle",ck_fx:"Tipo de cambio aproximado 1 EUR = $FX USD. El hotel se cobra en EUR.",
+  x_hotel:"Hotel",x_park:"Parque",x_car:"Coche",ppl:"personas",ppl1:"persona",days1:"día",daysN:"días",
   bm_name:"Nombre",bm_surname:"Apellido",bm_phone:"Teléfono",bm_nat:"Nacionalidad",bm_ref:"Referencia",bm_notes:"Observaciones",
   conf_title:"Reserva confirmada",conf_back:"Nueva búsqueda",
-  bk_title:"Mis reservas",bk_empty:"No hay reservas registradas"
+  v_title:"VOUCHER DE VIAJE XOTICS",v_hotel:"Hotel",v_park:"Parque",v_car:"Coche",
+  v_name:"Nombre",v_addr:"Dirección",v_addr_na:"Consultar con el hotel",v_dates:"Check-in / Check-out",v_room:"Habitación",
+  v_holder:"Titular",v_refhb:"Ref. Hotelbeds",v_ref:"Ref.",v_total:"Total",v_tickets:"Entradas",v_visit:"Fecha de visita",
+  v_vehicle:"Vehículo",v_pickup:"Pickup / Dropoff",v_driver:"Conductor",
+  bk_title:"Mis reservas",bk_empty:"No hay reservas registradas",bk_confirmed:"Confirmada",bk_cancelled:"Cancelada",bk_cancel:"Cancelar",
+  err_search:"Error al buscar hoteles",err_retry:"Intenta de nuevo",child_age_alert:"Indica la edad de cada niño"
 },
 en:{
   nav_hotels:"Hotels",nav_parks:"Parks",nav_cars:"Cars",nav_bookings:"My bookings",nav_cta:"Get started",
@@ -986,26 +1032,31 @@ en:{
   p1_title:"Hotels",p1_desc:"The best hotels in Cancún, Playa del Carmen and Tulum with instant confirmation.",
   chip_p2_locked:"−15% with hotel",chip_p2_unlocked:"−15% active",
   p2_title:"Parks",p2_desc:"Xcaret, Xel-Há, Xplor and more. Add them with your hotel and get −15% on your tickets.",
-  chip_p3_locked:"−25% with park",chip_p3_unlocked:"−25% active",
-  p3_title:"Cars",p3_desc:"Daily rentals with airport or hotel pick-up. Complete your trip with the biggest discount.",
+  chip_p3_none:"Up to −25%",chip_p3_mid:"−10% active",chip_p3_full:"−25% active",
+  p3_title:"Cars",p3_desc:"Daily rentals with airport or hotel pick-up. −10% with hotel, −25% with a park.",
   how1_n:"STEP 01",how1_t:"Pick your hotel and dates",how1_p:"Search Riviera Maya hotels and add one to your trip. You can also book it on its own.",
-  how2_n:"STEP 02",how2_t:"Add your parks",how2_p:"Pick a park and visit date. If your trip includes a hotel, tickets drop −15% automatically.",
-  how3_n:"STEP 03",how3_t:"Add your car",how3_p:"Category, pick-up and drop-off dates. With a park in your trip, the rental drops −25%. One single checkout.",
+  how2_n:"STEP 02",how2_t:"Add your parks",how2_p:"Pick one or more parks with their visit date. If your trip includes a hotel, tickets drop −15%.",
+  how3_n:"STEP 03",how3_t:"Add your car",how3_p:"Category, pick-up and drop-off dates. −10% with hotel; −25% with hotel and park. One single checkout.",
   h_kicker:"Step 01 · Hotels",h_title:"Your base in the Riviera Maya",
   h_sub:"Only hotels in Cancún, Playa del Carmen and Tulum. Pick dates, search by name or zone, and add your favorite to the trip.",
   h_note:"Book solo or as a bundle",
   f_dest:"Hotel or zone",f_dest_ph:"All of Riviera Maya",f_in:"Check-in",f_out:"Check-out",f_guests:"Travelers",
   f_search:"Search",loading_txt:"Searching available hotels…",z_all:"All of Riviera Maya",
   t_rooms:"Rooms",t_adults:"Adults",t_children:"Children",t_ages:"0 to 17 years",t_agelabel:"Age of each child at check-in",t_done:"Done",
-  b_top:"Most booked",per_night:"night",per_person:"person",per_day:"day",btn_book:"Book",btn_add:"Add",
+  per_night:"night",per_person:"person",per_day:"day",btn_add:"Add",
   btn_booked:"In your trip",btn_added:"Added",btn_addtrip:"Add to trip",
+  r_hotels_in:"hotels in",z_rm:"the Riviera Maya",
+  sort_feat:"Featured",sort_pa:"Price: low to high",sort_pd:"Price: high to low",sort_st:"Stars",sort_az:"Name A-Z",
+  tag_free:"Free cancellation",tag_nrf:"Non-refundable",tag_instant:"Instant booking",
+  night1:"night",nightN:"nights",total_word:"total",from_word:"from",no_hotels:"No hotels found for these dates",
+  zones_title:"Zones",hotels_title:"Hotels",no_dest:"No results in the Riviera Maya",popular_note:"Riviera Maya · Mexico",
   pk_kicker:"Step 02 · Parks",pk_title:"Days of adventure",
-  pk_sub:"Pick your park and visit date. You can book it solo — but if your trip includes a hotel, you pay −15%.",
+  pk_sub:"Add one or more parks with their visit date. You can book them solo — but if your trip includes a hotel, you pay −15%.",
   pk_note_locked:"Add your hotel and pay −15%",pk_note_unlocked:"−15% rate active",
   f_park:"Park",f_visit1:"Visit date",f_ppl:"People",f_seedates:"See parks",
-  b_bundle:"Bundle −15%",b_bundle25:"Bundle −25%",
+  b_bundle:"Bundle −15%",
   m_p1:"Flagship park · Underground river · Night show",m_p2:"Unlimited snorkeling · Natural inlet · All-inclusive",
-  m_p3:"Ziplines · Amphibious vehicles · Caverns",m_p4:"Half day · Sensory illusions · Great for families",
+  m_p3:"Ziplines · Amphibious vehicles · Caverns",m_p4:"Half day · Sensory illusions · Great for families",m_p5:"Rapids · Kayak · Pure adrenaline",
   sd_title:"Savings example — 2 adults, Xcaret + Xel-Há",sd_park:"Park",sd_public:"Public price",sd_bundle:"With bundle",sd_save:"Savings",
   sd_total:"Total bundle savings",
   sd_note:"Reference prices based on Grupo Xcaret public online rates (July 2026). The bundle discount applies when booking hotel + park on Xotics.",
@@ -1013,8 +1064,8 @@ en:{
   it_day:"Day",
   it_plans:{1:[["Xcaret","full day + night show"]],2:[["Xcaret","full day"],["Xel-Há","snorkel & relax"]],3:[["Xcaret","full day"],["Xplor","adventure"],["Xel-Há","snorkel & relax"]]},
   c_kicker:"Step 03 · Cars",c_title:"Move at your own pace",
-  c_sub:"Pick category, pick-up point and dates. You can rent it solo — with a park in your trip you save −25%.",
-  c_note_locked:"Add a park and pay −25%",c_note_unlocked:"−25% rate active",
+  c_sub:"Pick category, pick-up point and dates. You can rent it solo — save −10% with a hotel and −25% with a park.",
+  c_note_none:"−10% with hotel · −25% with park",c_note_mid:"−10% rate active · −25% with park",c_note_full:"−25% rate active",
   f_pickup:"Pick-up",f_pk1:"Cancún Airport (CUN)",f_pk2:"At your hotel",f_from:"Pickup",f_to:"Dropoff",f_best:"See options",
   b_value:"Best price",b_avail:"Best availability",cat_compact:"Compact",cat_conv:"Convertible",or_sim:"or similar",
   m_c1:"A/C · Automatic · Free cancellation",m_c2:"5 passengers · Large trunk · Insurance incl.",m_c3:"4x4 · Perfect for cenotes and beaches",
@@ -1022,33 +1073,44 @@ en:{
   foot_explore:"Explore",foot_help:"Help",foot_contact:"Contact",foot_faq:"FAQ",foot_dest:"Destinations",
   foot_made:"Made in Quintana Roo, Mexico",
   bs1_l:"Hotel",bs1_d:"Pick your base",
-  bs2_l:"Park",bs2_d:"−15% with hotel",bs2_open:"−15% active",
-  bs3_l:"Car",bs3_d:"−25% with park",bs3_open:"−25% active",
-  toast_hotel:"Hotel added. <b>Your parks now get −15%</b>",
+  bs2_l:"Parks",bs2_d:"−15% with hotel",bs2_open:"−15% active",
+  bs3_l:"Car",bs3_d:"Up to −25%",
+  toast_hotel:"Hotel added. <b>Your parks now get −15% and your car −10%</b>",
   toast_park:"Park added. <b>Your car now gets −25%</b>",
-  toast_park_solo:"Park added to your trip",
   toast_car:"Car added to your trip",
+  toast_removed:"Removed from your trip",
   save_lbl:"Savings",bb_cta:"Checkout",
   ck_title:"Checkout",ck_confirm:"Confirm all",
   ck_same:"Use the same holder details for all reservations",
   ck_park_holder:"Park tickets holder",ck_car_holder:"Car driver (valid license)",
-  ck_total:"Total",ck_savings:"Bundle savings",
+  ck_total:"Total",ck_savings:"Bundle savings",ck_fx:"Approximate exchange rate 1 EUR = $FX USD. The hotel is charged in EUR.",
+  x_hotel:"Hotel",x_park:"Park",x_car:"Car",ppl:"people",ppl1:"person",days1:"day",daysN:"days",
   bm_name:"First name",bm_surname:"Last name",bm_phone:"Phone",bm_nat:"Nationality",bm_ref:"Reference",bm_notes:"Notes",
   conf_title:"Booking confirmed",conf_back:"New search",
-  bk_title:"My bookings",bk_empty:"No bookings yet"
+  v_title:"XOTICS TRIP VOUCHER",v_hotel:"Hotel",v_park:"Park",v_car:"Car",
+  v_name:"Name",v_addr:"Address",v_addr_na:"Check with the hotel",v_dates:"Check-in / Check-out",v_room:"Room",
+  v_holder:"Holder",v_refhb:"Hotelbeds ref.",v_ref:"Ref.",v_total:"Total",v_tickets:"Tickets",v_visit:"Visit date",
+  v_vehicle:"Vehicle",v_pickup:"Pickup / Dropoff",v_driver:"Driver",
+  bk_title:"My bookings",bk_empty:"No bookings yet",bk_confirmed:"Confirmed",bk_cancelled:"Cancelled",bk_cancel:"Cancel",
+  err_search:"Error searching hotels",err_retry:"Try again",child_age_alert:"Enter the age of each child"
 }};
 
 let lang = 'es';
 const t = k => I18N[lang][k];
 const $ = s => document.querySelector(s);
 const $$ = s => document.querySelectorAll(s);
+const esc = s => String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
 /* ================= trip state (carrito) ================= */
-const trip = { hotel:null, park:null, car:null };
-const PARK_OFF = .15, CAR_OFF = .25;
+let trip = { hotel:null, parks:[], car:null };
+const PARK_OFF = .15, CAR_OFF_FULL = .25, CAR_OFF_MID = .10;
+const FX_EUR_USD = 1.09;
 const parkDiscountActive = () => !!trip.hotel;
-const carDiscountActive = () => !!trip.park;
+const carOff = () => trip.parks.length ? CAR_OFF_FULL : (trip.hotel ? CAR_OFF_MID : 0);
 let tripDays=2;
+
+function saveTrip(){try{sessionStorage.setItem('xotics_trip',JSON.stringify(trip))}catch(e){}}
+function loadTrip(){try{const s=sessionStorage.getItem('xotics_trip');if(s){const p=JSON.parse(s);if(p&&typeof p==='object'){trip={hotel:p.hotel||null,parks:Array.isArray(p.parks)?p.parks:[],car:p.car||null}}}}catch(e){}}
 
 function applyI18n(){
   $$('[data-i18n]').forEach(el=>{ const v=t(el.dataset.i18n); if(v!==undefined) el.innerHTML=v; });
@@ -1061,8 +1123,9 @@ function renderBundlePrices(){
     const base=+el.dataset.base, p=parkDiscountActive()?Math.round(base*(1-PARK_OFF)):base;
     el.innerHTML=`$${p} <span class="per">USD / ${t('per_person')}</span>`;
   });
+  const off=carOff();
   $$('#car-cards .price .now').forEach(el=>{
-    const base=+el.dataset.base, p=carDiscountActive()?Math.round(base*(1-CAR_OFF)):base;
+    const base=+el.dataset.base, p=off?Math.round(base*(1-off)):base;
     el.innerHTML=`$${p} <span class="per">USD / ${t('per_day')}</span>`;
   });
 }
@@ -1078,46 +1141,59 @@ function renderItinerary(){
 
 function tripSavings(){
   let s=0;
-  if(trip.park&&parkDiscountActive()) s+=Math.round(trip.park.base*PARK_OFF*trip.park.persons);
-  if(trip.car&&carDiscountActive()) s+=Math.round(trip.car.base*CAR_OFF*trip.car.days);
+  if(parkDiscountActive()) trip.parks.forEach(p=>{s+=Math.round(p.base*PARK_OFF*p.persons)});
+  if(trip.car&&carOff()) s+=Math.round(trip.car.base*carOff()*trip.car.days);
   return s;
 }
-function tripCount(){return (trip.hotel?1:0)+(trip.park?1:0)+(trip.car?1:0)}
+function tripCount(){return (trip.hotel?1:0)+(trip.parks.length?1:0)+(trip.car?1:0)}
 
 function syncUI(){
   const cp=$('#chip-parks'), cc=$('#chip-cars');
   cp.className='chip '+(parkDiscountActive()?'unlocked':'locked');
   cp.innerHTML=t(parkDiscountActive()?'chip_p2_unlocked':'chip_p2_locked');
-  cc.className='chip '+(carDiscountActive()?'unlocked':'locked');
-  cc.innerHTML=t(carDiscountActive()?'chip_p3_unlocked':'chip_p3_locked');
+  const off=carOff();
+  cc.className='chip '+(off?'unlocked':'locked');
+  cc.innerHTML=t(off===CAR_OFF_FULL?'chip_p3_full':off===CAR_OFF_MID?'chip_p3_mid':'chip_p3_none');
   const np=$('#note-parks'), nc=$('#note-cars');
   np.classList.toggle('unlocked',parkDiscountActive());
   np.querySelector('span').innerHTML=t(parkDiscountActive()?'pk_note_unlocked':'pk_note_locked');
-  nc.classList.toggle('unlocked',carDiscountActive());
-  nc.querySelector('span').innerHTML=t(carDiscountActive()?'c_note_unlocked':'c_note_locked');
+  nc.classList.toggle('unlocked',off>0);
+  nc.querySelector('span').innerHTML=t(off===CAR_OFF_FULL?'c_note_full':off===CAR_OFF_MID?'c_note_mid':'c_note_none');
   $$('.park-deal').forEach(b=>b.style.display=parkDiscountActive()?'':'none');
-  $$('.car-deal').forEach(b=>b.style.display=carDiscountActive()?'':'none');
+  $$('.car-deal').forEach(b=>{b.style.display=off?'':'none';b.textContent=`Bundle −${Math.round(off*100)}%`});
   $('#park-cards').classList.toggle('unlocked-price',parkDiscountActive());
-  $('#car-cards').classList.toggle('unlocked-price',carDiscountActive());
+  $('#car-cards').classList.toggle('unlocked-price',off>0);
+  /* botones de parques y coches según membresía */
+  $$('.park-book').forEach(b=>{
+    const inTrip=trip.parks.some(p=>p.name===b.dataset.park);
+    b.classList.toggle('done',inTrip);
+    b.innerHTML=inTrip?t('btn_added'):t('btn_add');
+  });
+  $$('.car-book').forEach(b=>{
+    const inTrip=trip.car&&trip.car.name===b.dataset.car;
+    b.classList.toggle('done',inTrip);
+    b.innerHTML=inTrip?t('btn_added'):t('btn_add');
+  });
   /* trip bar */
   const bs1=$('#bs1'),bs2=$('#bs2'),bs3=$('#bs3');
   bs1.className='bstep '+(trip.hotel?'done':'active');
   $('#bs1-d').textContent=trip.hotel?trip.hotel.hotel.name:t('bs1_d');
   bs1.querySelector('.dot').textContent=trip.hotel?'✓':'1';
-  bs2.className='bstep '+(trip.park?'done':(trip.hotel?'active':''));
-  $('#bs2-d').textContent=trip.park?trip.park.name+' · '+trip.park.date:(parkDiscountActive()?t('bs2_open'):t('bs2_d'));
-  bs2.querySelector('.dot').textContent=trip.park?'✓':'2';
-  bs3.className='bstep '+(trip.car?'done':(trip.park?'active':''));
-  $('#bs3-d').textContent=trip.car?trip.car.name+' · '+trip.car.days+'d':(carDiscountActive()?t('bs3_open'):t('bs3_d'));
+  bs2.className='bstep '+(trip.parks.length?'done':(trip.hotel?'active':''));
+  $('#bs2-d').textContent=trip.parks.length?trip.parks.map(p=>p.name).join(' + '):(parkDiscountActive()?t('bs2_open'):t('bs2_d'));
+  bs2.querySelector('.dot').textContent=trip.parks.length?'✓':'2';
+  bs3.className='bstep '+(trip.car?'done':(trip.parks.length||trip.hotel?'active':''));
+  $('#bs3-d').textContent=trip.car?trip.car.name+' · '+trip.car.days+'d':t(off===CAR_OFF_FULL?'chip_p3_full':off===CAR_OFF_MID?'chip_p3_mid':'bs3_d');
   bs3.querySelector('.dot').textContent=trip.car?'✓':'3';
   $('#sep1').className='bsep '+(trip.hotel?'done':'');
-  $('#sep2').className='bsep '+(trip.park?'done':'');
+  $('#sep2').className='bsep '+(trip.parks.length?'done':'');
   const save=tripSavings();
   $('#sep3').style.display=save>0?'':'none';
   $('#bsave').style.display=save>0?'':'none';
   $('#bsave-amt').textContent=`$${save} USD`;
   $('#bbarCta').classList.toggle('ready',tripCount()>0);
   renderBundlePrices();
+  saveTrip();
 }
 
 let toastTimer;
@@ -1126,25 +1202,35 @@ function toast(html){
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>el.classList.remove('show'),3800);
 }
 
-/* ---- park & car add-to-trip ---- */
+/* ---- parques: agregar / quitar (múltiples) ---- */
 $$('.park-book').forEach(b=>b.addEventListener('click',()=>{
+  const name=b.dataset.park;
+  const idx=trip.parks.findIndex(p=>p.name===name);
+  if(idx>=0){
+    trip.parks.splice(idx,1);
+    syncUI();toast(t('toast_removed'));
+    return;
+  }
   const date=$('#parkDate').value||fmt(addDays(new Date(),31));
   const persons=+$('#parkPersons').value||2;
-  trip.park={name:b.dataset.park,base:+b.closest('.card').querySelector('.price .now').dataset.base,date,persons};
-  $$('.park-book').forEach(x=>{x.classList.remove('done');x.innerHTML=t('btn_add');});
-  b.classList.add('done'); b.innerHTML=t('btn_added');
-  syncUI(); toast(t('toast_park'));
+  trip.parks.push({name,base:+b.closest('.card').querySelector('.price .now').dataset.base,date,persons});
+  syncUI();toast(t('toast_park'));
 }));
+/* ---- coche: agregar / quitar ---- */
 $$('.car-book').forEach(b=>b.addEventListener('click',()=>{
+  if(trip.car&&trip.car.name===b.dataset.car){
+    trip.car=null;
+    syncUI();toast(t('toast_removed'));
+    return;
+  }
+  syncCarDates();
   const from=$('#carFrom').value||fmt(addDays(new Date(),30));
   const to=$('#carTo').value||fmt(addDays(new Date(),33));
   const days=Math.max(1,Math.ceil((new Date(to)-new Date(from))/86400000));
   const first=!trip.car;
   trip.car={name:b.dataset.car,cat:b.dataset.cat,base:+b.closest('.card').querySelector('.price .now').dataset.base,days,from,to,pickup:$('#carPickup').value};
-  $$('.car-book').forEach(x=>{x.classList.remove('done');x.innerHTML=t('btn_add');});
-  b.classList.add('done'); b.innerHTML=t('btn_added');
-  syncUI(); toast(t('toast_car'));
-  if(first&&tripCount()===3) confetti();
+  syncUI();toast(t('toast_car'));
+  if(first&&trip.hotel&&trip.parks.length) confetti();
 }));
 $$('.day-picker button').forEach(b=>b.addEventListener('click',()=>{
   tripDays=+b.dataset.days;
@@ -1156,8 +1242,7 @@ function setLang(l){
   $('#lang-es').classList.toggle('on',l==='es');
   $('#lang-en').classList.toggle('on',l==='en');
   applyI18n(); syncUI(); renderItinerary();
-  $$('.park-book').forEach(b=>b.innerHTML=b.classList.contains('done')?t('btn_added'):t('btn_add'));
-  $$('.car-book').forEach(b=>b.innerHTML=b.classList.contains('done')?t('btn_added'):t('btn_add'));
+  if(currentResults.length) renderResultsPage();
 }
 $('#lang-es').addEventListener('click',()=>setLang('es'));
 $('#lang-en').addEventListener('click',()=>setLang('en'));
@@ -1202,39 +1287,85 @@ function confetti(){
   }
 }
 
+/* ---- resaltar parque desde el selector ---- */
+function highlightPark(name){
+  $$('#park-cards .card').forEach(c=>c.classList.toggle('hl-park',c.dataset.parkCard===name));
+}
+
+/* ---- fechas coherentes ---- */
+function syncCarDates(){
+  const from=$('#carFrom'),to=$('#carTo');
+  if(from.value){
+    to.min=fmt(addDays(new Date(from.value+'T12:00'),1));
+    if(!to.value||to.value<=from.value) to.value=fmt(addDays(new Date(from.value+'T12:00'),1));
+  }
+}
+function syncStayDates(){
+  const ci=$('#checkIn').value,co=$('#checkOut').value;
+  if(!ci)return;
+  const coMin=fmt(addDays(new Date(ci+'T12:00'),1));
+  $('#checkOut').min=coMin;
+  if(!co||co<=ci)$('#checkOut').value=coMin;
+  /* sugerir fechas de parque y coche dentro de la estancia */
+  $('#parkDate').min=fmt(new Date());
+  if(!$('#parkDate').dataset.touched)$('#parkDate').value=fmt(addDays(new Date(ci+'T12:00'),1));
+  if(!$('#carFrom').dataset.touched){$('#carFrom').value=ci;$('#carTo').value=$('#checkOut').value}
+  syncCarDates();
+}
+
 /* ======================================================
    HOTELBEDS — API real (proxy en server.js)
    Solo Riviera Maya: CUN (Cancún) + PCM (Playa del Carmen / Tulum)
    ====================================================== */
-const API_BASE='';let apiCallCount=0,currentResults=[],sortedResults=[],currentPage=1,lastCheckIn='',lastCheckOut='',hotelImages={},bookings=JSON.parse(localStorage.getItem('xotics_bookings')||'[]'),hlIdx=-1,trav={rooms:1,adults:2,children:0},activeZone='ALL',hotelCatalog=[];
+const API_BASE='';let apiCallCount=0,currentResults=[],sortedResults=[],currentPage=1,lastCheckIn='',lastCheckOut='',hotelImages={},bookings=JSON.parse(localStorage.getItem('xotics_bookings')||'[]'),hlIdx=-1,trav={rooms:1,adults:2,children:0},activeZone='ALL',hotelCatalog=[],currentSort='default';
 const PAGE_SIZE=25;
 const IMG_BASE='https://photos.hotelbeds.com/giata/bigger/';
 const RM_CODES=['CUN','PCM'];
-const ZONES=[{id:'ALL',label:'Toda la Riviera Maya'},{id:'CUN',label:'Cancún'},{id:'PDC',label:'Playa del Carmen'},{id:'TUL',label:'Tulum'}];
+const ZONES=[{id:'ALL'},{id:'CUN'},{id:'PDC'},{id:'TUL'}];
 const COUNTRIES={US:'Estados Unidos',MX:'Mexico',ES:'Espana',GB:'Reino Unido',CO:'Colombia',AR:'Argentina',BR:'Brasil',FR:'Francia',DE:'Alemania',IT:'Italia',CL:'Chile',PE:'Peru',CA:'Canada',JP:'Japon',CN:'China'};
 function cn(c){return COUNTRIES[c]||c}
-function fmt(d){return d.toISOString().split('T')[0]}
+function fmt(d){const p=n=>String(n).padStart(2,'0');return `${d.getFullYear()}-${p(d.getMonth()+1)}-${p(d.getDate())}`}
 function addDays(d,n){const x=new Date(d);x.setDate(x.getDate()+n);return x}
-
 function zoneOf(h){
   if(h._destCode==='CUN')return 'CUN';
   const z=(h.zoneName||'').toLowerCase();
   return z.includes('tulum')?'TUL':'PDC';
 }
-function zoneLabel(z){return z==='CUN'?'Cancún':z==='TUL'?'Tulum':'Playa del Carmen'}
+function zoneLabel(z){return z==='ALL'?t('z_all'):z==='CUN'?'Cancún':z==='TUL'?'Tulum':'Playa del Carmen'}
+function nightsWord(n){return n===1?t('night1'):t('nightN')}
 
 function initHB(){
   const td=new Date,ci=addDays(td,30),co=addDays(ci,2);
   $('#checkIn').value=fmt(ci);$('#checkOut').value=fmt(co);$('#checkIn').min=fmt(td);
-  $('#parkDate').value=fmt(addDays(ci,1));
-  $('#carFrom').value=fmt(ci);$('#carTo').value=fmt(co);
+  $('#checkIn').addEventListener('change',syncStayDates);
+  $('#checkOut').addEventListener('change',syncCarDates);
+  $('#parkDate').addEventListener('change',e=>e.target.dataset.touched='1');
+  $('#carFrom').addEventListener('change',e=>e.target.dataset.touched='1');
+  $('#parkDate').value=fmt(addDays(ci,1));$('#parkDate').min=fmt(td);
+  $('#carFrom').value=fmt(ci);$('#carTo').value=fmt(co);$('#carFrom').min=fmt(td);
+  syncCarDates();
   try{hotelCatalog=JSON.parse(sessionStorage.getItem('xotics_rm_catalog')||'[]')}catch(e){}
+  loadTrip();
   setupAutocomplete();setupZoneTabs();loadFeaturedHotels();
+  /* modo debug: chip API + log solo con ?debug */
+  if(new URLSearchParams(location.search).has('debug'))$('#quotaTag').classList.add('debug');
+  syncUI();
 }
 
 async function apiCall(m,ep,body=null){const url=API_BASE+'/api'+ep;logApi('REQ',m,ep,body);apiCallCount++;document.getElementById('apiCallCount').textContent=apiCallCount;try{const o={method:m,headers:{'Accept':'application/json','Content-Type':'application/json'}};if(body)o.body=JSON.stringify(body);const r=await fetch(url,o),d=await r.json();logApi(r.ok?'RES':'ERR',r.status,ep,d);if(!r.ok)throw{status:r.status,data:d};return d}catch(e){if(e.status)throw e;logApi('ERR','NET',ep,e.message);throw e}}
-function logApi(tp,s,ep,d){const p=document.getElementById('logPanel'),c=tp==='REQ'?'req':tp==='ERR'?'err':'res',tm=new Date().toLocaleTimeString(),pv=typeof d==='object'?JSON.stringify(d).substring(0,200):d;p.innerHTML+=`<div class="log-entry ${c}">[${tm}] ${tp} ${s} ${ep} — ${pv}</div>`;p.scrollTop=p.scrollHeight}
+function logApi(tp,s,ep,d){const p=document.getElementById('logPanel'),c=tp==='REQ'?'req':tp==='ERR'?'err':'res',tm=new Date().toLocaleTimeString(),pv=typeof d==='object'?JSON.stringify(d).substring(0,200):d;p.innerHTML+=`<div class="log-entry ${c}">[${tm}] ${tp} ${s} ${ep} — ${esc(pv)}</div>`;p.scrollTop=p.scrollHeight}
 function toggleLog(){document.getElementById('logPanel').classList.toggle('open')}
+
+/* ---- cache de disponibilidad por sesión (ahorra cuota) ---- */
+function availCacheKey(code,ci,co,occ){return `xotics_avail_${code}_${ci}_${co}_${JSON.stringify(occ)}`}
+async function fetchAvailability(code,ci,co,occ){
+  const key=availCacheKey(code,ci,co,occ);
+  try{const c=sessionStorage.getItem(key);if(c){const p=JSON.parse(c);if(Date.now()-p.ts<3600000)return p.hotels}}catch(e){}
+  const d=await apiCall('POST','/hotel-api/1.0/hotels',{stay:{checkIn:ci,checkOut:co},occupancies:occ,destination:{code},filter:{maxHotels:2000,maxRatesPerRoom:1}});
+  const hotels=d.hotels?.hotels||[];
+  try{sessionStorage.setItem(key,JSON.stringify({ts:Date.now(),hotels}))}catch(e){}
+  return hotels;
+}
 
 /* ---- catálogo de hoteles RM para autocompletado ---- */
 function updateCatalog(hotels){
@@ -1246,21 +1377,22 @@ function updateCatalog(hotels){
 }
 
 /* ---- autocompletado: zonas + hoteles de la Riviera Maya ---- */
-function setupAutocomplete(){const inp=$('#destInput'),dd=$('#destDropdown');let timer;inp.addEventListener('input',()=>{clearTimeout(timer);$('#destSel').value='';hlIdx=-1;timer=setTimeout(()=>filterDest(inp.value),120)});inp.addEventListener('focus',()=>{filterDest(inp.value)});inp.addEventListener('keydown',e=>{const items=dd.querySelectorAll('.dest-item');if(!items.length)return;if(e.key==='ArrowDown'){e.preventDefault();hlIdx=Math.min(hlIdx+1,items.length-1);hlUp(items)}else if(e.key==='ArrowUp'){e.preventDefault();hlIdx=Math.max(hlIdx-1,0);hlUp(items)}else if(e.key==='Enter'&&hlIdx>=0){e.preventDefault();items[hlIdx].click()}else if(e.key==='Escape')dd.classList.remove('open')});document.addEventListener('click',e=>{if(!$('#destWrapper').contains(e.target))dd.classList.remove('open')})}
+function setupAutocomplete(){const inp=$('#destInput'),dd=$('#destDropdown');let timer;inp.addEventListener('input',()=>{clearTimeout(timer);$('#destSel').value='';hlIdx=-1;timer=setTimeout(()=>filterDest(inp.value),120)});inp.addEventListener('focus',()=>{filterDest(inp.value)});inp.addEventListener('keydown',e=>{const items=dd.querySelectorAll('.dest-item');if(!items.length)return;if(e.key==='ArrowDown'){e.preventDefault();hlIdx=Math.min(hlIdx+1,items.length-1);hlUp(items)}else if(e.key==='ArrowUp'){e.preventDefault();hlIdx=Math.max(hlIdx-1,0);hlUp(items)}else if(e.key==='Enter'&&hlIdx>=0){e.preventDefault();items[hlIdx].click()}else if(e.key==='Escape')dd.classList.remove('open')});document.addEventListener('click',e=>{if(!$('#destWrapper').contains(e.target)){dd.classList.remove('open');inp.setAttribute('aria-expanded','false')}})}
 function hlUp(items){items.forEach((el,i)=>{el.classList.toggle('hl',i===hlIdx);if(i===hlIdx)el.scrollIntoView({block:'nearest'})})}
 function filterDest(q){
   q=(q||'').toLowerCase().trim();
   const dd=$('#destDropdown');
   let h='';
-  const zones=ZONES.filter(z=>!q||z.label.toLowerCase().includes(q));
-  if(zones.length){h+=`<div class="dest-section-title">Zonas</div>`;zones.forEach(z=>{h+=`<div class="dest-item" onclick="pickZone('${z.id}')"><div class="dest-item-icon"><svg viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div class="dest-item-text"><div class="dest-item-name">${z.label}</div><div class="dest-item-country">Riviera Maya · México</div></div></div>`})}
+  const zoneNames={ALL:t('z_all'),CUN:'Cancún',PDC:'Playa del Carmen',TUL:'Tulum'};
+  const zones=ZONES.filter(z=>!q||zoneNames[z.id].toLowerCase().includes(q));
+  if(zones.length){h+=`<div class="dest-section-title">${t('zones_title')}</div>`;zones.forEach(z=>{h+=`<div class="dest-item" role="option" onclick="pickZone('${z.id}')"><div class="dest-item-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg></div><div class="dest-item-text"><div class="dest-item-name">${zoneNames[z.id]}</div><div class="dest-item-country">${t('popular_note')}</div></div></div>`})}
   const hotels=q?hotelCatalog.filter(x=>x.name.toLowerCase().includes(q)).slice(0,8):hotelCatalog.slice(0,6);
-  if(hotels.length){h+=`<div class="dest-section-title">Hoteles</div>`;hotels.forEach(x=>{const nm=q?hlT(x.name,q):x.name;h+=`<div class="dest-item" onclick="pickHotel('${x.code}','${x.name.replace(/'/g,"\\'")}')"><div class="dest-item-icon"><svg viewBox="0 0 24 24"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm12-7h-8v8H3V5H1v15h2v-3h18v3h2V9c0-2.21-1.79-4-4-4z"/></svg></div><div class="dest-item-text"><div class="dest-item-name">${nm}</div><div class="dest-item-country">${zoneLabel(x.zone)}</div></div></div>`})}
-  if(!h)h='<div style="padding:20px;text-align:center;color:var(--ink-2)">Sin resultados en la Riviera Maya</div>';
-  dd.innerHTML=h;dd.classList.add('open');hlIdx=-1;
+  if(hotels.length){h+=`<div class="dest-section-title">${t('hotels_title')}</div>`;hotels.forEach(x=>{const nm=q?hlT(esc(x.name),q):esc(x.name);h+=`<div class="dest-item" role="option" onclick="pickHotel('${x.code}','${esc(x.name).replace(/'/g,"\\'")}')"><div class="dest-item-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm12-7h-8v8H3V5H1v15h2v-3h18v3h2V9c0-2.21-1.79-4-4-4z"/></svg></div><div class="dest-item-text"><div class="dest-item-name">${nm}</div><div class="dest-item-country">${zoneLabel(x.zone)}</div></div></div>`})}
+  if(!h)h=`<div style="padding:20px;text-align:center;color:var(--ink-2)">${t('no_dest')}</div>`;
+  dd.innerHTML=h;dd.classList.add('open');$('#destInput').setAttribute('aria-expanded','true');hlIdx=-1;
 }
 function hlT(txt,q){const i=txt.toLowerCase().indexOf(q.toLowerCase());if(i===-1)return txt;return txt.substring(0,i)+'<strong style="color:var(--teal-dark)">'+txt.substring(i,i+q.length)+'</strong>'+txt.substring(i+q.length)}
-function pickZone(id){const z=ZONES.find(x=>x.id===id);$('#destInput').value=z.id==='ALL'?'':z.label;$('#destSel').value=JSON.stringify({type:'zone',zone:id});$('#destDropdown').classList.remove('open');setZone(id,false)}
+function pickZone(id){$('#destInput').value=id==='ALL'?'':zoneLabel(id);$('#destSel').value=JSON.stringify({type:'zone',zone:id});$('#destDropdown').classList.remove('open');setZone(id,false)}
 function pickHotel(code,name){$('#destInput').value=name;$('#destSel').value=JSON.stringify({type:'hotel',code,name});$('#destDropdown').classList.remove('open')}
 function quickZone(id){setZone(id,false);$('#destInput').value=id==='ALL'?'':zoneLabel(id);$('#destSel').value=JSON.stringify({type:'zone',zone:id});setTimeout(()=>$('#searchForm').requestSubmit(),80)}
 
@@ -1268,10 +1400,14 @@ function setupZoneTabs(){$$('.zone-tab').forEach(b=>b.addEventListener('click',(
 function setZone(id,search){
   activeZone=id;
   $$('.zone-tab').forEach(x=>x.classList.toggle('on',x.dataset.zone===id));
-  if(search&&currentResults.length){applyZoneFilter();renderResultsPage()}
+  if(search&&currentResults.length){applySortAndFilter();renderResultsPage()}
 }
-function applyZoneFilter(){
-  sortedResults=activeZone==='ALL'?currentResults:currentResults.filter(h=>zoneOf(h)===activeZone);
+function applySortAndFilter(){
+  let base=activeZone==='ALL'?currentResults:currentResults.filter(h=>zoneOf(h)===activeZone);
+  if(currentSort!=='default'){
+    base=[...base].sort((a,b)=>{const pa=parseFloat(a.rooms?.[0]?.rates?.[0]?.net||0),pb=parseFloat(b.rooms?.[0]?.rates?.[0]?.net||0);switch(currentSort){case'price-asc':return pa-pb;case'price-desc':return pb-pa;case'stars-desc':return(parseInt(b.categoryCode)||0)-(parseInt(a.categoryCode)||0);case'name-asc':return(a.name||'').localeCompare(b.name||'');default:return 0}});
+  }
+  sortedResults=base;
   currentPage=1;
 }
 
@@ -1279,21 +1415,22 @@ function toggleTravelers(e){e.stopPropagation();$('#travDropdown').classList.tog
 function closeTravelers(){$('#travDropdown').classList.remove('open');updateTravSum()}
 function adjTrav(f,d){const lim={rooms:[1,5],adults:[1,8],children:[0,6]};trav[f]=Math.max(lim[f][0],Math.min(lim[f][1],trav[f]+d));$('#tv-'+f).textContent=trav[f];if(f==='children')updateChildAges();updateTravSum()}
 function updateTravSum(){let s=`${trav.adults} adulto${trav.adults>1?'s':''}, ${trav.rooms} hab.`;if(trav.children>0)s=`${trav.adults} ad., ${trav.children} nino${trav.children>1?'s':''}, ${trav.rooms} hab.`;$('#travSummary').value=s}
-function updateChildAges(){const sec=$('#childAgesSection'),grid=$('#childAgesGrid');if(trav.children===0){sec.style.display='none';grid.innerHTML='';return}sec.style.display='block';grid.innerHTML='';for(let i=0;i<trav.children;i++){const s=document.createElement('select');s.className='child-age';s.innerHTML='<option value="">Edad</option>';for(let a=0;a<=17;a++)s.innerHTML+=`<option value="${a}">${a}</option>`;grid.appendChild(s)}}
+function updateChildAges(){const sec=$('#childAgesSection'),grid=$('#childAgesGrid');if(trav.children===0){sec.style.display='none';grid.innerHTML='';return}sec.style.display='block';grid.innerHTML='';for(let i=0;i<trav.children;i++){const s=document.createElement('select');s.className='child-age';s.setAttribute('aria-label','Edad nino '+(i+1));s.innerHTML='<option value="">Edad</option>';for(let a=0;a<=17;a++)s.innerHTML+=`<option value="${a}">${a}</option>`;grid.appendChild(s)}}
 
 async function searchHotels(e){
   e.preventDefault();
   const ci=$('#checkIn').value,co=$('#checkOut').value;
   if(!ci||!co)return;
+  if(co<=ci){syncStayDates();return}
   let sel=null;try{sel=JSON.parse($('#destSel').value||'null')}catch(err){}
   const paxes=[];
-  if(trav.children>0){const ages=document.querySelectorAll('.child-age');let ok=true;ages.forEach(s=>{const v=parseInt(s.value);if(isNaN(v))ok=false;else paxes.push({type:'CH',age:v})});if(!ok||paxes.length<trav.children){alert('Indica la edad de cada nino');return}}
+  if(trav.children>0){const ages=document.querySelectorAll('.child-age');let ok=true;ages.forEach(s=>{const v=parseInt(s.value);if(isNaN(v))ok=false;else paxes.push({type:'CH',age:v})});if(!ok||paxes.length<trav.children){alert(t('child_age_alert'));return}}
   const occ=[{rooms:trav.rooms,adults:trav.adults,children:trav.children,...(paxes.length>0&&{paxes})}];
   let codes=RM_CODES;
   if(sel&&sel.type==='zone'){codes=sel.zone==='CUN'?['CUN']:sel.zone==='ALL'?RM_CODES:['PCM'];activeZone=sel.zone}
   $('#featuredSection').style.display='none';$('#loading').classList.add('active');$('#resultsArea').innerHTML='';$('#pageTabs').innerHTML='';$('#confirmationView').classList.remove('active');$('#btnSearch').disabled=true;
   try{
-    const calls=codes.map(code=>apiCall('POST','/hotel-api/1.0/hotels',{stay:{checkIn:ci,checkOut:co},occupancies:occ,destination:{code},filter:{maxHotels:2000,maxRatesPerRoom:5}}).then(d=>({code,hotels:d.hotels?.hotels||[]})).catch(()=>({code,hotels:[]})));
+    const calls=codes.map(code=>fetchAvailability(code,ci,co,occ).then(hotels=>({code,hotels})).catch(()=>({code,hotels:[]})));
     const res=await Promise.all(calls);
     let all=[];
     res.forEach(r=>{r.hotels.forEach(h=>{h._destCode=r.code});all=all.concat(r.hotels)});
@@ -1303,12 +1440,12 @@ async function searchHotels(e){
       activeZone='ALL';
     }
     currentResults=all;lastCheckIn=ci;lastCheckOut=co;
-    applyZoneFilter();
+    applySortAndFilter();
     $$('.zone-tab').forEach(x=>x.classList.toggle('on',x.dataset.zone===activeZone));
     await renderResultsPage();
     $('#resultsArea').scrollIntoView({behavior:'smooth',block:'start'});
   }catch(err){
-    $('#resultsArea').innerHTML=`<div class="no-results"><p>${err.data?.error?.message||'Error al buscar hoteles'}</p></div>`;
+    $('#resultsArea').innerHTML=`<div class="no-results"><p>${esc(err.data?.error?.message||t('err_search'))}</p></div>`;
   }finally{
     $('#loading').classList.remove('active');$('#btnSearch').disabled=false;
   }
@@ -1316,18 +1453,19 @@ async function searchHotels(e){
 
 async function fetchHotelImages(codes){const missing=[...new Set(codes)].filter(c=>!(c in hotelImages));if(!missing.length)return;try{const d=await apiCall('GET',`/hotel-content-api/1.0/hotels?codes=${missing.join(',')}&fields=images&language=CAS&from=1&to=${missing.length}`);(d.hotels||[]).forEach(h=>{const img=h.images?.find(i=>i.imageTypeCode==='GEN')||h.images?.[0];hotelImages[h.code]=img?IMG_BASE+img.path:''});missing.forEach(c=>{if(!(c in hotelImages))hotelImages[c]=''})}catch(e){missing.forEach(c=>{hotelImages[c]=''})}}
 
-async function renderResultsPage(){const area=$('#resultsArea');if(!sortedResults.length){area.innerHTML='<div class="no-results"><p>No se encontraron hoteles para estas fechas</p></div>';$('#pageTabs').innerHTML='';return}const totalPages=Math.ceil(sortedResults.length/PAGE_SIZE);currentPage=Math.min(currentPage,totalPages);const start=(currentPage-1)*PAGE_SIZE,pageItems=sortedResults.slice(start,start+PAGE_SIZE);await fetchHotelImages(pageItems.map(h=>h.code));renderResults(pageItems,lastCheckIn,lastCheckOut,sortedResults.length);renderPageTabs(totalPages)}
-function renderPageTabs(totalPages){const el=$('#pageTabs');if(totalPages<=1){el.innerHTML='';return}let h='';for(let p=1;p<=totalPages;p++)h+=`<button class="page-tab ${p===currentPage?'active':''}" onclick="goToPage(${p})">${p}</button>`;el.innerHTML=h}
+async function renderResultsPage(){const area=$('#resultsArea');if(!sortedResults.length){area.innerHTML=`<div class="no-results"><p>${t('no_hotels')}</p></div>`;$('#pageTabs').innerHTML='';return}const totalPages=Math.ceil(sortedResults.length/PAGE_SIZE);currentPage=Math.min(currentPage,totalPages);const start=(currentPage-1)*PAGE_SIZE,pageItems=sortedResults.slice(start,start+PAGE_SIZE);await fetchHotelImages(pageItems.map(h=>h.code));renderResults(pageItems,lastCheckIn,lastCheckOut,sortedResults.length);renderPageTabs(totalPages)}
+function renderPageTabs(totalPages){const el=$('#pageTabs');if(totalPages<=1){el.innerHTML='';return}let h='';for(let p=1;p<=totalPages;p++)h+=`<button class="page-tab ${p===currentPage?'active':''}" onclick="goToPage(${p})" aria-label="Página ${p}">${p}</button>`;el.innerHTML=h}
 async function goToPage(p){currentPage=p;await renderResultsPage();$('#resultsArea').scrollIntoView({behavior:'smooth',block:'start'})}
 
-function imgPlaceholder(){return '<div class="hotel-img-placeholder"><svg viewBox="0 0 24 24"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm12-3h-8v8H3V5H1v15h2v-3h18v3h2V9c0-2.21-1.79-4-4-4zm2 8h-8V9h6c1.1 0 2 .9 2 2v4z"/></svg></div>'}
-function starsHtml(n){let h='';for(let i=1;i<=5;i++)h+=`<svg class="star ${i<=n?'filled':'empty'}" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`;return h}
+function imgPlaceholder(){return '<div class="hotel-img-placeholder"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 14c1.66 0 3-1.34 3-3S8.66 8 7 8s-3 1.34-3 3 1.34 3 3 3zm0-4c.55 0 1 .45 1 1s-.45 1-1 1-1-.45-1-1 .45-1 1-1zm12-3h-8v8H3V5H1v15h2v-3h18v3h2V9c0-2.21-1.79-4-4-4zm2 8h-8V9h6c1.1 0 2 .9 2 2v4z"/></svg></div>'}
+function starsHtml(n){return `<span class="hotel-stars" role="img" aria-label="${n} de 5 estrellas">${Array.from({length:5},(_,i)=>`<svg class="star ${i<n?'filled':'empty'}" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>`).join('')}</span>`}
 
 async function loadFeaturedHotels(){
-  const cacheKey='xotics_featured_rm_v1',today=new Date().toISOString().split('T')[0];
+  const cacheKey='xotics_featured_rm_v2',today=fmt(new Date());
   const cached=sessionStorage.getItem(cacheKey);
-  if(cached){try{const parsed=JSON.parse(cached);if(parsed.date===today&&parsed.items?.length){renderFeatured(parsed.items);return}}catch(e){}}
+  if(cached){try{const parsed=JSON.parse(cached);if(parsed.date===today&&parsed.items?.length){renderFeatured(parsed.items,parsed.nights||2);return}}catch(e){}}
   const ci=$('#checkIn').value,co=$('#checkOut').value;
+  const nights=Math.max(1,Math.ceil((new Date(co)-new Date(ci))/86400000));
   let items=[];
   for(const code of RM_CODES){
     try{
@@ -1340,90 +1478,98 @@ async function loadFeaturedHotels(){
   updateCatalog(items);
   await fetchHotelImages(items.map(h=>h.code));
   items=items.map(h=>({...h,_img:hotelImages[h.code]||''}));
-  sessionStorage.setItem(cacheKey,JSON.stringify({date:today,items}));
-  renderFeatured(items);
+  sessionStorage.setItem(cacheKey,JSON.stringify({date:today,nights,items}));
+  renderFeatured(items,nights);
 }
 
-function renderFeatured(items){
+function renderFeatured(items,nights){
   const section=$('#featuredSection'),grid=$('#hotel-cards');
   const cards=items.filter(h=>h.rooms?.[0]?.rates?.[0]).slice(0,8);
   if(!cards.length)return;
   grid.innerHTML=cards.map(hotel=>{
-    const ch=hotel.rooms[0].rates[0],sn=parseInt(hotel.categoryCode)||0,img=hotel._img||'',nm=(hotel.name||'Hotel').replace(/'/g,"&#39;");
+    const ch=hotel.rooms[0].rates[0],sn=parseInt(hotel.categoryCode)||0,img=hotel._img||'',nm=esc(hotel.name||'Hotel');
     const z=zoneOf(hotel);
-    return`<div class="card" style="cursor:pointer" onclick="pickHotel('${hotel.code}','${(hotel.name||'').replace(/'/g,"\\'")}');document.getElementById('searchForm').requestSubmit()"><div class="card-img">${img?`<img src="${img}" alt="${nm}" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(z)}</div><h4>${hotel.name||'Hotel'}</h4><div class="hotel-stars" style="margin-bottom:8px">${starsHtml(sn)}</div><div class="price-row"><div class="price"><span class="now" style="font-size:17px">${Math.round(parseFloat(ch.net))} ${ch.currency||'EUR'}</span><div class="total-note">desde · 2 noches</div></div></div></div></div>`;
+    return`<div class="card" style="cursor:pointer" onclick="pickHotel('${hotel.code}','${nm.replace(/'/g,"\\'")}');document.getElementById('searchForm').requestSubmit()"><div class="card-img">${img?`<img src="${img}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(z)}</div><h4>${nm}</h4><div style="margin-bottom:8px">${starsHtml(sn)}</div><div class="price-row"><div class="price"><span class="now" style="font-size:17px">${Math.round(parseFloat(ch.net))} ${ch.currency||'EUR'}</span><div class="total-note">${t('from_word')} · ${nights} ${nightsWord(nights)}</div></div></div></div></div>`;
   }).join('');
   section.style.display='block';section.dataset.loaded='1';
 }
 
 function renderResults(hotels,checkIn,checkOut,totalCount){
   const area=$('#resultsArea');totalCount=totalCount??hotels.length;
-  if(!hotels.length){area.innerHTML='<div class="no-results"><p>No se encontraron hoteles para estas fechas</p></div>';return}
+  if(!hotels.length){area.innerHTML=`<div class="no-results"><p>${t('no_hotels')}</p></div>`;return}
   const nights=Math.ceil((new Date(checkOut)-new Date(checkIn))/86400000);
-  const zl=activeZone==='ALL'?'la Riviera Maya':zoneLabel(activeZone);
-  let html=`<div class="results-bar"><h3>${totalCount} hoteles en ${zl}</h3><select class="sort-select" onchange="sortResults(this.value)"><option value="default">Destacados</option><option value="price-asc">Precio: menor a mayor</option><option value="price-desc">Precio: mayor a menor</option><option value="stars-desc">Estrellas</option><option value="name-asc">Nombre A-Z</option></select></div><div class="cards">`;
+  const zl=activeZone==='ALL'?t('z_rm'):zoneLabel(activeZone);
+  let html=`<div class="results-bar"><h3>${totalCount} ${t('r_hotels_in')} ${zl}</h3><select class="sort-select" aria-label="Ordenar" onchange="sortResults(this.value)">${[['default','sort_feat'],['price-asc','sort_pa'],['price-desc','sort_pd'],['stars-desc','sort_st'],['name-asc','sort_az']].map(([v,k])=>`<option value="${v}" ${currentSort===v?'selected':''}>${t(k)}</option>`).join('')}</select></div><div class="cards">`;
   hotels.forEach(hotel=>{
     const ch=hotel.rooms?.[0]?.rates?.[0];if(!ch)return;
     const price=parseFloat(ch.net),pn=Math.round(price/nights),sn=parseInt(hotel.categoryCode)||0,bn=ch.boardName||ch.boardCode||'',rn=hotel.rooms?.[0]?.name||hotel.rooms?.[0]?.code||'',ref=ch.rateClass!=='NRF',rt=ch.rateType,iu=hotelImages[hotel.code]||'';
+    const nm=esc(hotel.name||'Hotel');
     const inTrip=trip.hotel&&String(trip.hotel.hotel.code)===String(hotel.code);
     const hd=JSON.stringify({name:hotel.name||'',code:hotel.code,stars:sn,category:hotel.categoryName||'',destination:hotel.destinationName||'',zone:hotel.zoneName||'',address:hotel.address||''}).replace(/'/g,"&#39;");
-    html+=`<div class="card"><div class="card-img">${iu?`<img src="${iu}" alt="${(hotel.name||'').replace(/"/g,'')}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(zoneOf(hotel))}${hotel.zoneName?' · '+hotel.zoneName:''}</div><h4>${hotel.name||'Hotel'}</h4><div class="hotel-stars" style="margin-bottom:6px">${starsHtml(sn)}</div><p class="meta">${rn}${bn?' · '+bn:''}</p><div style="margin-bottom:12px"><span class="htag ${ref?'htag-green':'htag-red'}">${ref?'Cancelacion gratuita':'No reembolsable'}</span>${rt==='BOOKABLE'?'<span class="htag htag-blue">Reserva inmediata</span>':''}</div><div class="price-row"><div class="price"><span class="now" style="font-size:19px">${pn} <span class="per">${ch.currency||'EUR'} / noche</span></span><div class="total-note">${price.toFixed(2)} ${ch.currency||'EUR'} total · ${nights} noche${nights>1?'s':''}</div></div><button class="book-btn ${inTrip?'done':''}" onclick='addHotelToTrip(${JSON.stringify(ch).replace(/'/g,"&#39;")},${hd})'>${inTrip?t('btn_booked'):t('btn_addtrip')}</button></div></div></div>`;
+    html+=`<div class="card"><div class="card-img">${iu?`<img src="${iu}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(zoneOf(hotel))}${hotel.zoneName?' · '+esc(hotel.zoneName):''}</div><h4>${nm}</h4><div style="margin-bottom:6px">${starsHtml(sn)}</div><p class="meta">${esc(rn)}${bn?' · '+esc(bn):''}</p><div style="margin-bottom:12px"><span class="htag ${ref?'htag-green':'htag-red'}">${ref?t('tag_free'):t('tag_nrf')}</span>${rt==='BOOKABLE'?`<span class="htag htag-blue">${t('tag_instant')}</span>`:''}</div><div class="price-row"><div class="price"><span class="now" style="font-size:19px">${pn} <span class="per">${ch.currency||'EUR'} / ${t('per_night')}</span></span><div class="total-note">${price.toFixed(2)} ${ch.currency||'EUR'} ${t('total_word')} · ${nights} ${nightsWord(nights)}</div></div><button class="book-btn ${inTrip?'done':''}" onclick='addHotelToTrip(${JSON.stringify(ch).replace(/'/g,"&#39;")},${hd})'>${inTrip?t('btn_booked'):t('btn_addtrip')}</button></div></div></div>`;
   });
   html+='</div>';area.innerHTML=html;
 }
 
-async function sortResults(by){if(by==='default'){applyZoneFilter()}else{const base=activeZone==='ALL'?currentResults:currentResults.filter(h=>zoneOf(h)===activeZone);sortedResults=[...base].sort((a,b)=>{const pa=parseFloat(a.rooms?.[0]?.rates?.[0]?.net||0),pb=parseFloat(b.rooms?.[0]?.rates?.[0]?.net||0);switch(by){case'price-asc':return pa-pb;case'price-desc':return pb-pa;case'stars-desc':return(parseInt(b.categoryCode)||0)-(parseInt(a.categoryCode)||0);case'name-asc':return(a.name||'').localeCompare(b.name||'');default:return 0}})}currentPage=1;await renderResultsPage()}
+async function sortResults(by){currentSort=by;applySortAndFilter();await renderResultsPage()}
 
-/* ---- agregar hotel al viaje ---- */
+/* ---- agregar / quitar hotel del viaje ---- */
 function addHotelToTrip(rate,hotel){
+  if(trip.hotel&&String(trip.hotel.hotel.code)===String(hotel.code)){
+    trip.hotel=null;
+    syncUI();toast(t('toast_removed'));renderResultsPage();
+    return;
+  }
   trip.hotel={rate,hotel,checkIn:$('#checkIn').value,checkOut:$('#checkOut').value,price:parseFloat(rate.net),currency:rate.currency||'EUR'};
   syncUI();toast(t('toast_hotel'));
   renderResultsPage();
 }
 
 /* ======================================================
-   CHECKOUT único — 1, 2 o 3 productos
+   CHECKOUT único — 1, 2 o 3 productos, total unificado en USD
    ====================================================== */
+function eurToUsd(v){return Math.round(v*FX_EUR_USD*100)/100}
 function openCheckout(){
   if(tripCount()===0)return;
   const s=$('#checkoutSummary');
-  let h='',totalUsd=0,save=0;
+  let h='',totalUsd=0,save=0,hasEur=false;
   if(trip.hotel){
     const th=trip.hotel,nights=Math.ceil((new Date(th.checkOut)-new Date(th.checkIn))/86400000);
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${th.hotel.name}</b><span class="tagx">Hotel</span></div><div class="bk-line"><span>${th.checkIn} → ${th.checkOut} · ${nights} noche${nights>1?'s':''}</span><span>${th.price.toFixed(2)} ${th.currency}</span></div><div class="bk-line"><span>${th.rate.roomName||''} · ${th.rate.boardName||th.rate.boardCode||''}</span><span>${th.rate.rateClass==='NRF'?'No reembolsable':'Cancelacion gratuita'}</span></div></div>`;
+    const usd=th.currency==='EUR'?eurToUsd(th.price):th.price;
+    totalUsd+=usd;if(th.currency==='EUR')hasEur=true;
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(th.hotel.name)}</b><span class="tagx">${t('x_hotel')}</span></div><div class="bk-line"><span>${th.checkIn} → ${th.checkOut} · ${nights} ${nightsWord(nights)}</span><span>${th.price.toFixed(2)} ${th.currency}${th.currency==='EUR'?` ≈ $${usd.toFixed(0)} USD`:''}</span></div><div class="bk-line"><span>${esc(th.rate.roomName||'')} · ${esc(th.rate.boardName||th.rate.boardCode||'')}</span><span>${th.rate.rateClass==='NRF'?t('tag_nrf'):t('tag_free')}</span></div></div>`;
   }
-  if(trip.park){
-    const p=trip.park,disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base,sub=unit*p.persons,pubSub=p.base*p.persons;
+  trip.parks.forEach(p=>{
+    const disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base,sub=unit*p.persons,pubSub=p.base*p.persons;
     totalUsd+=sub;if(disc)save+=pubSub-sub;
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${p.name}</b><span class="tagx">Parque${disc?' · −15%':''}</span></div><div class="bk-line"><span>${p.date} · ${p.persons} persona${p.persons>1?'s':''}</span><span>${disc?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
-  }
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(p.name)}</b><span class="tagx">${t('x_park')}${disc?' · −15%':''}</span></div><div class="bk-line"><span>${p.date} · ${p.persons} ${p.persons>1?t('ppl'):t('ppl1')}</span><span>${disc?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
+  });
   if(trip.car){
-    const c=trip.car,disc=carDiscountActive(),unit=disc?Math.round(c.base*(1-CAR_OFF)):c.base,sub=unit*c.days,pubSub=c.base*c.days;
-    totalUsd+=sub;if(disc)save+=pubSub-sub;
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${c.name} (${c.cat})</b><span class="tagx">Coche${disc?' · −25%':''}</span></div><div class="bk-line"><span>${c.from} → ${c.to} · ${c.days} día${c.days>1?'s':''} · ${c.pickup}</span><span>${disc?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
+    const c=trip.car,off=carOff(),unit=off?Math.round(c.base*(1-off)):c.base,sub=unit*c.days,pubSub=c.base*c.days;
+    totalUsd+=sub;if(off)save+=pubSub-sub;
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(c.name)} (${esc(c.cat)})</b><span class="tagx">${t('x_car')}${off?` · −${Math.round(off*100)}%`:''}</span></div><div class="bk-line"><span>${c.from} → ${c.to} · ${c.days} ${c.days>1?t('daysN'):t('days1')} · ${esc(c.pickup)}</span><span>${off?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
   }
   if(save>0)h+=`<div class="bk-save"><span>${t('ck_savings')}</span><span>−$${save} USD</span></div>`;
-  let totalTxt='';
-  if(trip.hotel&&totalUsd>0)totalTxt=`${trip.hotel.price.toFixed(2)} ${trip.hotel.currency} + $${totalUsd} USD`;
-  else if(trip.hotel)totalTxt=`${trip.hotel.price.toFixed(2)} ${trip.hotel.currency}`;
-  else totalTxt=`$${totalUsd} USD`;
-  h+=`<div class="bk-total"><span>${t('ck_total')}</span><span>${totalTxt}</span></div>`;
+  h+=`<div class="bk-total"><span>${t('ck_total')}</span><span>$${totalUsd.toFixed(2)} USD</span></div>`;
+  if(hasEur)h+=`<div class="bk-fx">${t('ck_fx').replace('$FX',FX_EUR_USD.toFixed(2))}</div>`;
   s.innerHTML=h;
-  $('#sameDataWrap').style.display=tripCount()>1?'flex':'none';
+  const items=tripCount();
+  $('#sameDataWrap').style.display=items>1?'flex':'none';
   $('#sameData').checked=true;toggleSameData();
   let x='';
   if(trip.hotel){
     const rate=trip.hotel.rate;
-    if(rate.cancellationPolicies?.length){x+='<div class="cancel-info">';rate.cancellationPolicies.forEach(p=>{x+=`<div>Hotel: cargo de ${p.amount} ${rate.currency||'EUR'} a partir del ${new Date(p.from).toLocaleString('es')}</div>`});x+='</div>'}
-    if(rate.rateComments)x+=`<div class="rate-comments-info"><strong>Importante:</strong> ${rate.rateComments}</div>`;
+    if(rate.cancellationPolicies?.length){x+='<div class="cancel-info">';rate.cancellationPolicies.forEach(p=>{x+=`<div>${t('x_hotel')}: ${p.amount} ${rate.currency||'EUR'} — ${new Date(p.from).toLocaleString(lang==='es'?'es':'en')}</div>`});x+='</div>'}
+    if(rate.rateComments)x+=`<div class="rate-comments-info"><strong>${lang==='es'?'Importante':'Important'}:</strong> ${esc(rate.rateComments)}</div>`;
   }
   $('#cancelPolicies').innerHTML=x;
   $('#checkoutModal').classList.add('open');
+  setTimeout(()=>$('#paxName').focus(),60);
 }
 function closeCheckout(){$('#checkoutModal').classList.remove('open')}
 function toggleSameData(){
   const same=$('#sameData').checked||tripCount()<=1;
-  $('#extraPark').classList.toggle('show',!same&&!!trip.park);
+  $('#extraPark').classList.toggle('show',!same&&trip.parks.length>0);
   $('#extraCar').classList.toggle('show',!same&&!!trip.car);
 }
 
@@ -1446,26 +1592,25 @@ async function confirmCheckout(e){
       const bk=d.booking;
       recs.push({type:'hotel',id:bk?.reference||'TEST-'+Date.now(),clientRef:cr,hotelName:trip.hotel.hotel.name,hotelCode:trip.hotel.hotel.code,destination:trip.hotel.hotel.destination,address:trip.hotel.hotel.address,checkIn:trip.hotel.checkIn,checkOut:trip.hotel.checkOut,holder:`${nm} ${sn}`,email:em,phone:ph,nationality:mk,room:rate.roomName||'',board:rate.boardName||rate.boardCode||'',price:trip.hotel.price.toFixed(2),currency:trip.hotel.currency,status:'CONFIRMED',createdAt:new Date().toISOString(),supplier:bk?.hotel?.supplier?.name||'Hotelbeds S.L.U.',supplierVat:bk?.hotel?.supplier?.vatNumber||'',remark:rm});
     }
-    /* 2. PARQUE — confirmación Xotics */
-    if(trip.park){
-      const p=trip.park,disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base;
-      recs.push({type:'park',id:'XOT-P-'+Date.now(),clientRef:cr,hotelName:p.name+' ('+p.persons+' pers.)',checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:(unit*p.persons).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:disc?'-15%':''});
-    }
+    /* 2. PARQUES — confirmación Xotics */
+    trip.parks.forEach((p,i)=>{
+      const disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base;
+      recs.push({type:'park',id:'XOT-P-'+(Date.now()+i),clientRef:cr,hotelName:p.name+' ('+p.persons+' pers.)',checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:(unit*p.persons).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:disc?'-15%':''});
+    });
     /* 3. COCHE — confirmación Xotics */
     if(trip.car){
-      const c=trip.car,disc=carDiscountActive(),unit=disc?Math.round(c.base*(1-CAR_OFF)):c.base;
-      recs.push({type:'car',id:'XOT-C-'+Date.now(),clientRef:cr,hotelName:c.name+' ('+c.cat+') · '+c.pickup,checkIn:c.from,checkOut:c.to,holder:carHolder,email:em,phone:ph,nationality:mk,price:(unit*c.days).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:disc?'-25%':''});
+      const c=trip.car,off=carOff(),unit=off?Math.round(c.base*(1-off)):c.base;
+      recs.push({type:'car',id:'XOT-C-'+Date.now(),clientRef:cr,hotelName:c.name+' ('+c.cat+') · '+c.pickup,checkIn:c.from,checkOut:c.to,holder:carHolder,email:em,phone:ph,nationality:mk,price:(unit*c.days).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:off?`-${Math.round(off*100)}%`:''});
     }
     bookings.push(...recs);
     localStorage.setItem('xotics_bookings',JSON.stringify(bookings));
     closeCheckout();
     showTripConfirmation(recs,cr);
-    if(recs.length===3)confetti();
-    trip.hotel=null;trip.park=null;trip.car=null;
-    $$('.park-book,.car-book').forEach(x=>{x.classList.remove('done');x.innerHTML=t('btn_add')});
+    if(trip.hotel&&trip.parks.length&&trip.car)confetti();
+    trip={hotel:null,parks:[],car:null};
     syncUI();
   }catch(err){
-    alert('Error: '+(err.data?.error?.message||'Intenta de nuevo'));
+    alert('Error: '+(err.data?.error?.message||t('err_retry')));
   }finally{
     $('#btnConfirm').disabled=false;$('#btnConfirm').textContent=t('ck_confirm');
   }
@@ -1474,19 +1619,19 @@ async function confirmCheckout(e){
 function showTripConfirmation(recs,clientRef){
   $('#resultsArea').innerHTML='';$('#pageTabs').innerHTML='';$('#featuredSection').style.display='none';
   const hotelRec=recs.find(r=>r.type==='hotel');
-  $('#confirmRef').textContent=(hotelRec?`Ref. Hotelbeds: ${hotelRec.id} — `:'')+`Ref. agencia: ${clientRef}`;
-  let v=`<div class="voucher-title">VOUCHER DE VIAJE XOTICS</div>`;
+  $('#confirmRef').textContent=(hotelRec?`${t('v_refhb')}: ${hotelRec.id} — `:'')+`Ref: ${clientRef}`;
+  let v=`<div class="voucher-title">${t('v_title')}</div>`;
   recs.forEach(r=>{
     if(r.type==='hotel'){
-      v+=`<div class="v-section">Hotel</div><div class="v-row"><span>Nombre</span><span>${r.hotelName}</span></div><div class="v-row"><span>Direccion</span><span>${r.address||'Consultar con el hotel'}</span></div><div class="v-row"><span>Check-in / Check-out</span><span>${r.checkIn} → ${r.checkOut}</span></div><div class="v-row"><span>Habitacion</span><span>${r.room} · ${r.board}</span></div><div class="v-row"><span>Titular</span><span>${r.holder}</span></div><div class="v-row"><span>Ref. Hotelbeds</span><span><strong>${r.id}</strong></span></div><div class="v-row"><span>Total</span><span>${r.price} ${r.currency}</span></div>`;
+      v+=`<div class="v-section">${t('v_hotel')}</div><div class="v-row"><span>${t('v_name')}</span><span>${esc(r.hotelName)}</span></div><div class="v-row"><span>${t('v_addr')}</span><span>${esc(r.address||t('v_addr_na'))}</span></div><div class="v-row"><span>${t('v_dates')}</span><span>${r.checkIn} → ${r.checkOut}</span></div><div class="v-row"><span>${t('v_room')}</span><span>${esc(r.room)} · ${esc(r.board)}</span></div><div class="v-row"><span>${t('v_holder')}</span><span>${esc(r.holder)}</span></div><div class="v-row"><span>${t('v_refhb')}</span><span><strong>${r.id}</strong></span></div><div class="v-row"><span>${t('v_total')}</span><span>${r.price} ${r.currency}</span></div>`;
     }else if(r.type==='park'){
-      v+=`<div class="v-section">Parque</div><div class="v-row"><span>Entradas</span><span>${r.hotelName} ${r.discount?'· '+r.discount:''}</span></div><div class="v-row"><span>Fecha de visita</span><span>${r.checkIn}</span></div><div class="v-row"><span>Titular</span><span>${r.holder}</span></div><div class="v-row"><span>Ref.</span><span>${r.id}</span></div><div class="v-row"><span>Total</span><span>$${r.price} ${r.currency}</span></div>`;
+      v+=`<div class="v-section">${t('v_park')}</div><div class="v-row"><span>${t('v_tickets')}</span><span>${esc(r.hotelName)} ${r.discount?'· '+r.discount:''}</span></div><div class="v-row"><span>${t('v_visit')}</span><span>${r.checkIn}</span></div><div class="v-row"><span>${t('v_holder')}</span><span>${esc(r.holder)}</span></div><div class="v-row"><span>${t('v_ref')}</span><span>${r.id}</span></div><div class="v-row"><span>${t('v_total')}</span><span>$${r.price} ${r.currency}</span></div>`;
     }else{
-      v+=`<div class="v-section">Coche</div><div class="v-row"><span>Vehiculo</span><span>${r.hotelName} ${r.discount?'· '+r.discount:''}</span></div><div class="v-row"><span>Pickup / Dropoff</span><span>${r.checkIn} → ${r.checkOut}</span></div><div class="v-row"><span>Conductor</span><span>${r.holder}</span></div><div class="v-row"><span>Ref.</span><span>${r.id}</span></div><div class="v-row"><span>Total</span><span>$${r.price} ${r.currency}</span></div>`;
+      v+=`<div class="v-section">${t('v_car')}</div><div class="v-row"><span>${t('v_vehicle')}</span><span>${esc(r.hotelName)} ${r.discount?'· '+r.discount:''}</span></div><div class="v-row"><span>${t('v_pickup')}</span><span>${r.checkIn} → ${r.checkOut}</span></div><div class="v-row"><span>${t('v_driver')}</span><span>${esc(r.holder)}</span></div><div class="v-row"><span>${t('v_ref')}</span><span>${r.id}</span></div><div class="v-row"><span>${t('v_total')}</span><span>$${r.price} ${r.currency}</span></div>`;
     }
   });
   const h=recs.find(r=>r.type==='hotel');
-  if(h)v+=`<div class="v-payment">Payable through ${h.supplier}, acting as agent for the service operating company, details of which can be provided upon request. VAT: ${h.supplierVat||'N/A'} Reference: ${h.id}</div>`;
+  if(h)v+=`<div class="v-payment">Payable through ${esc(h.supplier)}, acting as agent for the service operating company, details of which can be provided upon request. VAT: ${esc(h.supplierVat||'N/A')} Reference: ${h.id}</div>`;
   $('#voucherView').innerHTML=v;
   $('#confirmationView').classList.add('active');
   document.getElementById('hoteles').scrollIntoView({behavior:'smooth'});
@@ -1496,13 +1641,20 @@ function resetSearch(){$('#confirmationView').classList.remove('active');$('#res
 
 function openBookings(e){if(e)e.preventDefault();renderBookingsList();$('#bookingsOverlay').classList.add('open')}
 function closeBookings(){$('#bookingsOverlay').classList.remove('open')}
-function renderBookingsList(){const el=$('#bookingsList');if(!bookings.length){el.innerHTML=`<div class="no-results"><p>${t('bk_empty')}</p></div>`;return}el.innerHTML=bookings.map((b,i)=>`<div class="booking-card"><div><h4>${b.hotelName}</h4><p>${b.checkIn} — ${b.checkOut} · ${b.holder}</p><p>Ref: ${b.id} · ${b.price} ${b.currency}</p></div><div class="booking-actions"><span class="bbadge ${b.status==='CONFIRMED'?'bbadge-green':'bbadge-red'}">${b.status==='CONFIRMED'?'Confirmada':'Cancelada'}</span>${b.status==='CONFIRMED'?`<button class="btn-cancel-bk" onclick="cancelBooking(${i})">Cancelar</button>`:''}</div></div>`).join('')}
-async function cancelBooking(i){if(!confirm('Cancelar esta reserva?'))return;const b=bookings[i];if((b.type||'hotel')==='hotel'&&!String(b.id).startsWith('XOT')){try{await apiCall('DELETE',`/hotel-api/1.0/bookings/${b.id}?cancellationFlag=CANCELLATION`)}catch(e){}}b.status='CANCELLED';localStorage.setItem('xotics_bookings',JSON.stringify(bookings));renderBookingsList()}
+function renderBookingsList(){const el=$('#bookingsList');if(!bookings.length){el.innerHTML=`<div class="no-results"><p>${t('bk_empty')}</p></div>`;return}el.innerHTML=bookings.map((b,i)=>`<div class="booking-card"><div><h4>${esc(b.hotelName)}</h4><p>${b.checkIn} — ${b.checkOut} · ${esc(b.holder)}</p><p>Ref: ${b.id} · ${b.price} ${b.currency}</p></div><div class="booking-actions"><span class="bbadge ${b.status==='CONFIRMED'?'bbadge-green':'bbadge-red'}">${b.status==='CONFIRMED'?t('bk_confirmed'):t('bk_cancelled')}</span>${b.status==='CONFIRMED'?`<button class="btn-cancel-bk" onclick="cancelBooking(${i})">${t('bk_cancel')}</button>`:''}</div></div>`).join('')}
+async function cancelBooking(i){if(!confirm(lang==='es'?'¿Cancelar esta reserva?':'Cancel this booking?'))return;const b=bookings[i];if((b.type||'hotel')==='hotel'&&!String(b.id).startsWith('XOT')){try{await apiCall('DELETE',`/hotel-api/1.0/bookings/${b.id}?cancellationFlag=CANCELLATION`)}catch(e){}}b.status='CANCELLED';localStorage.setItem('xotics_bookings',JSON.stringify(bookings));renderBookingsList()}
 
 document.addEventListener('click',e=>{const tf=$('#travField');if(tf&&!tf.contains(e.target))$('#travDropdown').classList.remove('open')});
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    $$('.overlay.open').forEach(ov=>ov.classList.remove('open'));
+    $('#destDropdown').classList.remove('open');
+    $('#travDropdown').classList.remove('open');
+  }
+});
 document.querySelectorAll('.overlay').forEach(ov=>ov.addEventListener('click',e=>{if(e.target===ov)ov.classList.remove('open')}));
 
-applyI18n(); syncUI(); renderItinerary(); initHB();
+applyI18n(); renderItinerary(); initHB();
 </script>
 </body>
 </html>
