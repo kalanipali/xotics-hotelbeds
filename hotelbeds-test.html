@@ -695,7 +695,7 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
   </div>
   <div class="searchbar">
     <div class="sfield"><label for="parkSelect" data-i18n="f_park">Parque</label>
-      <select id="parkSelect" onchange="highlightPark(this.value)"><option>Xcaret</option><option>Xel-Há</option><option>Xplor</option><option>Xenses</option><option>Xavage</option></select>
+      <select id="parkSelect" onchange="highlightPark(this.value)"><option>Xcaret</option><option>Xel-Há</option><option>Xplor</option><option>Xenses</option><option>Xenotes</option></select>
     </div>
     <div class="sfield"><label for="parkDate" data-i18n="f_visit1">Fecha de visita</label><input type="date" id="parkDate"></div>
     <div class="sfield"><label for="parkPersons" data-i18n="f_ppl">Personas</label>
@@ -704,72 +704,72 @@ footer{border-top:1px solid var(--line);margin-top:64px;padding:52px 0 40px}
     <button type="button" class="sbtn" onclick="highlightPark(document.getElementById('parkSelect').value);document.getElementById('park-cards').scrollIntoView({behavior:'smooth'})" data-i18n="f_seedates">Ver parques</button>
   </div>
   <div class="cards" id="park-cards">
-    <div class="card" data-park-card="Xcaret">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt="Xcaret" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xcaret" data-tier="30">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1552074284-5e88ef1aef18?auto=format&fit=crop&w=800&q=80" alt="Tour Xcaret" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
       <div class="card-body">
-        <div class="loc">Riviera Maya</div><h4>Xcaret</h4>
-        <p class="meta" data-i18n="m_p1">Parque insignia · Río subterráneo · Espectáculo nocturno</p>
+        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xcaret</h4>
+        <p class="meta" data-i18n="m_p1">Día completo · Río subterráneo · Espectáculo nocturno</p>
         <div class="price-row">
-          <div class="price"><span class="old">$140</span><span class="now" data-base="140">$140 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <div class="price"><span class="old">$185</span><span class="now" data-base="185">$185 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
           <button class="book-btn park-book" data-park="Xcaret" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
-    <div class="card" data-park-card="Xel-Há">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Xel-Há" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xel-Há" data-tier="40">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1544551763-46a013bb70d5?auto=format&fit=crop&w=800&q=80" alt="Tour Xel-Há" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
       <div class="card-body">
-        <div class="loc">Riviera Maya</div><h4>Xel-Há</h4>
+        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xel-Há</h4>
         <p class="meta" data-i18n="m_p2">Snorkel ilimitado · Caleta natural · Todo incluido</p>
         <div class="price-row">
-          <div class="price"><span class="old">$120</span><span class="now" data-base="120">$120 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <div class="price"><span class="old">$165</span><span class="now" data-base="165">$165 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
           <button class="book-btn park-book" data-park="Xel-Há" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
-    <div class="card" data-park-card="Xplor">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Xplor" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xplor" data-tier="40">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=800&q=80" alt="Tour Xplor" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
       <div class="card-body">
-        <div class="loc">Riviera Maya</div><h4>Xplor</h4>
+        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xplor</h4>
         <p class="meta" data-i18n="m_p3">Tirolesas · Vehículos anfibios · Cavernas</p>
         <div class="price-row">
-          <div class="price"><span class="old">$150</span><span class="now" data-base="150">$150 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <div class="price"><span class="old">$195</span><span class="now" data-base="195">$195 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
           <button class="book-btn park-book" data-park="Xplor" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
-    <div class="card" data-park-card="Xenses">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80" alt="Xenses" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xenses" data-tier="40">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1509233725247-49e657c54213?auto=format&fit=crop&w=800&q=80" alt="Tour Xenses" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
       <div class="card-body">
-        <div class="loc">Riviera Maya</div><h4>Xenses</h4>
+        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xenses</h4>
         <p class="meta" data-i18n="m_p4">Medio día · Ilusiones sensoriales · Ideal familias</p>
         <div class="price-row">
-          <div class="price"><span class="old">$80</span><span class="now" data-base="80">$80 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <div class="price"><span class="old">$125</span><span class="now" data-base="125">$125 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
           <button class="book-btn park-book" data-park="Xenses" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
-    <div class="card" data-park-card="Xavage">
-      <div class="card-img"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80" alt="Xavage" loading="lazy"><span class="badge deal park-deal" style="display:none" data-i18n="b_bundle">Bundle −15%</span></div>
+    <div class="card" data-park-card="Xenotes" data-tier="40">
+      <div class="card-img"><img src="https://images.unsplash.com/photo-1530866495561-507c9faab2ed?auto=format&fit=crop&w=800&q=80" alt="Tour Xenotes" loading="lazy"><span class="badge deal park-deal" style="display:none"></span></div>
       <div class="card-body">
-        <div class="loc">Riviera Maya</div><h4>Xavage</h4>
-        <p class="meta" data-i18n="m_p5">Rápidos · Kayak · Adrenalina pura</p>
+        <div class="loc" data-i18n="tour_incl">Tour · transporte incluido</div><h4>Xenotes</h4>
+        <p class="meta" data-i18n="m_p5">4 cenotes · Kayak y rappel · Grupos pequeños</p>
         <div class="price-row">
-          <div class="price"><span class="old">$85</span><span class="now" data-base="85">$85 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
-          <button class="book-btn park-book" data-park="Xavage" data-i18n="btn_add">Agregar</button>
+          <div class="price"><span class="old">$159</span><span class="now" data-base="159">$159 <span class="per">USD / <span data-i18n="per_person">persona</span></span></span></div>
+          <button class="book-btn park-book" data-park="Xenotes" data-i18n="btn_add">Agregar</button>
         </div>
       </div>
     </div>
   </div>
 
   <div class="savings-demo">
-    <h4 data-i18n="sd_title">Ejemplo de ahorro — 2 adultos, Xcaret + Xel-Há</h4>
+    <h4 data-i18n="sd_title">Ejemplo de ahorro — 2 adultos, Tour Xel-Há + Tour Xenotes</h4>
     <div class="savings-rows">
-      <span class="hdr" data-i18n="sd_park">Parque</span><span class="hdr col-public" data-i18n="sd_public">Precio público</span><span class="hdr" data-i18n="sd_bundle">Con bundle</span><span class="hdr" data-i18n="sd_save">Ahorro</span>
-      <span>Xcaret × 2</span><span class="strike col-public">$280</span><span class="deal-p">$238</span><span class="sv">$42</span>
-      <span>Xel-Há × 2</span><span class="strike col-public">$240</span><span class="deal-p">$204</span><span class="sv">$36</span>
+      <span class="hdr" data-i18n="sd_park">Tour</span><span class="hdr col-public" data-i18n="sd_public">Precio público</span><span class="hdr" data-i18n="sd_bundle">Con paquete</span><span class="hdr" data-i18n="sd_save">Ahorro</span>
+      <span>Tour Xel-Há × 2</span><span class="strike col-public">$330</span><span class="deal-p">$248</span><span class="sv">$82</span>
+      <span>Tour Xenotes × 2</span><span class="strike col-public">$318</span><span class="deal-p">$238</span><span class="sv">$80</span>
     </div>
-    <div class="savings-total"><span data-i18n="sd_total">Ahorro total del bundle</span><span class="amt">$78 USD</span></div>
-    <p class="savings-note" data-i18n="sd_note">Precios de referencia según tarifas públicas en línea de Grupo Xcaret (julio 2026). El descuento bundle aplica al reservar hotel + parque en Xotics.</p>
+    <div class="savings-total"><span data-i18n="sd_total">Ahorro total del paquete</span><span class="amt">$162 USD</span></div>
+    <p class="savings-note" data-i18n="sd_note">Tarifas públicas del tarifario Grupo Xcaret 2026. El descuento de paquete (hasta −25% en tours) aplica al reservar tu hotel + tours en Xotics.</p>
   </div>
 
   <div class="itinerary">
@@ -960,12 +960,12 @@ es:{
   hero_sub:"Hotel, parques y coche en un solo lugar. Reserva lo que necesites — cada uno por separado o juntos. Entre más agregas a tu viaje, más ahorras.",
   chip_start:"Recomendado primero",p_explore:"Explorar",
   p1_title:"Hoteles",p1_desc:"Los mejores hoteles de Cancún, Playa del Carmen y Tulum con confirmación inmediata.",
-  chip_p2_locked:"−15% con hotel",chip_p2_unlocked:"−15% activo",
-  p2_title:"Parques",p2_desc:"Xcaret, Xel-Há, Xplor y más. Agrégalos con tu hotel y obtén −15% en tus entradas.",
+  chip_p2_locked:"Hasta −25% con hotel",chip_p2_unlocked:"Descuento activo",
+  p2_title:"Parques",p2_desc:"Tours con transporte a Xcaret, Xel-Há, Xplor y más. Agrégalos con tu hotel y ahorra hasta −25%.",
   chip_p3_none:"Hasta −25%",chip_p3_mid:"−10% activo",chip_p3_full:"−25% activo",
   p3_title:"Coches",p3_desc:"Renta por días con recogida en el aeropuerto o tu hotel. −10% con hotel, −25% con parque.",
   how1_n:"PASO 01",how1_t:"Elige tu hotel y fechas",how1_p:"Busca entre los hoteles de la Riviera Maya y agrégalo a tu viaje. También puedes reservarlo solo.",
-  how2_n:"PASO 02",how2_t:"Agrega tus parques",how2_p:"Elige uno o varios parques con su fecha de visita. Si tu viaje incluye hotel, tus entradas bajan −15%.",
+  how2_n:"PASO 02",how2_t:"Agrega tus tours",how2_p:"Elige uno o varios tours con transporte incluido. Si tu viaje incluye hotel, bajan hasta −25%.",
   how3_n:"PASO 03",how3_t:"Agrega tu coche",how3_p:"Categoría, fechas de recogida y entrega. Con hotel −10%; con hotel y parque −25%. Un solo pago al final.",
   h_kicker:"Paso 01 · Hoteles",h_title:"Tu base en la Riviera Maya",
   h_sub:"Solo hoteles de Cancún, Playa del Carmen y Tulum. Elige fechas, busca por nombre o zona, y agrega tu favorito al viaje.",
@@ -980,16 +980,16 @@ es:{
   tag_free:"Cancelación gratuita",tag_nrf:"No reembolsable",tag_instant:"Reserva inmediata",
   night1:"noche",nightN:"noches",total_word:"total",from_word:"desde",no_hotels:"No se encontraron hoteles para estas fechas",
   zones_title:"Zonas",hotels_title:"Hoteles",no_dest:"Sin resultados en la Riviera Maya",popular_note:"Riviera Maya · México",
-  pk_kicker:"Paso 02 · Parques",pk_title:"Días de aventura",
-  pk_sub:"Agrega uno o varios parques con su fecha de visita. Puedes reservarlos solos — pero si tu viaje incluye hotel, pagas −15%.",
-  pk_note_locked:"Agrega tu hotel y paga −15%",pk_note_unlocked:"Tarifa −15% activa",
-  f_park:"Parque",f_visit1:"Fecha de visita",f_ppl:"Personas",f_seedates:"Ver parques",
-  b_bundle:"Bundle −15%",
-  m_p1:"Parque insignia · Río subterráneo · Espectáculo nocturno",m_p2:"Snorkel ilimitado · Caleta natural · Todo incluido",
-  m_p3:"Tirolesas · Vehículos anfibios · Cavernas",m_p4:"Medio día · Ilusiones sensoriales · Ideal familias",m_p5:"Rápidos · Kayak · Adrenalina pura",
-  sd_title:"Ejemplo de ahorro — 2 adultos, Xcaret + Xel-Há",sd_park:"Parque",sd_public:"Precio público",sd_bundle:"Con bundle",sd_save:"Ahorro",
-  sd_total:"Ahorro total del bundle",
-  sd_note:"Precios de referencia según tarifas públicas en línea de Grupo Xcaret (julio 2026). El descuento bundle aplica al reservar hotel + parque en Xotics.",
+  pk_kicker:"Paso 02 · Parques y tours",pk_title:"Días de aventura",
+  pk_sub:"Agrega uno o varios tours con transporte incluido. Puedes reservarlos solos — pero si tu viaje incluye hotel, ahorras hasta −25%.",
+  pk_note_locked:"Agrega tu hotel y ahorra hasta −25%",pk_note_unlocked:"Descuento de paquete activo",
+  f_park:"Parque",f_visit1:"Fecha de visita",f_ppl:"Personas",f_seedates:"Ver tours",
+  tour_incl:"Tour · transporte incluido",save_badge:"Ahorras",market_price:"Mercado",
+  m_p1:"Día completo · Río subterráneo · Espectáculo nocturno",m_p2:"Snorkel ilimitado · Caleta natural · Todo incluido",
+  m_p3:"Tirolesas · Vehículos anfibios · Cavernas",m_p4:"Medio día · Ilusiones sensoriales · Ideal familias",m_p5:"4 cenotes · Kayak y rappel · Grupos pequeños",
+  sd_title:"Ejemplo de ahorro — 2 adultos, Tour Xel-Há + Tour Xenotes",sd_park:"Tour",sd_public:"Precio público",sd_bundle:"Con paquete",sd_save:"Ahorro",
+  sd_total:"Ahorro total del paquete",
+  sd_note:"Tarifas públicas del tarifario Grupo Xcaret 2026. El descuento de paquete (hasta −25% en tours) aplica al reservar tu hotel + tours en Xotics.",
   it_title:"Itinerario sugerido",it_d1:"1 día",it_d2:"2 días",it_d3:"3 días",
   it_day:"Día",
   it_plans:{1:[["Xcaret","día completo + espectáculo"]],2:[["Xcaret","día completo"],["Xel-Há","snorkel y descanso"]],3:[["Xcaret","día completo"],["Xplor","aventura"],["Xel-Há","snorkel y descanso"]]},
@@ -1003,9 +1003,9 @@ es:{
   foot_explore:"Explora",foot_help:"Ayuda",foot_contact:"Contacto",foot_faq:"Preguntas frecuentes",foot_dest:"Destinos",
   foot_made:"Hecho en Quintana Roo, México",
   bs1_l:"Hotel",bs1_d:"Elige tu base",
-  bs2_l:"Parques",bs2_d:"−15% con hotel",bs2_open:"−15% activo",
+  bs2_l:"Parques",bs2_d:"Hasta −25% con hotel",bs2_open:"Descuento activo",
   bs3_l:"Coche",bs3_d:"Hasta −25%",
-  toast_hotel:"Hotel agregado. <b>Tus parques ahora tienen −15% y tu coche −10%</b>",
+  toast_hotel:"Hotel agregado. <b>Descuentos de paquete activados en tours y coche</b>",
   toast_park:"Parque agregado. <b>Tu coche ahora tiene −25%</b>",
   toast_car:"Coche agregado a tu viaje",
   toast_removed:"Se quitó de tu viaje",
@@ -1030,12 +1030,12 @@ en:{
   hero_sub:"Hotel, parks and car in one place. Book what you need — each on its own or together. The more you add to your trip, the more you save.",
   chip_start:"Recommended first",p_explore:"Explore",
   p1_title:"Hotels",p1_desc:"The best hotels in Cancún, Playa del Carmen and Tulum with instant confirmation.",
-  chip_p2_locked:"−15% with hotel",chip_p2_unlocked:"−15% active",
-  p2_title:"Parks",p2_desc:"Xcaret, Xel-Há, Xplor and more. Add them with your hotel and get −15% on your tickets.",
+  chip_p2_locked:"Up to −25% with hotel",chip_p2_unlocked:"Discount active",
+  p2_title:"Parks",p2_desc:"Tours with transport to Xcaret, Xel-Há, Xplor and more. Add them with your hotel and save up to −25%.",
   chip_p3_none:"Up to −25%",chip_p3_mid:"−10% active",chip_p3_full:"−25% active",
   p3_title:"Cars",p3_desc:"Daily rentals with airport or hotel pick-up. −10% with hotel, −25% with a park.",
   how1_n:"STEP 01",how1_t:"Pick your hotel and dates",how1_p:"Search Riviera Maya hotels and add one to your trip. You can also book it on its own.",
-  how2_n:"STEP 02",how2_t:"Add your parks",how2_p:"Pick one or more parks with their visit date. If your trip includes a hotel, tickets drop −15%.",
+  how2_n:"STEP 02",how2_t:"Add your tours",how2_p:"Pick one or more tours with transport included. If your trip includes a hotel, they drop up to −25%.",
   how3_n:"STEP 03",how3_t:"Add your car",how3_p:"Category, pick-up and drop-off dates. −10% with hotel; −25% with hotel and park. One single checkout.",
   h_kicker:"Step 01 · Hotels",h_title:"Your base in the Riviera Maya",
   h_sub:"Only hotels in Cancún, Playa del Carmen and Tulum. Pick dates, search by name or zone, and add your favorite to the trip.",
@@ -1050,16 +1050,16 @@ en:{
   tag_free:"Free cancellation",tag_nrf:"Non-refundable",tag_instant:"Instant booking",
   night1:"night",nightN:"nights",total_word:"total",from_word:"from",no_hotels:"No hotels found for these dates",
   zones_title:"Zones",hotels_title:"Hotels",no_dest:"No results in the Riviera Maya",popular_note:"Riviera Maya · Mexico",
-  pk_kicker:"Step 02 · Parks",pk_title:"Days of adventure",
-  pk_sub:"Add one or more parks with their visit date. You can book them solo — but if your trip includes a hotel, you pay −15%.",
-  pk_note_locked:"Add your hotel and pay −15%",pk_note_unlocked:"−15% rate active",
-  f_park:"Park",f_visit1:"Visit date",f_ppl:"People",f_seedates:"See parks",
-  b_bundle:"Bundle −15%",
-  m_p1:"Flagship park · Underground river · Night show",m_p2:"Unlimited snorkeling · Natural inlet · All-inclusive",
-  m_p3:"Ziplines · Amphibious vehicles · Caverns",m_p4:"Half day · Sensory illusions · Great for families",m_p5:"Rapids · Kayak · Pure adrenaline",
-  sd_title:"Savings example — 2 adults, Xcaret + Xel-Há",sd_park:"Park",sd_public:"Public price",sd_bundle:"With bundle",sd_save:"Savings",
+  pk_kicker:"Step 02 · Parks & tours",pk_title:"Days of adventure",
+  pk_sub:"Add one or more tours with transport included. You can book them solo — but if your trip includes a hotel, you save up to −25%.",
+  pk_note_locked:"Add your hotel and save up to −25%",pk_note_unlocked:"Bundle discount active",
+  f_park:"Park",f_visit1:"Visit date",f_ppl:"People",f_seedates:"See tours",
+  tour_incl:"Tour · transport included",save_badge:"You save",market_price:"Market",
+  m_p1:"Full day · Underground river · Night show",m_p2:"Unlimited snorkeling · Natural inlet · All-inclusive",
+  m_p3:"Ziplines · Amphibious vehicles · Caverns",m_p4:"Half day · Sensory illusions · Great for families",m_p5:"4 cenotes · Kayak & rappel · Small groups",
+  sd_title:"Savings example — 2 adults, Xel-Há Tour + Xenotes Tour",sd_park:"Tour",sd_public:"Public price",sd_bundle:"With bundle",sd_save:"Savings",
   sd_total:"Total bundle savings",
-  sd_note:"Reference prices based on Grupo Xcaret public online rates (July 2026). The bundle discount applies when booking hotel + park on Xotics.",
+  sd_note:"Public rates from the 2026 Grupo Xcaret tariff. The bundle discount (up to −25% on tours) applies when booking your hotel + tours on Xotics.",
   it_title:"Suggested itinerary",it_d1:"1 day",it_d2:"2 days",it_d3:"3 days",
   it_day:"Day",
   it_plans:{1:[["Xcaret","full day + night show"]],2:[["Xcaret","full day"],["Xel-Há","snorkel & relax"]],3:[["Xcaret","full day"],["Xplor","adventure"],["Xel-Há","snorkel & relax"]]},
@@ -1073,9 +1073,9 @@ en:{
   foot_explore:"Explore",foot_help:"Help",foot_contact:"Contact",foot_faq:"FAQ",foot_dest:"Destinations",
   foot_made:"Made in Quintana Roo, Mexico",
   bs1_l:"Hotel",bs1_d:"Pick your base",
-  bs2_l:"Parks",bs2_d:"−15% with hotel",bs2_open:"−15% active",
+  bs2_l:"Parks",bs2_d:"Up to −25% with hotel",bs2_open:"Discount active",
   bs3_l:"Car",bs3_d:"Up to −25%",
-  toast_hotel:"Hotel added. <b>Your parks now get −15% and your car −10%</b>",
+  toast_hotel:"Hotel added. <b>Bundle discounts active on tours and car</b>",
   toast_park:"Park added. <b>Your car now gets −25%</b>",
   toast_car:"Car added to your trip",
   toast_removed:"Removed from your trip",
@@ -1137,10 +1137,14 @@ const XCONFIG = {
 
 /* ================= trip state (carrito) ================= */
 let trip = { hotel:null, parks:[], car:null };
-const PARK_OFF = .15, CAR_OFF_FULL = .25, CAR_OFF_MID = .10; // pendiente Fase 3: sustituir por XCONFIG.TIERS
+const CAR_OFF_FULL = XCONFIG.TIERS[40], CAR_OFF_MID = .10;
 const FX_EUR_USD = XCONFIG.FX_EUR_USD;
 const parkDiscountActive = () => !!trip.hotel;
+const parkOffFor = tier => trip.hotel ? (XCONFIG.TIERS[tier] ?? XCONFIG.TIERS[40]) : 0;
 const carOff = () => trip.parks.length ? CAR_OFF_FULL : (trip.hotel ? CAR_OFF_MID : 0);
+/* precios de hotel: neto Hotelbeds → venta (÷0.805) y ancla de mercado (×1.32) */
+const hotelVenta = net => Math.round(net * XCONFIG.MARKUP_HOTEL * 100) / 100;
+const hotelAncla = net => Math.round(net * XCONFIG.ANCLA_MERCADO * 100) / 100;
 let tripDays=2;
 
 function saveTrip(){try{sessionStorage.setItem('xotics_trip',JSON.stringify(trip))}catch(e){}}
@@ -1153,15 +1157,20 @@ function applyI18n(){
 }
 
 function renderBundlePrices(){
-  $$('#park-cards .price .now').forEach(el=>{
-    const base=+el.dataset.base, p=parkDiscountActive()?Math.round(base*(1-PARK_OFF)):base;
+  $$('#park-cards .card').forEach(card=>{
+    const el=card.querySelector('.price .now');if(!el)return;
+    const base=+el.dataset.base, tier=+card.dataset.tier||40, d=parkOffFor(tier);
+    const p=d?Math.round(base*(1-d)):base;
     el.innerHTML=`$${p} <span class="per">USD / ${t('per_person')}</span>`;
+    const badge=card.querySelector('.park-deal');
+    if(badge){badge.style.display=d?'':'none';badge.textContent=`${t('save_badge')} $${Math.round(base*d)} USD`}
   });
   const off=carOff();
   $$('#car-cards .price .now').forEach(el=>{
     const base=+el.dataset.base, p=off?Math.round(base*(1-off)):base;
     el.innerHTML=`$${p} <span class="per">USD / ${t('per_day')}</span>`;
   });
+  $$('.car-deal').forEach(b=>{b.style.display=off?'':'none';b.textContent=off?`${t('save_badge')} −${Math.round(off*100)}%`:''});
 }
 
 function renderItinerary(){
@@ -1175,8 +1184,13 @@ function renderItinerary(){
 
 function tripSavings(){
   let s=0;
-  if(parkDiscountActive()) trip.parks.forEach(p=>{s+=Math.round(p.base*PARK_OFF*p.persons)});
-  if(trip.car&&carOff()) s+=Math.round(trip.car.base*carOff()*trip.car.days);
+  if(trip.hotel&&trip.hotel.net){
+    let hs=Math.round((trip.hotel.ancla||hotelAncla(trip.hotel.net))-trip.hotel.price);
+    if(trip.hotel.currency==='EUR')hs=Math.round(hs*FX_EUR_USD);
+    s+=hs;
+  }
+  trip.parks.forEach(p=>{const d=parkOffFor(p.tier??40);if(d)s+=(p.base-Math.round(p.base*(1-d)))*p.persons});
+  if(trip.car&&carOff()) s+=(trip.car.base-Math.round(trip.car.base*(1-carOff())))*trip.car.days;
   return s;
 }
 function tripCount(){return (trip.hotel?1:0)+(trip.parks.length?1:0)+(trip.car?1:0)}
@@ -1193,8 +1207,6 @@ function syncUI(){
   np.querySelector('span').innerHTML=t(parkDiscountActive()?'pk_note_unlocked':'pk_note_locked');
   nc.classList.toggle('unlocked',off>0);
   nc.querySelector('span').innerHTML=t(off===CAR_OFF_FULL?'c_note_full':off===CAR_OFF_MID?'c_note_mid':'c_note_none');
-  $$('.park-deal').forEach(b=>b.style.display=parkDiscountActive()?'':'none');
-  $$('.car-deal').forEach(b=>{b.style.display=off?'':'none';b.textContent=`Bundle −${Math.round(off*100)}%`});
   $('#park-cards').classList.toggle('unlocked-price',parkDiscountActive());
   $('#car-cards').classList.toggle('unlocked-price',off>0);
   /* botones de parques y coches según membresía */
@@ -1247,7 +1259,8 @@ $$('.park-book').forEach(b=>b.addEventListener('click',()=>{
   }
   const date=$('#parkDate').value||fmt(addDays(new Date(),31));
   const persons=+$('#parkPersons').value||2;
-  trip.parks.push({name,base:+b.closest('.card').querySelector('.price .now').dataset.base,date,persons});
+  const card=b.closest('.card');
+  trip.parks.push({name,base:+card.querySelector('.price .now').dataset.base,tier:+card.dataset.tier||40,date,persons});
   syncUI();toast(t('toast_park'));
 }));
 /* ---- coche: agregar / quitar ---- */
@@ -1522,8 +1535,9 @@ function renderFeatured(items,nights){
   if(!cards.length)return;
   grid.innerHTML=cards.map(hotel=>{
     const ch=hotel.rooms[0].rates[0],sn=parseInt(hotel.categoryCode)||0,img=hotel._img||'',nm=esc(hotel.name||'Hotel');
+    const net=parseFloat(ch.net),venta=Math.round(hotelVenta(net)),ancla=Math.round(hotelAncla(net)),cur=ch.currency||'EUR';
     const z=zoneOf(hotel);
-    return`<div class="card" style="cursor:pointer" onclick="pickHotel('${hotel.code}','${nm.replace(/'/g,"\\'")}');document.getElementById('searchForm').requestSubmit()"><div class="card-img">${img?`<img src="${img}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(z)}</div><h4>${nm}</h4><div style="margin-bottom:8px">${starsHtml(sn)}</div><div class="price-row"><div class="price"><span class="now" style="font-size:17px">${Math.round(parseFloat(ch.net))} ${ch.currency||'EUR'}</span><div class="total-note">${t('from_word')} · ${nights} ${nightsWord(nights)}</div></div></div></div></div>`;
+    return`<div class="card" style="cursor:pointer" onclick="pickHotel('${hotel.code}','${nm.replace(/'/g,"\\'")}');document.getElementById('searchForm').requestSubmit()"><div class="card-img">${img?`<img src="${img}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(z)}</div><h4>${nm}</h4><div style="margin-bottom:8px">${starsHtml(sn)}</div><div class="price-row"><div class="price"><span class="old" style="display:block">${ancla} ${cur}</span><span class="now" style="font-size:17px">${venta} ${cur}</span><div class="total-note">${t('from_word')} · ${nights} ${nightsWord(nights)}</div></div></div></div></div>`;
   }).join('');
   section.style.display='block';section.dataset.loaded='1';
 }
@@ -1536,11 +1550,12 @@ function renderResults(hotels,checkIn,checkOut,totalCount){
   let html=`<div class="results-bar"><h3>${totalCount} ${t('r_hotels_in')} ${zl}</h3><select class="sort-select" aria-label="Ordenar" onchange="sortResults(this.value)">${[['default','sort_feat'],['price-asc','sort_pa'],['price-desc','sort_pd'],['stars-desc','sort_st'],['name-asc','sort_az']].map(([v,k])=>`<option value="${v}" ${currentSort===v?'selected':''}>${t(k)}</option>`).join('')}</select></div><div class="cards">`;
   hotels.forEach(hotel=>{
     const ch=hotel.rooms?.[0]?.rates?.[0];if(!ch)return;
-    const price=parseFloat(ch.net),pn=Math.round(price/nights),sn=parseInt(hotel.categoryCode)||0,bn=ch.boardName||ch.boardCode||'',rn=hotel.rooms?.[0]?.name||hotel.rooms?.[0]?.code||'',ref=ch.rateClass!=='NRF',rt=ch.rateType,iu=hotelImages[hotel.code]||'';
+    const net=parseFloat(ch.net),venta=hotelVenta(net),ancla=hotelAncla(net),save=Math.round(ancla-venta),pn=Math.round(venta/nights),pnAncla=Math.round(ancla/nights),cur=ch.currency||'EUR';
+    const sn=parseInt(hotel.categoryCode)||0,bn=ch.boardName||ch.boardCode||'',rn=hotel.rooms?.[0]?.name||hotel.rooms?.[0]?.code||'',ref=ch.rateClass!=='NRF',rt=ch.rateType,iu=hotelImages[hotel.code]||'';
     const nm=esc(hotel.name||'Hotel');
     const inTrip=trip.hotel&&String(trip.hotel.hotel.code)===String(hotel.code);
     const hd=JSON.stringify({name:hotel.name||'',code:hotel.code,stars:sn,category:hotel.categoryName||'',destination:hotel.destinationName||'',zone:hotel.zoneName||'',address:hotel.address||''}).replace(/'/g,"&#39;");
-    html+=`<div class="card"><div class="card-img">${iu?`<img src="${iu}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}</div><div class="card-body"><div class="loc">${zoneLabel(zoneOf(hotel))}${hotel.zoneName?' · '+esc(hotel.zoneName):''}</div><h4>${nm}</h4><div style="margin-bottom:6px">${starsHtml(sn)}</div><p class="meta">${esc(rn)}${bn?' · '+esc(bn):''}</p><div style="margin-bottom:12px"><span class="htag ${ref?'htag-green':'htag-red'}">${ref?t('tag_free'):t('tag_nrf')}</span>${rt==='BOOKABLE'?`<span class="htag htag-blue">${t('tag_instant')}</span>`:''}</div><div class="price-row"><div class="price"><span class="now" style="font-size:19px">${pn} <span class="per">${ch.currency||'EUR'} / ${t('per_night')}</span></span><div class="total-note">${price.toFixed(2)} ${ch.currency||'EUR'} ${t('total_word')} · ${nights} ${nightsWord(nights)}</div></div><button class="book-btn ${inTrip?'done':''}" onclick='addHotelToTrip(${JSON.stringify(ch).replace(/'/g,"&#39;")},${hd})'>${inTrip?t('btn_booked'):t('btn_addtrip')}</button></div></div></div>`;
+    html+=`<div class="card"><div class="card-img">${iu?`<img src="${iu}" alt="${nm}" loading="lazy" onerror="this.parentElement.innerHTML=imgPlaceholder()">`:imgPlaceholder()}<span class="badge deal">${t('save_badge')} ${save} ${cur}</span></div><div class="card-body"><div class="loc">${zoneLabel(zoneOf(hotel))}${hotel.zoneName?' · '+esc(hotel.zoneName):''}</div><h4>${nm}</h4><div style="margin-bottom:6px">${starsHtml(sn)}</div><p class="meta">${esc(rn)}${bn?' · '+esc(bn):''}</p><div style="margin-bottom:12px"><span class="htag ${ref?'htag-green':'htag-red'}">${ref?t('tag_free'):t('tag_nrf')}</span>${rt==='BOOKABLE'?`<span class="htag htag-blue">${t('tag_instant')}</span>`:''}</div><div class="price-row"><div class="price"><span class="old" style="display:block">${pnAncla} ${cur}</span><span class="now" style="font-size:19px">${pn} <span class="per">${cur} / ${t('per_night')}</span></span><div class="total-note">${venta.toFixed(2)} ${cur} ${t('total_word')} · ${nights} ${nightsWord(nights)}</div></div><button class="book-btn ${inTrip?'done':''}" onclick='addHotelToTrip(${JSON.stringify(ch).replace(/'/g,"&#39;")},${hd})'>${inTrip?t('btn_booked'):t('btn_addtrip')}</button></div></div></div>`;
   });
   html+='</div>';area.innerHTML=html;
 }
@@ -1554,7 +1569,8 @@ function addHotelToTrip(rate,hotel){
     syncUI();toast(t('toast_removed'));renderResultsPage();
     return;
   }
-  trip.hotel={rate,hotel,checkIn:$('#checkIn').value,checkOut:$('#checkOut').value,price:parseFloat(rate.net),currency:rate.currency||'EUR'};
+  const net=parseFloat(rate.net);
+  trip.hotel={rate,hotel,checkIn:$('#checkIn').value,checkOut:$('#checkOut').value,net,price:hotelVenta(net),ancla:hotelAncla(net),currency:rate.currency||'EUR'};
   syncUI();toast(t('toast_hotel'));
   renderResultsPage();
 }
@@ -1570,13 +1586,15 @@ function openCheckout(){
   if(trip.hotel){
     const th=trip.hotel,nights=Math.ceil((new Date(th.checkOut)-new Date(th.checkIn))/86400000);
     const usd=th.currency==='EUR'?eurToUsd(th.price):th.price;
+    const hotelSave=Math.round((th.ancla||hotelAncla(th.net))-th.price);
     totalUsd+=usd;if(th.currency==='EUR')hasEur=true;
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(th.hotel.name)}</b><span class="tagx">${t('x_hotel')}</span></div><div class="bk-line"><span>${th.checkIn} → ${th.checkOut} · ${nights} ${nightsWord(nights)}</span><span>${th.price.toFixed(2)} ${th.currency}${th.currency==='EUR'?` ≈ $${usd.toFixed(0)} USD`:''}</span></div><div class="bk-line"><span>${esc(th.rate.roomName||'')} · ${esc(th.rate.boardName||th.rate.boardCode||'')}</span><span>${th.rate.rateClass==='NRF'?t('tag_nrf'):t('tag_free')}</span></div></div>`;
+    save+=th.currency==='EUR'?Math.round(hotelSave*FX_EUR_USD):hotelSave;
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(th.hotel.name)}</b><span class="tagx">${t('x_hotel')}</span></div><div class="bk-line"><span>${th.checkIn} → ${th.checkOut} · ${nights} ${nightsWord(nights)}</span><span><span class="strike">${(th.ancla||hotelAncla(th.net)).toFixed(2)}</span>${th.price.toFixed(2)} ${th.currency}${th.currency==='EUR'?` ≈ $${usd.toFixed(0)} USD`:''}</span></div><div class="bk-line"><span>${esc(th.rate.roomName||'')} · ${esc(th.rate.boardName||th.rate.boardCode||'')}</span><span>${th.rate.rateClass==='NRF'?t('tag_nrf'):t('tag_free')}</span></div></div>`;
   }
   trip.parks.forEach(p=>{
-    const disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base,sub=unit*p.persons,pubSub=p.base*p.persons;
-    totalUsd+=sub;if(disc)save+=pubSub-sub;
-    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(p.name)}</b><span class="tagx">${t('x_park')}${disc?' · −15%':''}</span></div><div class="bk-line"><span>${p.date} · ${p.persons} ${p.persons>1?t('ppl'):t('ppl1')}</span><span>${disc?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
+    const d=parkOffFor(p.tier??40),unit=d?Math.round(p.base*(1-d)):p.base,sub=unit*p.persons,pubSub=p.base*p.persons;
+    totalUsd+=sub;if(d)save+=pubSub-sub;
+    h+=`<div class="bk-item"><div class="bk-item-head"><b>${esc(p.name)}</b><span class="tagx">${t('x_park')}${d?` · −${Math.round(d*100)}%`:''}</span></div><div class="bk-line"><span>${p.date} · ${p.persons} ${p.persons>1?t('ppl'):t('ppl1')}</span><span>${d?`<span class="strike">$${pubSub}</span>`:''}$${sub} USD</span></div></div>`;
   });
   if(trip.car){
     const c=trip.car,off=carOff(),unit=off?Math.round(c.base*(1-off)):c.base,sub=unit*c.days,pubSub=c.base*c.days;
@@ -1624,12 +1642,12 @@ async function confirmCheckout(e){
       }
       const d=await apiCall('POST','/hotel-api/1.0/bookings',{holder:{name:nm,surname:sn},rooms:[{rateKey:rate.rateKey,paxes:[{roomId:1,type:'AD',name:nm,surname:sn}]}],clientReference:cr,remark:`Xotics — ${em} — ${ph}${rm?' — '+rm:''}`});
       const bk=d.booking;
-      recs.push({type:'hotel',id:bk?.reference||'TEST-'+Date.now(),clientRef:cr,hotelName:trip.hotel.hotel.name,hotelCode:trip.hotel.hotel.code,destination:trip.hotel.hotel.destination,address:trip.hotel.hotel.address,checkIn:trip.hotel.checkIn,checkOut:trip.hotel.checkOut,holder:`${nm} ${sn}`,email:em,phone:ph,nationality:mk,room:rate.roomName||'',board:rate.boardName||rate.boardCode||'',price:trip.hotel.price.toFixed(2),currency:trip.hotel.currency,status:'CONFIRMED',createdAt:new Date().toISOString(),supplier:bk?.hotel?.supplier?.name||'Hotelbeds S.L.U.',supplierVat:bk?.hotel?.supplier?.vatNumber||'',remark:rm});
+      recs.push({type:'hotel',id:bk?.reference||'TEST-'+Date.now(),clientRef:cr,hotelName:trip.hotel.hotel.name,hotelCode:trip.hotel.hotel.code,destination:trip.hotel.hotel.destination,address:trip.hotel.hotel.address,checkIn:trip.hotel.checkIn,checkOut:trip.hotel.checkOut,holder:`${nm} ${sn}`,email:em,phone:ph,nationality:mk,room:rate.roomName||'',board:rate.boardName||rate.boardCode||'',price:trip.hotel.price.toFixed(2),net:(trip.hotel.net||0).toFixed(2),currency:trip.hotel.currency,status:'CONFIRMED',createdAt:new Date().toISOString(),supplier:bk?.hotel?.supplier?.name||'Hotelbeds S.L.U.',supplierVat:bk?.hotel?.supplier?.vatNumber||'',remark:rm});
     }
     /* 2. PARQUES — confirmación Xotics */
     trip.parks.forEach((p,i)=>{
-      const disc=parkDiscountActive(),unit=disc?Math.round(p.base*(1-PARK_OFF)):p.base;
-      recs.push({type:'park',id:'XOT-P-'+(Date.now()+i),clientRef:cr,hotelName:p.name+' ('+p.persons+' pers.)',checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:(unit*p.persons).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:disc?'-15%':''});
+      const d=parkOffFor(p.tier??40),unit=d?Math.round(p.base*(1-d)):p.base;
+      recs.push({type:'park',id:'XOT-P-'+(Date.now()+i),clientRef:cr,hotelName:p.name+' ('+p.persons+' pers.)',checkIn:p.date,checkOut:p.date,holder:parkHolder,email:em,phone:ph,nationality:mk,price:(unit*p.persons).toFixed(2),currency:'USD',status:'CONFIRMED',createdAt:new Date().toISOString(),discount:d?`-${Math.round(d*100)}%`:''});
     });
     /* 3. COCHE — confirmación Xotics */
     if(trip.car){
